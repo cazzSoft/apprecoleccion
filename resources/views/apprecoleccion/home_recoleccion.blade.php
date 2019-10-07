@@ -39,8 +39,8 @@
                 <img src="images/user.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>User jo</h2>
+                <span>Bienvenido,</span>
+                <h2>Administrador</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -206,7 +206,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            Cazz - soft Admin  by <a href="https://colorlib.com">Gamd</a>
+             Admin  by <a href="https://colorlib.com">GADM Chone</a>
           </div>
           <div class="clearfix"></div>
         </footer>

@@ -8,8 +8,8 @@
                 <div class="card-body text-center">
                     <div class="bs-example" data-example-id="simple-jumbotron">
                         <div class="jumbotron">
-                            <h1>Hola, Bienvenido!</h1>
-                            <p>Gestión Administrativa</p>
+                            <h1>Gestión de Desechos</h1>
+                            <p>Administración</p>
                         </div>
                         <div class="">
                             <div class="x_panel fixed_height_390">
