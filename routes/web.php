@@ -27,4 +27,3 @@ Auth::routes();
  //Route::get('/ruta', 'RutaController@index');
  //Route::get('/ruta', 'RutaController@index');
  //Route::get('/ruta', 'RutaController@index');
- 

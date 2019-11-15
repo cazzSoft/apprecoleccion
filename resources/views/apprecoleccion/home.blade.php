@@ -8,8 +8,8 @@
                 <div class="card-body text-center">
                     <div class="bs-example" data-example-id="simple-jumbotron">
                         <div class="jumbotron">
-                            <h1>Hello, Bienvenido!</h1>
-                            <p>A este sistema, de control de recoleccion .</p>
+                            <h1>Gestión de Desechos</h1>
+                            <p>Administración</p>
                         </div>
                         <div class="">
                             <div class="x_panel fixed_height_390">
@@ -31,9 +31,9 @@
                                             </li>
                                         </ul>
                                     </div><br>
-                                    <h3 class="name">apprec</h3>
+                                    <h3 class="name">Gestión de Desechos</h3>
                                         <p>
-                                            If you've decided to go in development mode and tweak all of this a bit, there are few things you should do.
+                                        Su objetivo principal es la clasificación, recolección, depósito y procesamiento de los residuos sólidos generados por las actividades diarias de los habitantes del Cantón Chone
                                         </p>
                                 </div>
                             </div>
