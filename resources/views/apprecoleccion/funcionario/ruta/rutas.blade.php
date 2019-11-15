@@ -1,139 +1,79 @@
-<div class="col-md-12 col-sm-12 col-xs-12">
-  <div class="x_panel">
-    <div class="x_title">
-      <h2>SUB-DIRECCIÓN DE GESTIÓN DE DESECHOS <small>RUTAS DE RECOLECCIÓN DE DESECHOS</small></h2>
-     
-      <div class="clearfix"></div>
-    </div>
-    <div class="x_content">
+<!-- REGISTRO DE RUTAS -->
+<form id="frm_rutas" method="POST" action="{{url('ruta')}}"  enctype="multipart/form-data"  class="form-horizontal form-label-left">
+    {{csrf_field() }}
+    <input id="method_rutas" type="hidden" name="_method" value="POST">
 
-      <!-- Smart Wizard -->
-      <p>Registro de ruta</p>
-      <div id="wizard" class="form_wizard wizard_horizontal">
-        <ul class="wizard_steps">
-          <li>
-            <a href="#step-1">
-              <span class="step_no">1</span>
-              <span class="step_descr">
-                  ruta<br />
-                  <small>description</small>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="#step-2">
-              <span class="step_no">2</span>
-              <span class="step_descr">
-                  sectores<br />
-                  <small>registre los sectores</small>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="#step-3">
-              <span class="step_no">3</span>
-              <span class="step_descr">
-                  horario<br />
-                  <small>elija horario</small>
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href="#step-4">
-              <span class="step_no">4</span>
-              <span class="step_descr">
-                   vehiculo <br />
-                  <small>elejir vehiculo</small>
-              </span>
-            </a>
-          </li>
-        </ul>
-        <div id="step-1">
-          <form class="form-horizontal form-label-left">
-
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <div id="gender" class="btn-group" data-toggle="buttons">
-                  <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                    <input type="radio" name="gender" value="male"> &nbsp; Male &nbsp;
-                  </label>
-                  <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                    <input type="radio" name="gender" value="female"> Female
-                  </label>
+<!-- MENSAJES PARA CONFIRMACIÓN DE REGISTROS Y ERRORES -->
+    @if(session()->has('mensajePInfoRuta'))
+        <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre_menu"></label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="alert alert-{{session('estadoP')}} alert-dismissible fade in" role="alert" style="margin-bottom: 0;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>
+                    <strong>Información: </strong> {{session('mensajePInfoRuta')}}
                 </div>
-              </div>
             </div>
-            <div class="form-group">
-              <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-              </label>
-              <div class="col-md-6 col-sm-6 col-xs-12">
-                <input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
-              </div>
+        </div>
+    @endif
+<!-- FORMULARIO PARA EL REGISTRO -->
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Nombre de la ruta:<span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="nombre_ruta" required="required" class="form-control col-md-7 col-xs-12" name="nombre_ruta" placeholder="Escriba el nombre de la ruta">
             </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Sectores: <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+            <textarea type="text" id="descripcion" class="form-control col-md-7 col-xs-12" name="descripcion"  required autofocus required rows="3" placeholder="Escriba aqu&iacute;..."></textarea> 
+            </div>
+          </div>
 
-          </form>
-
+    <div class="form-group">
+        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="button" id="btn_rutaCancelar" class="btn btn-warning hidden">Cancelar</button>
         </div>
-        <div id="step-2">
-          <h2 class="StepTitle">Step 2 Content</h2>
-          <p>
-            do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-        <div id="step-3">
-          <h2 class="StepTitle">Step 3 Content</h2>
-          <p>
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-            eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-        <div id="step-4">
-          <h2 class="StepTitle">Step 4 Content</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-            in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        </div>
-
-      </div>
-      <!-- End SmartWizard Content -->
     </div>
-  </div>
+    <div class="ln_solid"></div>
+
+</form>
+<!-- tabla de los datos -->
+<div class="table-responsive">
+    <div class="row">
+        <div class="col-sm-12">
+            <table id="datatable-buttons" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+                <thead>
+                <tr role="row">
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Nombre de la ruta</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Sectores</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                @if(isset($listaRutas))
+                    @foreach($listaRutas as $item)
+                        <tr role="row" class="odd">
+                            <td class="sorting_1">{{$item->nombre_ruta}}</td>
+                            <td >{{$item->descripcion}}</td>
+                            <td   class="paddingTR">
+                                <center>
+                                <form method="POST" class="frm_eliminar" action="{{url('ruta/'.encrypt($item->idruta))}}"  enctype="multipart/form-data">
+                                    {{csrf_field() }} <input type="hidden" name="_method" value="DELETE">
+                                    <button type="button" onclick="ruta_editar('{{encrypt($item->idruta)}}')"  class="btn btn-sm btn-primary marginB0"><i class="fa fa-edit"></i> Editar</button>
+                                    <button type="button" class="btn btn-sm btn-danger marginB0" onclick="btn_eliminar(this)"><i class="fa fa-trash"></i> Eliminar</button>
+                                </form>
+                                </center>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif 
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+

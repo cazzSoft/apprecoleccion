@@ -17,18 +17,29 @@
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
     <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/> 
-
+  
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+
+     <!-- plugin del select -->
+
+
+     <link href="{{ asset('/css/estilos_globales.css') }}" rel="stylesheet">
+     <link href="{{ asset('/css/bootstrap_combofilter.css') }}" rel="stylesheet">
+     <!-- <link href="{{ asset('/css/chosen.css') }}" rel="stylesheet"> -->
+
+
+
+
   </head>
 
   <body class="nav-md footer_fixed">
     <div class="container body">
-      <div class="main_container">
+      <div class="main_container" style="display: grid !important;">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-truck"></i> <span>App Recolección</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-truck"></i> <span>Recolección</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -52,19 +63,20 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Gestiones <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-truck"></i>Gestión de Desechos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{url('/ruta')}}">Rutas</a></li>
-                      <li><a href="index2.html">Vehiculos</a></li>
-                      <li><a href="index3.html">Asignaciones Rutas</a></li>
+                      <li><a href="{{url('/gestionRutas')}}">Rutas</a></li>
+                      <li><a href="{{url('/vehiculo')}}">Vehículos</a></li>
+                      <li><a href="{{url('/chofer')}}">Choferes</a></li>
+                      <li><a href="{{url('/actividad_diaria')}}">Actividad Diaria</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-edit"></i> Gestión Admin <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-edit"></i> Administración <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Reportes</a></li>
-                      <li><a href="form_advanced.html">Bandeja de opiniones</a></li>
-                      <li><a href="..">Evaluación de servicios</a></li>
-                      <li><a href="..">Establecer responsable</a></li>
+                      <li><a href="bandejaOpiniones">Bandeja de opiniones</a></li>
+                      <li><a href="EvaluacionServicios">Evaluación de servicios</a></li>
+                      <li><a href="#">Reportes</a></li>
+          
                     </ul>
                   </li>
                 </ul>
@@ -95,7 +107,7 @@
 
         <!-- top navigation -->
         <div class="top_nav">
-          <div class="nav_menu">
+          <div class="nav_menu" style="margin-bottom:0;">
             <nav>
               <div class="nav toggle">
                 <a id="menu_toggle"><i class="fa fa-bars"></i></a>
@@ -196,6 +208,7 @@
           <div class="">
             <div class="page-title">
               <div class="x_content">  
+               <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
                 @yield('content1')
               </div>
             </div>
@@ -204,27 +217,29 @@
         <!-- /page content -->
 
         <!-- footer content -->
-        <footer>
+        <!-- <footer>
           <div class="pull-right">
              Admin  by <a href="https://colorlib.com">GADM Chone</a>
           </div>
           <div class="clearfix"></div>
-        </footer>
+        </footer> -->
         <!-- /footer content -->
       </div>
     </div>
 
 
-    <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
+   
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <script src="../vendors/nprogress/nprogress.js"></script>
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
     <script src="../build/js/custom.min.js"></script>
+ 
     <script src="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 
-{{--
-1    <!-- jQuery -->
+    {{--
+1 
+    <!-- jQuery -->
     <!-- Bootstrap -->
     <!-- FastClick -->
     <!-- NProgress -->
@@ -233,7 +248,18 @@
     <!-- jQuery custom content scroller -->
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+   
+    
+
  --}}
+ <!-- <script src="../build/js/custom.min.js"></script> -->
+ <script src="{{ asset('/js/chosen.jquery.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            $('.chosen-select').chosen();
+            $('.chosen-select-deselect').chosen({allow_single_deselect: true});
+       });
+    </script> 
+
   </body>
 </html>

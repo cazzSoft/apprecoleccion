@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\RutaModel;
+
 class RutaController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class RutaController extends Controller
      */
     public function index()
     {
-        return view('apprecoleccion.funcionario.ruta.rutaGestion');
+        
     }
 
     /**
@@ -34,7 +36,25 @@ class RutaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validación de los datos que vienen en el request para verificar que no se utilicen caracteres especiales
+        $validar=array(
+            'nombre_ruta'=>$request->get('nombre_ruta'),
+            'descripcion'=>$request->get('descripcion'),
+        );
+
+        if(tieneCaracterEspecialRequest($validar)){
+            return back()->with(['mensajePInfoRuta'=>'No puede ingresar caracteres especiales','estadoP'=>'danger']);
+        };
+        //se guardan los datos
+        $ruta= new RutaModel();
+        $ruta->nombre_ruta=$request->get('nombre_ruta');
+        $ruta->descripcion=$request->get('descripcion');
+        //información de la verificación de ingreso de datos
+        if($ruta->save()){
+            return back()->with(['mensajePInfoRuta'=>'Registro exitoso','estadoP'=>'success']);
+        }else{
+            return back()->with(['mensajePInfoRuta'=>'No se pudo realizar el registro','estadoP'=>'danger']);
+        }
     }
 
     /**
@@ -56,7 +76,10 @@ class RutaController extends Controller
      */
     public function edit($id)
     {
-        //
+              
+        $id=decrypt($id);
+        $ruta=RutaModel::find($id);
+        return response()->json($ruta);
     }
 
     /**
@@ -68,7 +91,26 @@ class RutaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            //Validación de los datos que vienen en el request para verificar que no se utilicen caracteres especiales
+            $validar=array(
+            'id'=>decrypt($id),
+            'nombre_ruta'=>$request->get('nombre_ruta'),
+            'descripcion'=>$request->get('descripcion'),
+            );
+    
+            if(tieneCaracterEspecialRequest($validar)){
+                return back()->with(['mensajePInfoRuta'=>'No puede ingresar caracteres especiales','estadoP'=>'danger']);
+            };
+            //se guardan los datos
+            $ruta= RutaModel::find(decrypt($id));
+            $ruta->nombre_ruta=$request->get('nombre_ruta');
+            $ruta->descripcion=$request->get('descripcion');
+            //información de la verificación de ingreso de datos
+            if($ruta->save()){
+                return back()->with(['mensajePInfoRuta'=>'Registro exitoso','estadoP'=>'success']);
+            }else{
+                return back()->with(['mensajePInfoRuta'=>'No se pudo realizar el registro','estadoP'=>'danger']);
+            }
     }
 
     /**
@@ -79,6 +121,23 @@ class RutaController extends Controller
      */
     public function destroy($id)
     {
-        //
+              //Validación de los datos que vienen en el request para verificar que no se utilicen caracteres especiales
+              $validar=array(
+                'id'=>decrypt($id)
+            );
+    
+            if(tieneCaracterEspecialRequest($validar)){
+                return back()->with(['mensajePInfoRuta'=>'No puede ingresar caracteres especiales','estadoP'=>'danger']);
+            };
+            //eliminación de datos
+            $ruta= RutaModel::find(decrypt($id));
+      //información para la verificación de eliminación de datos
+            try {
+                $ruta->delete();
+                return back()->with(['mensajePInfoRuta'=>'Registro eliminado con éxito','estadoP'=>'success']);
+            } catch (\Throwable $th) {
+                return back()->with(['mensajePInfoRuta'=>'No se pudo realizar eliminar el registro','estadoP'=>'danger']);
+                
+            }
     }
 }

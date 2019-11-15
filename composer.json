@@ -33,13 +33,17 @@
         }
     },
     "autoload": {
-        "psr-4": {
-            "App\\": "app/"
-        },
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/FuncionesGlobales.php"
         ]
+
     },
     "autoload-dev": {
         "psr-4": {
