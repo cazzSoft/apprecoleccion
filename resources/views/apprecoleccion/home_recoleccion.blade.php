@@ -28,9 +28,6 @@
      <link href="{{ asset('/css/bootstrap_combofilter.css') }}" rel="stylesheet">
      <!-- <link href="{{ asset('/css/chosen.css') }}" rel="stylesheet"> -->
 
-
-
-
   </head>
 
   <body class="nav-md footer_fixed">
@@ -219,7 +216,7 @@
         <!-- footer content -->
         <!-- <footer>
           <div class="pull-right">
-             Admin  by <a href="https://colorlib.com">GADM Chone</a>
+            Cazz - soft Admin  by <a href="https://colorlib.com">Gamd</a>
           </div>
           <div class="clearfix"></div>
         </footer> -->
