@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
@@ -16,8 +16,8 @@
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- jQuery custom content scroller -->
-    <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/> 
-  
+    <link href="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
 
@@ -73,12 +73,12 @@
                       <li><a href="bandejaOpiniones">Bandeja de opiniones</a></li>
                       <li><a href="EvaluacionServicios">Evaluación de servicios</a></li>
                       <li><a href="#">Reportes</a></li>
-          
+
                     </ul>
                   </li>
                 </ul>
               </div>
-              
+
 
             </div>
             <!-- /sidebar menu -->
@@ -204,7 +204,7 @@
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
-              <div class="x_content">  
+              <div class="x_content">
                <script src="{{asset('vendors/jquery/dist/jquery.min.js')}}"></script>
                 @yield('content1')
               </div>
@@ -225,17 +225,17 @@
     </div>
 
 
-   
+
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <script src="../vendors/nprogress/nprogress.js"></script>
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
     <script src="../build/js/custom.min.js"></script>
- 
+
     <script src="../vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
 
     {{--
-1 
+1
     <!-- jQuery -->
     <!-- Bootstrap -->
     <!-- FastClick -->
@@ -245,18 +245,23 @@
     <!-- jQuery custom content scroller -->
 
     <!-- Custom Theme Scripts -->
-   
-    
+
+
 
  --}}
  <!-- <script src="../build/js/custom.min.js"></script> -->
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg3Y75nW9Y4wNgeUEQBz8ckD4gPJEGtiY&callback=initMap" libraries=drawing
+    async defer></script>
+    <script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg3Y75nW9Y4wNgeUEQBz8ckD4gPJEGtiY&libraries=drawing">
+</script>
  <script src="{{ asset('/js/chosen.jquery.js') }}"></script>
     <script>
         $(document).ready(function(){
             $('.chosen-select').chosen();
             $('.chosen-select-deselect').chosen({allow_single_deselect: true});
        });
-    </script> 
+    </script>
 
   </body>
 </html>

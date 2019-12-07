@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('apprecoleccion.home');
-});  
+});
 
 Auth::routes();
 
@@ -44,9 +44,10 @@ Route::get('/gestionRutas','GestionRutasController@index');
 
 
 
- 
- //PRUEBAS
- Route::get('/prueba', 'PruebaApiController@index3');
- 
 
-
+//rutas de services api gps
+ Route::get('/token', 'ServiciosApiGpsController@postToken');
+ Route::get('/refreshToken', 'ServiciosApiGpsController@postRefreshToken');
+ Route::get('/all', 'ServiciosApiGpsController@getDetalle');
+ Route::get('/id/{id}', 'ServiciosApiGpsController@getId');
+//Route::get('/evaluacion', 'EvaluacionServiciosController@obtenerEvaluacion');

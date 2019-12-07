@@ -1,7 +1,7 @@
 <?php
 
 return [
- 
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -174,6 +174,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\GeolocalizacionServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
 
     ],
 

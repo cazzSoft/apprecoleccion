@@ -25,7 +25,7 @@
                 <option value=""></option>
                     @if(isset($listaPreguntas))
                         @foreach($listaPreguntas as $item)
-                            <option class="opcion_pregunta" value="{{$item->idpregunta}}">{{$item->descripcion}}</option>
+                            <option class="opcion_pregunta" value="{{$item->idpregunta}}">{{$item->descripcion}} <button>hola</button></option>
                         @endforeach
                     @endif
                 </select>
@@ -46,7 +46,7 @@
                         <option class="opcion_evaluacion" value="{{$evaluacion->idevaluacion}}">{{$evaluacion->nombre}}</option>
                     <optgroup>
                     @endforeach
-                @endif   
+                @endif
                 </select>
             </div>
         </div>
@@ -77,10 +77,10 @@
 
                 <tbody>
                 @if(isset($listaPreguntaEvaluacion))
-                        @foreach($listaPreguntaEvaluacion as $item) 
+                        @foreach($listaPreguntaEvaluacion as $item)
                             <tr role="row" class="odd">
                                 <td class="sorting_1">{{$item->pregunta->descripcion}}</td>
-                                <td >{{$item->evaluacion->nombre}}</td>              
+                                <td >{{$item->evaluacion->nombre}}</td>
                                 <td   class="paddingTR">
                                     <center>
                                     <form method="POST" class="frm_eliminar" action="{{url('pregunta_evaluacion/'.encrypt($item->idpregunta_evaluacion))}}"  enctype="multipart/form-data">
@@ -92,7 +92,7 @@
                                 </td>
                             </tr>
                         @endforeach
-                    @endif        
+                    @endif
                 </tbody>
             </table>
         </div>

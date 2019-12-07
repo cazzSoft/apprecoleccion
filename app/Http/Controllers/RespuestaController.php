@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\RespuestaModel;
 use Illuminate\Http\Request;
-use App\BandejaOpinionesModel;
-use Illuminate\Support\Carbon;
 
-class BandejaOpinionesController extends Controller
+class RespuestaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +14,8 @@ class BandejaOpinionesController extends Controller
      */
     public function index()
     {
-     //consultas de datos
-     $listaOpiniones = BandejaOpinionesModel::with('usuario')->get();
-        return view('apprecoleccion.administrador.bandejaOpiniones.GestionBandejaOpiniones')->with([
-
-            'listaOpiniones'=>$listaOpiniones
-        ]);
+        //
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -42,23 +35,22 @@ class BandejaOpinionesController extends Controller
      */
     public function store(Request $request)
     {
-        ///$fecha= Carbon::now()->toDateTimeString();
-         $fecha =date("Y-m-d H:i");
+     // $existe=[''];
+      $existe=RespuestaModel::where('idpregunta_evaluacion',$request->idpregunta_evaluacion)->where('idusuario',$request->idusuario)->get();
+       $res=$existe->pluck('idrespuesta');
 
-        $validar=array(
-            'detalle'=>$request->detalle,
-        );
-         if(tieneCaracterEspecialRequest($validar)){
-            return "false";
-        };
-        $opinion = new BandejaOpinionesModel();
-        $opinion->detalle=$request->detalle;
-        $opinion->fecha=$fecha;
-        $opinion->estado='E';
-        $opinion->usuario_idusuario=$request->id;
-         //return $opinion;
-     $opinion->save();
-        return "true";
+       if ($existe=="[]") {
+            $consulta= new RespuestaModel();
+            $consulta->puntaje=$request->puntaje;
+            $consulta->idpregunta_evaluacion=$request->idpregunta_evaluacion;
+            $consulta->idusuario=$request->idusuario;
+            $consulta->estado=$request->estado;
+            $consulta->save();
+             return "ingresado";
+       }else{
+            return $this->update($request,$res[0]);
+       }
+
     }
 
     /**
@@ -92,7 +84,13 @@ class BandejaOpinionesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $consulta =RespuestaModel::find($id);
+        $consulta->puntaje=$request->puntaje;
+        $consulta->idpregunta_evaluacion=$request->idpregunta_evaluacion;
+        $consulta->idusuario=$request->idusuario;
+        $consulta->estado=$request->estado;
+        $consulta->save();
+        return "act";
     }
 
     /**
@@ -103,16 +101,6 @@ class BandejaOpinionesController extends Controller
      */
     public function destroy($id)
     {
-
-      //eliminación de datos
-      $bandeja= BandejaOpinionesModel::find(decrypt($id));
-        //información para la verificación de eliminación de datos
-      try {
-          $bandeja->delete();
-          return back()->with(['mensajeInfoBandejaOpiniones'=>'Registro eliminado con éxito','estado'=>'success']);
-      } catch (\Throwable $th) {
-          return back()->with(['mensajeInfoBandejaOpiniones'=>'No se pudo realizar eliminar el registro','estado'=>'danger']);
-
-      }
+        //
     }
 }

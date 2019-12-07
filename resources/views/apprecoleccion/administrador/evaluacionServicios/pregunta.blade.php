@@ -49,12 +49,12 @@
 
 
                 <tbody>
-                
+
                 @if(isset($listaPreguntas))
                     @foreach($listaPreguntas as $item)
                         <tr role="row" class="odd">
                             <td >{{$item->descripcion}}</td>
-                        
+
                             <td class="paddingTR">
                                 <center>
                                 <form method="POST" class="frm_eliminar" action="{{url('pregunta/'.encrypt($item->idpregunta))}}"  enctype="multipart/form-data">
@@ -66,7 +66,7 @@
                             </td>
                         </tr>
                     @endforeach
-                @endif         
+                @endif
                 </tbody>
             </table>
         </div>
