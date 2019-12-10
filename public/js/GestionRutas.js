@@ -51,6 +51,5 @@ $("#btn_puntoRutaCancelar").click(function () {
 //datos seleccionados al label
 
     $('#sectores').html(selected);
-    $('#sectoreB').html("selected");
-
+   $('#sectoreB').html("selected");
  }

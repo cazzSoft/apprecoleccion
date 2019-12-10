@@ -1,5 +1,5 @@
 <!-- REGISTRO DEL DIBUJO DE RUTAS -->
-{{-- <form id="frm_PuntoRuta" method="POST" action="{{url('PuntoRuta')}}"  enctype="multipart/form-data"  class="form-horizontal form-label-left">
+<form id="frm_PuntoRuta" method="POST" action="{{url('PuntoRuta')}}"  enctype="multipart/form-data"  class="form-horizontal form-label-left">
     {{csrf_field() }}
     <input id="method_PuntoRuta" type="hidden" name="_method" value="POST">
 
@@ -62,9 +62,10 @@
     <div class="col-md-6">
         <!-- DIBUJAR RUTA -->
         <div class="form-group col-md-3">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63832.20305791997!2d-80.13618288494797!3d-0.709187841425866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b076535aa8203%3A0xf88baf19ad7f8733!2sChone!5e0!3m2!1ses!2sec!4v1570597689521!5m2!1ses!2sec" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63832.20305791997!2d-80.13618288494797!3d-0.709187841425866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b076535aa8203%3A0xf88baf19ad7f8733!2sChone!5e0!3m2!1ses!2sec!4v1570597689521!5m2!1ses!2sec" width="400" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe> -->
         </div>
     </div>
+    
     <div class="form-group">
         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-5">
             <button type="submit" class="btn btn-success">Guardar</button>
@@ -74,9 +75,9 @@
     <div class="ln_solid"></div>
     </div>
 </div>
-</form> --}}
+</form> 
 <!-- TABLA DE LOS DATOS -->
-{{-- <div class="table-responsive">
+ <div class="table-responsive">
     <div class="row">
     <div class="col-sm-12">
             <table id="" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
@@ -107,28 +108,14 @@
     </div>
 
     </div>
-</div> --}}
+</div> 
 {{-- aqui es --}}
     <div class="row">
             <div class="col-md-12">
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>Mapa de rutas de recoleccion de desechos</h2>
-                        <ul class="nav navbar-right panel_toolbox">
-                          <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                          </li>
-                          <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                            <ul class="dropdown-menu" role="menu">
-                              <li><a href="#">Settings 1</a>
-                              </li>
-                              <li><a href="#">Settings 2</a>
-                              </li>
-                            </ul>
-                          </li>
-                          <li><a class="close-link"><i class="fa fa-close"></i></a>
-                          </li>
-                        </ul>
+ 
                         <div class="clearfix"></div>
                     </div>
 
