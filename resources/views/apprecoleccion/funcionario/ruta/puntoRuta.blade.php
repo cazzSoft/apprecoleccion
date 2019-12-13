@@ -18,86 +18,78 @@
     @endif
 <!-- FORMULARIO PARA EL REGISTRO -->
 
-    <div class="row">
-            <div class="col-md-12">
-                <div class="x_panel">
-                    <div class="x_title">
-                        <h2>Mapa de rutas de recolección de desechos</h2>
-                        <div class="clearfix"></div>
-                    </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h4><center>MAPA DE LAS RUTAS DE RECOLECCIÓN DE DESECHOS</center></h4>
+                <div class="clearfix"></div>
+            </div>
 
-                  <div class="x_content">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <ul class="stats-overview">
-                            <li>
-                              <span class="name"> Latitud </span>
-                              <span class="value text-success"> 2300 </span>
-                            </li>
-                            <li>
-                              <span class="name"> Longitud </span>
-                              <span class="value text-success"> 2000 </span>
-                            </li>
-                            <li class="hidden-phone">
-                              <span class="name"> Estimated project duration </span>
-                              <span class="value text-success"> 20 </span>
-                            </li>
-                        </ul>
-                        <br/>
-                       <div id="map" style="height:600px; width:950px">
-                           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63832.20305791997!2d-80.13618288494797!3d-0.709187841425866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b076535aa8203%3A0xf88baf19ad7f8733!2sChone!5e0!3m2!1ses!2sec!4v1570597689521!5m2!1ses!2sec" width="100%" height="350px" frameborder="0" style="border:0;" allowfullscreen=""></iframe> 
-                       </div>
-
-                        <div>
-                            <h4>Descripcion de la Ruta</h4>
-                            <ul class="messages">
-                              <li>
-                                <div class="message_wrapper">
-                                  <h4 class="heading">Sectores</h4>
-                                  <blockquote class="message" id="sectores">Ninguna ruta seleccionada</blockquote>
-                                  <br />
-                                </div>
-                              </li>
-                            </ul>
-                        </div>
-                    </div>
-     
-                    <div class="col-md-3 col-sm-3 col-xs-12">
-                        <section class="panel">
-                            <div class="x_title">
-                              <h2>Rutas registradas</h2>
-                              <div class="clearfix"></div>
-                            </div>
-                            <div class="panel-body">
-                               <div class="project_detail">
-                                    <div class="form-group">
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <div class="chosen-select-content">
-                                                <select   data-placeholder="Seleccione una ruta..." name="Seleccionar_ruta" id="Seleccionar_ruta" onchange="ShowSelected()" required="required" class="chosen-select form-control" tabindex="5">
-                                                    <option value=""></option>
-                                                        @if(isset($listaRutasCMB))
-                                                            @foreach($listaRutasCMB as $cr=> $conten_ruta)
-                                                                @foreach($conten_ruta as $r=> $ruta)
-                                                                    <optgroup label="{{$r}}">
-                                                                    @foreach($ruta as $s=> $sector)
-                                                                        <option class="opcion_sectores" value="{{$sector->idruta}}">{{$sector->descripcion}}</option>
-                                                                    @endforeach
-                                                                    </optgroup>
+            <div>Para realizar el registro de la ruta en el mapa, primero deberá seleccionar la ruta y posteriormente graficarla en el mapa.</div>
+            <div class="x_content">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <section class="panel">
+                        <div class="panel-body">
+                            <div class="project_detail">
+                                <div class="form-group">
+                                <h4>Rutas registradas</h4>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="chosen-select-content">
+                                            
+                                            <select   data-placeholder="Seleccione una ruta..." name="Seleccionar_ruta" id="Seleccionar_ruta" onchange="ShowSelected()" required="required" class="chosen-select form-control" tabindex="5">
+                                                <option value=""></option>
+                                                    @if(isset($listaRutasCMB))
+                                                        @foreach($listaRutasCMB as $cr=> $conten_ruta)
+                                                            @foreach($conten_ruta as $r=> $ruta)
+                                                                <optgroup label="{{$r}}">
+                                                                @foreach($ruta as $s=> $sector)
+                                                                    <option class="opcion_sectores" value="{{$sector->idruta}}">{{$sector->descripcion}}</option>
                                                                 @endforeach
+                                                                </optgroup>
                                                             @endforeach
-                                                        @endif
-                                                </select>
-                                            </div>
+                                                        @endforeach
+                                                    @endif
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-12"> 
+                                        <div class="message_wrapper">
+                                            <blockquote class="message" id="sectores">Ninguna ruta seleccionada</blockquote>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </section>
-                    </div>
-                  </div>
+                        </div>
+                    </section>
                 </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <ul class="stats-overview">
+                        <li>
+                            <span class="name"> Latitud </span>
+                            <span class="value text-success"> 2300 </span>
+                        </li>
+                        <li>
+                            <span class="name"> Longitud </span>
+                            <span class="value text-success"> 2000 </span>
+                        </li>
+                        <li class="hidden-phone">
+                            <span class="name"> Estimated project duration </span>
+                            <span class="value text-success"> 20 </span>
+                        </li>
+                    </ul>
+                    <br/>
+                </div>
+
+                <div id="map" style="height:600px; width:950px">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63832.20305791997!2d-80.13618288494797!3d-0.709187841425866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b076535aa8203%3A0xf88baf19ad7f8733!2sChone!5e0!3m2!1ses!2sec!4v1570597689521!5m2!1ses!2sec" width="100%" height="350px" frameborder="0" style="border:0;" allowfullscreen=""></iframe> 
+                </div>
+     
             </div>
+        </div>
     </div>
-    </form> 
+</div>
+</form> 
     <div class="row">
         <div class="col-sm-12">
                 <table id="" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">

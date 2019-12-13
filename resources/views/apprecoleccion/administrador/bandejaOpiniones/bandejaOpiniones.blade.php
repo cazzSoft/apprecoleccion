@@ -18,7 +18,7 @@
     @endif
 <!-- bandeja de opiniones -->
 
-    <button type="button" class="btn btn-sm btn-danger marginB0" onclick=""><i class="fa fa-trash"></i> Eliminar todos los Registros</button>
+    
     <div class="ln_solid"></div>
 </form>
 <div class="table-responsive">
@@ -43,10 +43,7 @@
                         <td >{{$item->fecha}}</td>
                         <td   class="paddingTR">
                             <center>
-                                <form method="POST" class="frm_eliminar" action="{{url('bandejaOpiniones/'.encrypt($item->idopiniones))}}"  enctype="multipart/form-data">
-                                    {{csrf_field() }} <input type="hidden" name="_method" value="DELETE">
-                                    <button type="button" class="btn btn-sm btn-danger marginB0" onclick="btn_eliminar(this)"><i class="fa fa-trash"></i> Eliminar</button>
-                                </form>
+                                    <button type="button" class="btn btn-sm btn-success marginB0 " onclick="mostrar_Usuario({{$item->idopiniones}})" ><i class="fa fa-user"></i> Información del usuario</button>
                             </center>
                         </td>
                     </tr>

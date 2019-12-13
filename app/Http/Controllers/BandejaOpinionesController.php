@@ -80,7 +80,10 @@ class BandejaOpinionesController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $id=decrypt($id);
+        $opiniones=BandejaOpinionesModel::find($id);
+        return response()->json($opiniones);
     }
 
     /**

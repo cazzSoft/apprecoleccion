@@ -1,5 +1,12 @@
-function btn_eliminar(btn){
-    if(confirm('¿Quiere eliminar el registro?')){
-        $(btn).parent('.frm_eliminar').submit();
-    }
+
+function mostrar_Usuario(idopiniones){
+    $.get("bandejaOpiniones/"+idopiniones+"/edit", function (data) {
+      
+        
+        $('#nombre').val(data.usuario_idusuario);
+       });
+
+    $('#ventanaModalUsuario').modal('show');
+    
 }
+

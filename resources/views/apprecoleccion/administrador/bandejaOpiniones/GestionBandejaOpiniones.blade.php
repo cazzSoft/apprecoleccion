@@ -16,6 +16,7 @@
                     <div class="clearfix"></div>
                 </div>
                    @include('apprecoleccion.administrador.bandejaOpiniones.bandejaOpiniones')
+                   @include('apprecoleccion.administrador.bandejaOpiniones.ventanaModalUsuario')
                 </div> 
             </div>
         </div>
