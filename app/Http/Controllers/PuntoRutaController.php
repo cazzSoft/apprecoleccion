@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\PuntoRutaModel;
+use App\RutaModel;
+use DB;
+use Illuminate\Http\Request;
+
+
 class PuntoRutaController extends Controller
 {
     /**
@@ -21,11 +24,23 @@ class PuntoRutaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function obtenerPuntosRutas()
     {
-        //
+        //$ruta=RutaModel::with('PuntoRuta')->where('nombre_ruta','Ruta 1')->get();
+        $ruta= DB::table('punto_ruta')
+                        ->join('ruta','punto_ruta.ruta_idruta','=','ruta.idruta')
+                        ->where('ruta..nombre_ruta','=','Ruta 1')
+                        ->select('ruta.descripcion',
+                                'punto_ruta.latitud',
+                                'punto_ruta.longitud',
+                                'punto_ruta.idpunto_ruta')
+                        ->get();
+        foreach ($ruta as $key => $value) {
+            $arry[$value->descripcion]='lat:'.$value->latitud;
+        }
+        return $ruta;
     }
- 
+
     /**
      * Store a newly created resource in storage.
      *

@@ -25,7 +25,6 @@ class ServiciosApiGpsController extends Controller
        public function postToken()
     {
         return $this->posts->obtenerToken();
-
     }
 
     public function postRefreshToken()
@@ -36,8 +35,7 @@ class ServiciosApiGpsController extends Controller
 
     public function getDetalle()
     {
-        $res= $this->posts->all();
-       // return $res;
+       return $this->posts->all();
         if($res){
             return $res;
         }else{
@@ -50,19 +48,28 @@ class ServiciosApiGpsController extends Controller
         return 11;
     }
 
-    public function getId($id)
+    public function rutasDeUsuario($id)
     {
         $consul=DB::table('punto_de_referencia')
-                            ->join('punto_de_referencia_ruta','punto_de_referencia.idpunto_de_referencia','=','punto_de_referencia_ruta.idpunto_de_referencia_ruta')
+                            ->join('punto_de_referencia_ruta','punto_de_referencia.idpunto_de_referencia','=','punto_de_referencia_ruta.punto_de_referencia_idpunto_de_referencia')
                              ->join('ruta','punto_de_referencia_ruta.ruta_idruta','=','ruta.idruta')
                              ->join('actividad_diaria','ruta.idruta','=','actividad_diaria.ruta_idruta')
                              ->join('recolector','actividad_diaria.recolector_idrecolector','=','recolector.idrecolector')
                             ->where('usuario_idusuario','=',$id)
+                            ->select('recolector.id')
                             ->get();
-
-        return $consul;
-      //  return $this->posts->getId();
+        if ($consul!='[]') {
+            foreach ($consul as $key => $value) {
+               $prefer[$key]=$this->posts->LastReport($value->id);
+                if($prefer){
+                  $prefer[$key]=$this->posts->LastReport($value->id);
+                }
+            }
+            return $prefer;
+        }else{return 'false';}
     }
+
+
     public function autenticateLogin($dni,$pass)
     {
         $valor="";
@@ -70,13 +77,12 @@ class ServiciosApiGpsController extends Controller
 
           foreach ($consul as $key => $value) {
               if ($value->usuario==$dni && $value->clave==$pass ) {
-
                      $array=[
-                         'nombre'=>$value->nombre,
-                         'telefono'=>"009239",
-                         'correo'=>'cazz@hotmail.com',
-                         'id'=>$value->idusuario,
-                         'estado'=>'true'
+                        'nombre'=>$value->nombre,
+                        'telefono'=>"009239",
+                        'correo'=>'cazz@hotmail.com',
+                        'id'=>$value->idusuario,
+                        'estado'=>'true'
                      ];
                     return $array;
                 }

@@ -11,6 +11,6 @@ class PuntoRutaModel extends Model
     public $timestamps = false;
 
     public function Ruta(){
-        return $this->belongsTo('App\RutaModel','idruta','idruta');
+        return $this->belongsTo('App\RutaModel','idruta','ruta_idruta');
     }
 }

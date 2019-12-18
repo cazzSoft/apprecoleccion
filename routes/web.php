@@ -49,5 +49,6 @@ Route::get('/gestionRutas','GestionRutasController@index');
  Route::get('/token', 'ServiciosApiGpsController@postToken');
  Route::get('/refreshToken', 'ServiciosApiGpsController@postRefreshToken');
  Route::get('/all', 'ServiciosApiGpsController@getDetalle');
- Route::get('/id/{id}', 'ServiciosApiGpsController@getId');
+ //Route::get('/carrosUser/{id}', 'ServiciosApiGpsController@rutasDeUsuario');
 //Route::get('/evaluacion', 'EvaluacionServiciosController@obtenerEvaluacion');
+//Route::get('/puntosRutas', 'PuntoRutaController@obtenerPuntosRutas');

@@ -35,7 +35,7 @@ function btn_eliminar(btn){
 
 //GESTION PUNTO RUTA
 $("#btn_puntoRutaCancelar").click(function () {
- alert(11);
+
     // limpiamos los datos de los seleccionados
     $("#nombre_ruta").html("No seleccionado");
     $("#sectores").html("No seleccionado");
@@ -51,6 +51,6 @@ $("#btn_puntoRutaCancelar").click(function () {
 //datos seleccionados al label
 
     $('#sectores').html(selected);
-    $('#sectoreB').html("selected");
+    $('#sectoreB').html(selected);
 
  }
