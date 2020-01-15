@@ -22,8 +22,8 @@ class EvaluacionServiciosController extends Controller
     public function index()
     {
         $listaPreguntas = PreguntaModel::All();
-        $listaEvaluacion = EvaluacionModel::All();
-        $listaPreguntaEvaluacion = PreguntaEvaluacionModel::All();
+        $listaEvaluacion = EvaluacionModel::all();
+        $listaPreguntaEvaluacion = PreguntaEvaluacionModel::with(['pregunta','evaluacion'])->get();
         return view('apprecoleccion.administrador.evaluacionServicios.GestionEvaluacionServicios')->with(['listaPreguntas'=>$listaPreguntas, 'listaEvaluacion'=>$listaEvaluacion,
         'listaPreguntaEvaluacion'=>$listaPreguntaEvaluacion]);
     }

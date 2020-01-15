@@ -43,7 +43,7 @@
                         <td >{{$item->fecha}}</td>
                         <td   class="paddingTR">
                             <center>
-                                    <button type="button" class="btn btn-sm btn-success marginB0 " onclick="mostrar_Usuario({{$item->idopiniones}})" ><i class="fa fa-user"></i> Información del usuario</button>
+                                    <button type="button" class="btn btn-sm btn-success marginB0 " onclick="mostrar_Usuario({{$item->usuario->idusuario}})" ><i class="fa fa-user"></i> Información del usuario</button>
                             </center>
                         </td>
                     </tr>

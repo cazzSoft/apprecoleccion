@@ -35,15 +35,22 @@ Route::get('/gestionRutas','GestionRutasController@index');
 
 
 //===============  RUTAS DEL ADMINISTRADOR ================
+//bandeja de opiniones
  Route::resource('/bandejaOpiniones', 'BandejaOpinionesController');
+ Route::get("datos_usuario/{id}","BandejaOpinionesController@datos_usuario");
+
+
 //Rutas de la Evaluacion de Servicios
  Route::get('/EvaluacionServicios', 'EvaluacionServiciosController@index');
  Route::resource('/pregunta', 'PreguntaController');
  Route::resource('/evaluacion', 'EvaluacionController');
  Route::resource('/pregunta_evaluacion', 'PreguntaEvaluacionController');
-
-
-
+//===============  REPORTES DE LA EVALUACION DE SERVICIOS ================
+Route::resource('/reportes', 'RespuestaController');
+Route::get("ReporteEvaluacionServiciosGeneral","RespuestaController@imprimirReporteGeneral");
+Route::post("ReporteEvaluacionServiciosIndividual","RespuestaController@imprimirReporteIndividual");
+Route::get("ObtenerDatos/{id}","RespuestaController@ObtenerDatos");
+Route::get("ObtenerRespuestas/{id}","RespuestaController@ObtenerRespuestas");
 
 //rutas de services api gps
  Route::get('/token', 'ServiciosApiGpsController@postToken');

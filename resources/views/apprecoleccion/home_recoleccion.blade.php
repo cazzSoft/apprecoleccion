@@ -36,7 +36,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-truck"></i> <span>Recolección</span></a>
+              <a href="/" class="site_title"><i class="fa fa-truck"></i> <span>Recolección</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -72,7 +72,7 @@
                     <ul class="nav child_menu">
                       <li><a href="bandejaOpiniones">Bandeja de opiniones</a></li>
                       <li><a href="EvaluacionServicios">Evaluación de servicios</a></li>
-                      <li><a href="#">Reportes</a></li>
+                      <li><a href="reportes">Reportes</a></li>
 
                     </ul>
                   </li>

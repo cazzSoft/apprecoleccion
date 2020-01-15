@@ -54,8 +54,27 @@ class ActividadDiariaController extends Controller
   
         $ActDiaria= new ActividadDiariaModel();
         $ActDiaria->ruta_idruta=$request->get('ruta');
-        
-        $ActDiaria->dia=$request->get('dia'); // falta guardar en un arreglo la seleccion multiple del checkbox
+        if($request->dia==''){
+            return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado días de la semana','estado'=>'danger']);
+        }else{
+//almacenamiento de los valores de los checkbox en un campo de la base de datos (dias de la semana)
+//primero declaro una variable vacia
+            $dias = '';
+            //realizo el foreach con el request que recibo
+            foreach ($request->dia as $d){
+                //la variable $s es solo un separador para los dias de la semana que se van almacenando
+                $s = ', ';
+                //y entonces pregunto en el if si la cadena de datos esta vacia, si esta vacia guardo una vez el dia sin separador (porque hago esto? porque la primera vez que entre al foreach estará vacio 
+                //y ingresa el primer valor que tenga, por lo tanto si  se escoge un solo día, se guarda sin la coma, que es el separador)
+                //entonces sucede que la segunda vez que entre al foreach ya no estará vacia la cadena y meto el o los siguientes días con el separador (la coma) y listo.
+                if($dias == ''){
+                    $dias =$d;
+                }else{
+                    $dias .= $s.$d;
+                }
+            }
+        $ActDiaria->dia=$dias; 
+        }
         $ActDiaria->hora_inicio=$request->get('hora_inicio');
         $ActDiaria->hora_fin=$request->get('hora_fin');
         $ActDiaria->recolector_idrecolector =$request->get('vehiculo');
@@ -88,7 +107,7 @@ class ActividadDiariaController extends Controller
     public function edit($id)
     {
         $id=decrypt($id);
-        $ActDiaria=ActividadDiariaModel::find($id);
+        $ActDiaria=ActividadDiariaModel::with('ruta','recolector','chofer')->find($id);
         return response()->json($ActDiaria);
     }
 
@@ -106,7 +125,17 @@ class ActividadDiariaController extends Controller
         //se guardan los datos
         $ActDiaria= ActividadDiariaModel::find(decrypt($id));
         $ActDiaria->ruta_idruta=$request->get('ruta');
-        $ActDiaria->dia=$request->get('dia');
+        $dias = '';
+        foreach ($request->dia as $d){
+            $s = ', ';
+            if($dias == ''){
+                $dias =$d;
+            }else{
+                $dias .= $s.$d;
+            }
+        }
+        $ActDiaria->dia=$dias; 
+       
         $ActDiaria->hora_inicio=$request->get('hora_inicio');
         $ActDiaria->hora_fin=$request->get('hora_fin');
         $ActDiaria->recolector_idrecolector =$request->get('vehiculo');
