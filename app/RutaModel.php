@@ -11,10 +11,10 @@ class RutaModel extends Model
     public $timestamps = false;
 
     public function PuntoRuta(){
-        return $this->hasMany('App\PuntoRutaModel','idruta','idruta');
+        return $this->hasMany('App\PuntoRutaModel','ruta_idruta','idruta');
     }
 
 
 
- 
+
 }

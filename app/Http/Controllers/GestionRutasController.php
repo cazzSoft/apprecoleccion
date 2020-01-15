@@ -15,37 +15,16 @@ class GestionRutasController extends Controller
      */
     public function index()
     {
+            //$listaRutas = RutaModel::All();
                 //consultas de datos
                 $listaRutas = RutaModel::All();
-         
-
-                $listaRutasRetornar=array();
-                $auxSectores=array();
-                $rutaActual=null;
-
-                foreach ($listaRutas as $r => $ruta) {
-                    
-                    if(($ruta->nombre_ruta != $rutaActual) && ($r!=0)){
-                        // enviamos al arreglo de retorno
-                        array_push($listaRutasRetornar,[$rutaActual=>$auxSectores]);
-                        //reiniciamos el arreglo
-                        $auxSectores=array();
-                    }
-                    array_push($auxSectores,$ruta);
-                    $rutaActual=$ruta->nombre_ruta;
-                    if($r==(sizeof($listaRutas)-1)){
-                        // enviamos al arreglo de retorno
-                        array_push($listaRutasRetornar,[$rutaActual=>$auxSectores]);
-                    }
-                }
-
                 //dd($listaRutasRetornar);
-                
-          
+                //return response()->json($listaRutasRetornar);
                 return view('apprecoleccion.funcionario.ruta.gestionRuta')->with([
-                    'listaRutasCMB'=>$listaRutasRetornar,
                     'listaRutas'=>$listaRutas
                 ]);
+
+
     }
 
     /**

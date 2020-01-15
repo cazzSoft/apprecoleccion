@@ -3,21 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PuntoReferenciaModel;
-class PuntoReferenciaController extends Controller
+
+class PruebaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-     public function getPundoInteres($id){
-        $punto=PuntoReferenciaModel::where('usuario_idusuario',$id)->get();
-        foreach ($punto as $key => $value) {
-            $puntos[$key]='{ lat:'.$value->latitud.', lng:'.$value->longuitud.'}';
-        }
-       return $punto;
-   }
+    public function index()
+    {
+        return view('home');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +34,7 @@ class PuntoReferenciaController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+       return 1;
     }
 
     /**

@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Bootstrap -->
@@ -62,7 +62,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-truck"></i>Gestión de Desechos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{url('/gestionRutas')}}">Rutas</a></li>
+                      <li><a href="{{url('/ruta')}}">Rutas</a></li>
                       <li><a href="{{url('/vehiculo')}}">Vehículos</a></li>
                       <li><a href="{{url('/chofer')}}">Choferes</a></li>
                       <li><a href="{{url('/actividad_diaria')}}">Actividad Diaria</a></li>
@@ -250,11 +250,7 @@
 
  --}}
  <!-- <script src="../build/js/custom.min.js"></script> -->
- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg3Y75nW9Y4wNgeUEQBz8ckD4gPJEGtiY&callback=initMap" libraries=drawing
-    async defer></script>
-    <script type="text/javascript"
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg3Y75nW9Y4wNgeUEQBz8ckD4gPJEGtiY&libraries=drawing">
-</script>
+
  <script src="{{ asset('/js/chosen.jquery.js') }}"></script>
     <script>
         $(document).ready(function(){

@@ -22,7 +22,6 @@ class BandejaOpinionesController extends Controller
      $listaOpiniones = BandejaOpinionesModel::with('usuario')->get();
 
         return view('apprecoleccion.administrador.bandejaOpiniones.GestionBandejaOpiniones')->with([
-
             'listaOpiniones'=>$listaOpiniones
         ]);
     }

@@ -26,4 +26,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   Route::get('/Getevaluacion/{id?}', 'EvaluacionServiciosController@obtenerEvaluacion');
   Route::resource('postRespuesta','RespuestaController');
   Route::resource('postPuntoReferencia','PuntoReferenciaController');
+  Route::get('/carrosUser/{id}', 'ServiciosApiGpsController@rutasDeUsuario');
+
+  Route::get('/puntoInteres/{id}', 'PuntoReferenciaController@getPundoInteres');
+  Route::get('/puntosRutas', 'PuntoRutaController@obtenerPuntosRutas');
+
 
