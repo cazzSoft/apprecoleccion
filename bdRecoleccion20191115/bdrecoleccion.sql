@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-12-2019 a las 07:39:31
+-- Tiempo de generación: 16-01-2020 a las 00:53:30
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -38,14 +38,6 @@ CREATE TABLE `actividad_diaria` (
   `hora_fin` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `actividad_diaria`
---
-
-INSERT INTO `actividad_diaria` (`idactividad_diaria`, `dia`, `persona_idpersona`, `ruta_idruta`, `recolector_idrecolector`, `hora_inicio`, `hora_fin`) VALUES
-(1, 'Lunes', 2, 4, 3, '09:00:00', '10:00:00'),
-(3, 'Domingo', 3, 15, 4, '11:00:00', '12:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -66,7 +58,20 @@ CREATE TABLE `evaluacion` (
 --
 
 INSERT INTO `evaluacion` (`idevaluacion`, `fecha_inicio`, `fecha_fin`, `nombre`, `objetivo`, `estado`) VALUES
-(1, '2019-12-03', '2019-12-07', 'Evaluacion de Servicios', 'Conocer la acogida', 'E');
+(1, '2019-12-03', '2019-12-07', 'Evaluacion de Servicios', 'Simulación', 'E');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `evaluacion_usuario`
+--
+
+CREATE TABLE `evaluacion_usuario` (
+  `id` int(11) NOT NULL,
+  `idusuario` int(11) NOT NULL,
+  `idevaluacion` int(11) NOT NULL,
+  `estado` varchar(250) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -107,7 +112,11 @@ INSERT INTO `opiniones` (`idopiniones`, `detalle`, `fecha`, `estado`, `usuario_i
 (7, 'me let pegan all perro', '2019-12-05', 'E', 2),
 (8, 'me let pegan all perro cuan', '2019-12-05', 'E', 2),
 (9, 'dd', '2019-12-05', 'E', 2),
-(10, 'hjsdfhs', '2019-12-05', 'E', 2);
+(10, 'hjsdfhs', '2019-12-05', 'E', 2),
+(11, 'MARON VE PORNO', '2019-12-13', 'E', 2),
+(12, 'ugfyugyugjh', '2019-12-16', 'E', 2),
+(13, ',jlkjlkjl', '2019-12-16', 'E', 2),
+(14, 'rwer', '2019-12-25', 'E', 2);
 
 -- --------------------------------------------------------
 
@@ -148,9 +157,9 @@ CREATE TABLE `pregunta` (
 --
 
 INSERT INTO `pregunta` (`idpregunta`, `descripcion`) VALUES
-(2, '¿Que tal te parecio lainterfaz??'),
-(3, '¿QUe tanto de loca es Jeniffer?'),
-(4, '¿de Toxica?');
+(2, 'La app funciona bien '),
+(3, 'Es bonita'),
+(4, 'cuanto perro tienes la perra?');
 
 -- --------------------------------------------------------
 
@@ -181,12 +190,19 @@ INSERT INTO `pregunta_evaluacion` (`idpregunta_evaluacion`, `idevaluacion`, `idp
 
 CREATE TABLE `punto_de_referencia` (
   `idpunto_de_referencia` int(11) NOT NULL,
-  `longuitud` varchar(45) DEFAULT NULL,
-  `latitud` varchar(45) DEFAULT NULL,
+  `longuitud` double DEFAULT NULL,
+  `latitud` double DEFAULT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
   `usuario_idusuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `punto_de_referencia`
+--
+
+INSERT INTO `punto_de_referencia` (`idpunto_de_referencia`, `longuitud`, `latitud`, `descripcion`, `estado`, `usuario_idusuario`) VALUES
+(1, -80.095898, -0.701059, 'Prueba-home', 'A', 2);
 
 -- --------------------------------------------------------
 
@@ -208,10 +224,91 @@ CREATE TABLE `punto_de_referencia_ruta` (
 
 CREATE TABLE `punto_ruta` (
   `idpunto_ruta` int(11) NOT NULL,
-  `latitud` varchar(45) DEFAULT NULL,
-  `longitud` varchar(45) DEFAULT NULL,
+  `latitud` double DEFAULT NULL,
+  `longitud` double DEFAULT NULL,
   `ruta_idruta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `punto_ruta`
+--
+
+INSERT INTO `punto_ruta` (`idpunto_ruta`, `latitud`, `longitud`, `ruta_idruta`) VALUES
+(349, -0.701112753755547, -80.12136655945154, 35),
+(350, -0.6959632951794036, -80.09390073913904, 35),
+(351, -0.6902988842538972, -80.07570463318201, 35),
+(352, -0.7073779207153825, -80.07132726806971, 35),
+(353, -0.7098668203149474, -80.0966473211703, 35),
+(354, -0.7013702265360423, -80.12110906738612, 35),
+(355, -0.7023827054209083, -80.12969213623377, 37),
+(356, -0.7016102872040999, -80.1259155859408, 37),
+(357, -0.7010095173917479, -80.12248235840174, 37),
+(358, -0.7003229232261168, -80.11801916260096, 37),
+(359, -0.6997221532486939, -80.11475759643885, 37),
+(360, -0.6993788560841826, -80.1131268133578, 37),
+(361, -0.6987225822695955, -80.11263654470908, 37),
+(362, -0.6981647242457854, -80.10995433569418, 37),
+(363, -0.6979072512894052, -80.10905311346518, 37),
+(364, -0.6968344471527909, -80.105598428254, 37),
+(365, -0.6953968892267763, -80.10134980917441, 37),
+(366, -0.6948604869033695, -80.09952590704428, 37),
+(367, -0.6947317503366773, -80.09828136206137, 37),
+(368, -0.6947317503366773, -80.09765908956992, 37),
+(369, -0.6947672246551491, -80.0965441482006, 37),
+(370, -0.6952821708969567, -80.09547126459465, 37),
+(371, -0.6956254683603, -80.09469878839836, 37),
+(372, -0.6959473097095009, -80.09405505823479, 37),
+(373, -0.6965909923420014, -80.09268176721916, 37),
+(374, -0.6969128336252883, -80.09180200266228, 37),
+(375, -0.6970844823007152, -80.09173762964592, 37),
+(376, -0.6967626410291453, -80.09051454233513, 37),
+(377, -0.6967626410291453, -80.08989226984367, 37),
+(378, -0.6968270092852277, -80.08911979364738, 37),
+(379, -0.6968484653703891, -80.08802545236931, 37),
+(380, -0.6971273944685954, -80.08665216135368, 37),
+(381, -0.6973634113849397, -80.08482825922356, 37),
+(382, -0.6976208843710897, -80.08281123804436, 37),
+(383, -0.6978354451821205, -80.08090150522575, 37),
+(384, -0.6979687994469612, -80.07940163686943, 37),
+(385, -0.6985266574940149, -80.07706275060845, 37),
+(386, -0.6982477284787575, -80.07646193578911, 37),
+(387, -0.698118992004594, -80.07568945959282, 37),
+(388, -0.6984193771054964, -80.07614007070732, 37),
+(389, -0.698805586492708, -80.07691254690361, 37),
+(390, -0.6995780051718798, -80.07796397283745, 37),
+(391, -0.7003718797929611, -80.07884373739434, 37),
+(392, -0.7012086664101727, -80.0797020442791, 37),
+(393, -0.7024745740851772, -80.08208384588433, 37),
+(394, -0.7040194101052581, -80.0851952083416, 37),
+(395, -0.7047918279234412, -80.08637538030816, 37),
+(396, -0.7048132839721154, -80.08663287237358, 37),
+(397, -0.7054784214320715, -80.08798470571709, 37),
+(398, -0.7070184424722374, -80.09069538702565, 37),
+(399, -0.707855227896461, -80.09264803518849, 37),
+(400, -0.7084277845823286, -80.09455219876654, 37),
+(401, -0.708406328550346, -80.09736315381414, 37),
+(402, -0.7079342958215898, -80.10105387341864, 37),
+(403, -0.707011686258482, -80.10534540784246, 37),
+(404, -0.7065721870137289, -80.10774215989987, 37),
+(405, -0.7067223792949079, -80.10993084245602, 37),
+(406, -0.707496219306577, -80.11572797080528, 37),
+(407, -0.7080326201816738, -80.11941869040977, 37),
+(408, -0.7071743787517516, -80.12338835975181, 37),
+(409, -0.7056509998229689, -80.12652117988121, 37),
+(410, -0.7048142140018628, -80.1276369788314, 37),
+(411, -0.7035483069611499, -80.12901026984703, 37),
+(412, -0.7027973449949937, -80.13019044181358, 37),
+(413, -0.7024969601747181, -80.13089854499351, 37),
+(414, -0.7097126193719826, -80.09542129367472, 49),
+(415, -0.7085325377926921, -80.09531400531412, 49),
+(416, -0.7082106973097854, -80.09308240741373, 49),
+(417, -0.7093264108882393, -80.09246013492228, 49),
+(418, -0.7098198995006371, -80.09514234393717, 49),
+(419, -0.7063440220685746, -80.0968589577067, 49),
+(420, -0.7045202581777398, -80.09522817462565, 49),
+(421, -0.7043915218761023, -80.09267471164347, 49),
+(422, -0.7059792693476118, -80.09076497882486, 49),
+(423, -0.7029539662663458, -80.0914730820048, 49);
 
 -- --------------------------------------------------------
 
@@ -232,9 +329,9 @@ CREATE TABLE `recolector` (
 --
 
 INSERT INTO `recolector` (`idrecolector`, `numero`, `placa`, `tipo_vehiculo`, `id`) VALUES
-(3, 'volqueta03', 'GBN - 098', 'volquete', NULL),
-(4, 'recolector01', 'MBN - 991', 'recolector', NULL),
-(5, 'volqueta02', 'GBN - 900', 'volquete', NULL);
+(3, 'volqueta03', 'GBN - 098', 'volquete', '862045030931291'),
+(4, 'recolector01', 'MBN - 991', 'recolector', '868683023703154'),
+(5, 'volqueta02', 'GBN - 900', 'volquete', '868683029339078');
 
 -- --------------------------------------------------------
 
@@ -255,9 +352,9 @@ CREATE TABLE `respuesta` (
 --
 
 INSERT INTO `respuesta` (`idrespuesta`, `puntaje`, `idpregunta_evaluacion`, `idusuario`, `estado`) VALUES
-(5, '2', 5, 2, 'E'),
-(6, '2', 7, 2, 'E'),
-(7, '1', 6, 2, 'E');
+(5, '4', 5, 2, 'E'),
+(6, '3', 7, 2, 'E'),
+(7, '4', 6, 2, 'E');
 
 -- --------------------------------------------------------
 
@@ -268,26 +365,19 @@ INSERT INTO `respuesta` (`idrespuesta`, `puntaje`, `idpregunta_evaluacion`, `idu
 CREATE TABLE `ruta` (
   `idruta` int(11) NOT NULL,
   `nombre_ruta` varchar(45) DEFAULT NULL,
-  `descripcion` varchar(500) DEFAULT NULL
+  `descripcion` varchar(800) NOT NULL,
+  `estado_grafica` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ruta`
 --
 
-INSERT INTO `ruta` (`idruta`, `nombre_ruta`, `descripcion`) VALUES
-(4, 'Ruta 1', 'Cdla Keneddy 1, vía Colorado, Bellavista alta.'),
-(5, 'Ruta 1', 'Cdla El vergel, Cdla Miraflores, Lotización Luis Solórzano, Capilla y Malecón del Río.'),
-(6, 'Ruta 1', 'Cdla La Aurora, Dos Bocas, Egdy María.'),
-(8, 'Ruta 1', 'Calle Principal de Puerto Arturo y Bellavista baja.'),
-(9, 'Ruta 1', 'Barrio Puerto Arturo, Cdla. San José y calle Potrerillo.'),
-(10, 'Ruta 1', 'Cdla. Julia Gonzalez, Cdla. Espejo, Cdla. Las Quemadas, Cdla. El Rosario, calle Octavio Moreira, calle Colibrí y Cla. Rosario n 2.'),
-(11, 'Ruta 1', 'Sector Potrerillo'),
-(12, 'Ruta 2', 'Av. Carlos Alberto Aray hasta el anillo vial Los Raidistas.'),
-(13, 'Ruta 2', 'Sector Santa Rita, calle Cotopaxi, calle Chimborazo, calle Emilio Hidalgo, Malecón del Río Chone, Escuela Camilo Delgado Balda.'),
-(14, 'Ruta 2', 'Cdla. Santa Fé 2000, cdla Camilo Giler, Asentamiento 9 de Octubre y Malecón.'),
-(15, 'Ruta 2', 'Sector Agua Potable, calle Ramos Iduarte, calle Juan Montalvo hasta la cdla. Barberan y Malecón.'),
-(16, 'Ruta 3', 'sdjsdhf');
+INSERT INTO `ruta` (`idruta`, `nombre_ruta`, `descripcion`, `estado_grafica`) VALUES
+(35, 'Ruta 1', 'AV. SIXTO DURAN BALLEN, CALLE 7 DE AGOSTO, CALLE SUCRE MUNICIPIO DE CHONE, CALLE ALEJO LASCANO..', 'SI'),
+(37, 'Ruta 2', 'CALLE BOLIVAR HASTA EL CEMENTERIO SAGRADO CORAZÓN DE JESUS, CALLE MERCEDES, CALLE SALINAS, CALLE WASHINGTON, CALLE SUCRE, CALLE COLÓN, CALLE PICHINCHA.', 'SI'),
+(49, 'Ruta 3', 'CALLE VARGAS TORRES, CALLE ATAHUALPA Y CENTRO COMERCIAL (MERCADO)', 'SI'),
+(50, 'Ruta 4', 'CALLE ALEJO LASCANO, CALLE PAEZ Y MALECÓN, CALLE ROCAFUERTE ', 'NO');
 
 -- --------------------------------------------------------
 
@@ -308,7 +398,7 @@ CREATE TABLE `service_api` (
 --
 
 INSERT INTO `service_api` (`idservice_api`, `access_token`, `refresh_token`, `username`, `password`) VALUES
-(1, 'bjlYoU0SePhdXkDb0TWp1fiC_Tet9ZxYJRHgvVgim8aUQACaFgweTeC7d_RERrXLUOjbSREcDbEWE_7u0e82HvSlq0lPaoQcVAeFuw8w6dPlrXPwI7klNL3s6XEBL9mzXi-FN9iDRgaTi_9FrnHQbdWIV3_dUv3VLGW9gXCLz2dokhKmwQ04O_gEKOyjKkH8cpvNQD1urmz7TgK3QLpKNmRn3tnrGFG_eJMub6xxZ7WLrC3bEcdfJDfptR6pBMIM9XELKima7exnO4jXShhphSbjDRbr31NOFeZqkkP7qdbVVQqByKrfn3rnZnT-RPG3bFWb2FxFlFrxF1Y8_EcEw2EIWD3XRpgmxZ6n2XXEyRs3l89ouQJpHCrxTfuY4uzCWHjX7UrJvm69D78-qAwh5BSv7-x5ccYbD--3jpIfjq1dvcH2ZTQDGNUOmL8V_RLu0t2425BwPbWvNw7h9pmdcVz-7UYw8JDTyEOqhAgDfxCLTOZe6kwOW5f_4I9K1HqqkP4c6wSoYh2oyVb9b5KIjtG9JnRFNI5eVS_6CZ1WogQiujaJG9fkBjxrATHiaUoKbF7azWTX_MHsFYPkMmsW50Gq3cHo4doSnbpoTcv2feAiHK-NGour6Ap3Z6dNWFoqtaiVqtXydwbQg50sEVlJqNBipFvPB_oHypBFn4Lc9maeaeXogE3xIMbaHVcOFVLDjGLQMcxImVYjZkXfIfFbSbhyftYFcRm4PKBncmSG2Nl2tAktLCy8GtJ_KLZD8UX_U_vecSrIYDaQzSFqI7K-og', 'f0e2084e792c4b48b79d03e5856087cd', 'practica', 'practica');
+(1, 'N0iTMYuWRqlAmo8msHidTlIMw7cOAjSOZMi9dZ3E4Z57ypQF6moM_Dt25w0g9W9xtVRkb6ROAwXAhlic1Cb_eJT2zikI6dsRDyof8IPbr9U69dWqjNivkO-mWMd90QnF3mxljwDt-owGFaaMdn14EzBITXA8GmXUk73-CtitNNkJ_Ze6MlIwfLbPOm21e-gP5fh6_1zpAG5EKBcb66y7CHB9ebNYHlkvNK-ZkufZwoEGnMHcSCWgFUKCGciAQgjL7cyresR40Kifu4eeCAwozAC6we6lYRViKt_0pYg6iblp26eFmG2cM3WIa9K0OCEmp5Rgb7cthQvzRgijSFMb-GjrAv5MYgI669b6_pXypH8CWDLWg_PUIiMcbJ21j6LPCRZluyvKpDVm323Fb6-gvAwpnfhow8Q1--BBdaolV0rcDV2Qqw3lQCjZL0LJLDWbhZBSWiUT4pRPlF0VirQAqGvJACiU142ZEBCHmMPkG4YKxFy6IS_yPyXkWZAkBk4i75fZGdJznHsDIBVNoRpV7s5miiDOUWiQLsY9fESm56HFXiJN3wBBg3IHxPTZd-q3zkL-V8-Ros93-mRqQ5DRSqLBnek6ESZkgjemq2xEwJQ0uPY8Ftd7Z62jgRXG17j43vOAwNyEAlxP1pTyzMVRj-TpPmyfPDGOCGJcTBYA_8h0h6HO3Hhx-nNttVg5LBMzIDrXTgzqg9EYA8K0bZy54KCfkrO9lH_T2UnVWaAxKWkmUWrueqxzZpzUBH_JQkUjSoEAqvtpnQWLHMMe2tIadQ', '41e18bce951d407d8aba26db88c6eaa7', 'practica', 'practica');
 
 -- --------------------------------------------------------
 
@@ -347,7 +437,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `usuario`, `clave`, `nombre`, `tipo_usuario_idtipo_usuario`) VALUES
-(1, '1212', '1234', 'Jeniffer', 1),
+(1, '1314', 'rouss', 'Rouss', 1),
 (2, '1313', '1234', 'cazz', 1);
 
 --
@@ -368,6 +458,12 @@ ALTER TABLE `actividad_diaria`
 --
 ALTER TABLE `evaluacion`
   ADD PRIMARY KEY (`idevaluacion`);
+
+--
+-- Indices de la tabla `evaluacion_usuario`
+--
+ALTER TABLE `evaluacion_usuario`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `notificacion`
@@ -482,16 +578,22 @@ ALTER TABLE `evaluacion`
   MODIFY `idevaluacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `evaluacion_usuario`
+--
+ALTER TABLE `evaluacion_usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `notificacion`
 --
 ALTER TABLE `notificacion`
-  MODIFY `idnotificacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idnotificacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `opiniones`
 --
 ALTER TABLE `opiniones`
-  MODIFY `idopiniones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idopiniones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `persona`
@@ -515,19 +617,19 @@ ALTER TABLE `pregunta_evaluacion`
 -- AUTO_INCREMENT de la tabla `punto_de_referencia`
 --
 ALTER TABLE `punto_de_referencia`
-  MODIFY `idpunto_de_referencia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpunto_de_referencia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `punto_de_referencia_ruta`
 --
 ALTER TABLE `punto_de_referencia_ruta`
-  MODIFY `idpunto_de_referencia_ruta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpunto_de_referencia_ruta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `punto_ruta`
 --
 ALTER TABLE `punto_ruta`
-  MODIFY `idpunto_ruta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpunto_ruta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=424;
 
 --
 -- AUTO_INCREMENT de la tabla `recolector`
@@ -545,7 +647,7 @@ ALTER TABLE `respuesta`
 -- AUTO_INCREMENT de la tabla `ruta`
 --
 ALTER TABLE `ruta`
-  MODIFY `idruta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idruta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `service_api`
