@@ -35,17 +35,15 @@ class ServiciosApiGpsController extends Controller
 
     public function getDetalle()
     {
-       return $this->posts->all();
-        if($res){
-            return $res;
-        }else{
-            return $this->posts->all();
+       $consulta= $this->posts->all();
+        if($consulta==0){
+            $consulta= $this->posts->all();
         }
-
+        return $consulta;
     }
 
     public function prueba(){
-        return 11;
+        return $this->posts->history();
     }
 
     public function rutasDeUsuario($id)

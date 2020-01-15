@@ -18,7 +18,6 @@ class BandejaOpinionesController extends Controller
      //consultas de datos
      $listaOpiniones = BandejaOpinionesModel::with('usuario')->get();
         return view('apprecoleccion.administrador.bandejaOpiniones.GestionBandejaOpiniones')->with([
-
             'listaOpiniones'=>$listaOpiniones
         ]);
     }
@@ -80,7 +79,10 @@ class BandejaOpinionesController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $id=decrypt($id);
+        $opiniones=BandejaOpinionesModel::find($id);
+        return response()->json($opiniones);
     }
 
     /**

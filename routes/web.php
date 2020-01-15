@@ -19,12 +19,15 @@ Auth::routes();
 
 //=============== RUTAS DEL FUNCIONARIO ================
 //Rutas de la Gestion Ruta
-Route::get('/gestionRutas','GestionRutasController@index');
+//Route::get('/gestionRutas','GestionRutasController@index');
  Route::resource('/ruta', 'RutaController');
- Route::resource('/puntoRuta', 'EstablecerRutaController');
-
+ Route::get('/obtenerRuta', 'RutaController@obtenerRuta');
+ Route::get('/obtenerPunto/{id}', 'RutaController@obtenerRutaGrafica');
+ Route::resource('/puntoRuta', 'PuntoRutaController');
  //Rutas de la Gestión Vehiculo
  Route::resource('/vehiculo', 'RecolectorController');
+
+//Rutas de puntos de rutas del mapa
 
 
  // Rutas de la Gestión del Chofer
@@ -36,6 +39,8 @@ Route::get('/gestionRutas','GestionRutasController@index');
 
 //===============  RUTAS DEL ADMINISTRADOR ================
  Route::resource('/bandejaOpiniones', 'BandejaOpinionesController');
+
+
 //Rutas de la Evaluacion de Servicios
  Route::get('/EvaluacionServicios', 'EvaluacionServiciosController@index');
  Route::resource('/pregunta', 'PreguntaController');
@@ -52,3 +57,6 @@ Route::get('/gestionRutas','GestionRutasController@index');
  //Route::get('/carrosUser/{id}', 'ServiciosApiGpsController@rutasDeUsuario');
 //Route::get('/evaluacion', 'EvaluacionServiciosController@obtenerEvaluacion');
 //Route::get('/puntosRutas', 'PuntoRutaController@obtenerPuntosRutas');
+ //Route::get('/cazz', 'ServiciosApiGpsController@prueba');
+ //
+// Route::resource('gato', 'PruebaController');

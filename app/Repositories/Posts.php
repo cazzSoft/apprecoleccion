@@ -102,8 +102,6 @@ class Posts{
 			$response  =  $this->client->request('GET' ,'api/Devices', ['headers'=>$body] );
 			return json_decode((string) $response->getBody(), true);
 
-
-
     	} catch (\Throwable $th) {
 			$this->ObtenerRefreshToken();
        		return 0;
@@ -137,7 +135,31 @@ class Posts{
 
 	}
 
-
+    public function history(){
+        //862045030931291
+       // return 'nada';
+        try {
+            $table=DB::table('service_api')->get();
+            $table=$table->last();
+             $body = [
+                        'authorization' => 'bearer '.$table->access_token,
+                    ];///Devices/History  api/Devices/History/id?startdatetime=27/11/2015 11:36:33&offset=0  Hora: 05:42:37 PM  Hora: 08:42:20 PM
+            $response  =  $this->client->request('GET' ,'api/Devices/History/862045030931291?startdatetime=21/12/2019 21:13:50&offset=0', ['headers'=>$body] );
+            $response = json_decode((string) $response->getBody(), true);
+            // foreach ($response as $key => $value) {
+            //     $arr[$key]=$value;
+            // }
+             // $arr['latitude'].','.$arr['longitude'];
+             // $array=[
+             //    'lat'=>$arr['latitude'],
+             //    'lng'=>$arr['longitude']
+             // ];
+             return $response;
+        } catch (\Throwable $th) {
+            $this->ObtenerRefreshToken();
+            return 0;
+         }
+    }
 
 
 }

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\RutaModel;
-use App\PuntoRutaModel;
 
-class GestionRutasController extends Controller
+class PruebaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +13,7 @@ class GestionRutasController extends Controller
      */
     public function index()
     {
-            //$listaRutas = RutaModel::All();
-                //consultas de datos
-                $listaRutas = RutaModel::All();
-                //dd($listaRutasRetornar);
-                //return response()->json($listaRutasRetornar);
-                return view('apprecoleccion.funcionario.ruta.gestionRuta')->with([
-                    'listaRutas'=>$listaRutas
-                ]);
-
-
+        return view('home');
     }
 
     /**
@@ -45,7 +34,7 @@ class GestionRutasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       return 1;
     }
 
     /**

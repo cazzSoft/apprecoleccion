@@ -14,35 +14,28 @@
                         <div class="">
                             <div class="x_panel fixed_height_390">
                                 <div class="x_content">
-                                    <div class="flex">
-                                        <ul class="list-inline widget_profile_box">
-                                            <li>
-                                                <a>
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <img src="images/user.png" alt="..." class="img-circle profile_img">
-                                            </li>
-                                            <li>
-                                                <a>
-                                                   <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div><br>
-                                    <h3 class="name">apprec</h3>
-                                        <p>
-                                            If you've decided to go in development mode and tweak all of this a bit, there are few things you should do.
-                                        </p>
+                                   <form class="form-control"  enctype="multipart/form-data"   method="POST" id="formularioFactura" >
+                                         @csrf
+                                     <div class="form-group">
+                                       <label for="exampleInputEmail1">Email address</label>
+                                       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                     </div>
+                                     <div class="form-group">
+                                       <label for="exampleInputPassword1">Password</label>
+                                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                     </div>
+
+                                     <button type="submit" class="btn btn-primary">Submit</button>
+                                   </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script src="{{asset('/js/rutaMapa.js')}}"></script>
 @endsection
- 
