@@ -37,8 +37,9 @@ function btn_eliminar(btn){
 $("#btn_puntoRutaCancelar").click(function () {
 
     // limpiamos los datos de los seleccionados
-    $("#nombre_ruta").html("No seleccionado");
-    $("#sectores").html("No seleccionado");
+    $('.Seleccionar_ruta').attr("selected", false);
+    $('#Seleccionar_ruta_chosen').children('a').children('span').html('Seleccione una ruta...');
+    $("#sectores").html("Ninguna ruta seleccionada");
 
 });
 //funcion para enviar los datos seleccionados en el select  al cuadro (flip-card)

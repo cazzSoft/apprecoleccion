@@ -1,5 +1,5 @@
 <div class="modal fade" id="ventanaModalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg"  role="document">
+  <div class="modal-dialog modal-lg" style="width:600px;" role="document">
     <div class="modal-content">
 	    <div class="modal-header">
 	        <label class="modal-title" style="font-size:130%; color:black;">INFORMACIÓN DEL USUARIO</label>

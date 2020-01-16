@@ -61,39 +61,40 @@
     </div>
    
 </div>
-<!-- formulario donde se envia las graficas al pdf-->
-<div align="center"  >
-    <form method="post" id="make_pdf"  action="{{url('/ReporteEvaluacionServiciosIndividual')}}" target="_blank">
-    {{csrf_field() }}
-        <input type="hidden" name="hidden_html" id="hidden_html"/>
-        <input type="hidden" name="id" id="id"/>
-        </br>
- 
-        <button type="submit" name="create_pdf" id="create_pdf" class="btn btn-sm btn-success">IMPRIMIR REPORTE   <i class="fa fa-print"></i></button>
-    </form>
-</div>
-<!-- visualizacion de los resultados con sus graficas -->
-<div class="container" id="testing">    
-   <div class="panel panel-default">
-        <div class="panel-heading">
-            <h5 class="panel-title" align="center">RESULTADOS OBTENIDOS </h5>
-        </div>
-        <div class="panel-body" align="center">
-            <div id="contenidoHtml" class="row" >
-            </div>
-        </div>
-   </div>
-</div>
 
+<div id="GraficasResultados" style="display:none;">
+<!-- formulario donde se envia las graficas al pdf-->
+    <div align="center"  >
+        <form method="post" id="make_pdf"  action="{{url('/ReporteEvaluacionServiciosIndividual')}}" target="_blank">
+        {{csrf_field() }}
+            <input type="hidden" name="hidden_html" id="hidden_html"/>
+            <input type="hidden" name="id" id="id"/>
+            </br>
+    
+            <button type="submit" name="create_pdf" id="create_pdf" class="btn btn-sm btn-success">IMPRIMIR REPORTE   <i class="fa fa-print"></i></button>
+        </form>
+    </div>
+<!-- visualizacion de los resultados con sus graficas -->
+    <div class="container" id="testing">    
+    <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5 class="panel-title" align="center">RESULTADOS OBTENIDOS </h5>
+            </div>
+            <div class="panel-body" align="center">
+                <div id="contenidoHtml" class="row" >
+                </div>
+            </div>
+    </div>
+    </div>
+</div>
 @endif
 
-<!-- script para ocultar y mostrar formulario -->
+<!-- para esconder y ocultar la visualizacion de los resultados -->
 
-
-</script>
 <!-- el desarrollo de las graficas con google charts -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
+
 $(document).ready(function(){
     $('#create_pdf').click(function(){
         
@@ -101,11 +102,16 @@ $(document).ready(function(){
     });
    
 });
+
 </script>
 <script type="text/javascript">
 //metodo para las puntaciones obtenidas en las preguntas de las evalauciones para mostrar en la grafica
 function ver(id){
-    $("#contenidoHtml").html("");
+   
+//mostrar el div que esta oculto
+      document.getElementById('GraficasResultados').style.display="block";
+//obtener puntaciones para las graficas
+$("#contenidoHtml").html("");
  var url="{{url('ObtenerDatos')}}/"+id;
  var contenido="";
  $.ajax({
@@ -198,6 +204,8 @@ function ver(id){
         bar: {groupWidth: "95%"},
         legend: { position: "none" },
       };
+      
+   
       var idchart=document.getElementById("columnchart_values"+id);
       var chart = new google.visualization.ColumnChart(idchart);
       //chart.draw(view, options);

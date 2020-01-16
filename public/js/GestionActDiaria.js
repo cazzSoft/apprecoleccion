@@ -62,7 +62,7 @@ $('#btn_ActDiariaCancelar').click(function(){
     $(this).addClass('hidden');
 });
 
-
+//metodo para eliminar 
 function btn_eliminar(btn){
     if(confirm('¿Está seguro de eliminar el registro?')){
         $(btn).parent('.frm_eliminar').submit();
