@@ -53,37 +53,37 @@
             <div class="col-md-6 col-sm-6 col-xs-12" >
               <div class="checkbox" style="display:inline-block;">
                 <label>
-                  <input type="checkbox" id="dia" name="dia[]" value="Lunes"> Lunes
+                  <input type="checkbox" id="lunes" name="dia[]" value="Lunes"> Lunes
                 </label>
               </div>
               <div class="checkbox" style="display:inline-block;">
                 <label>
-                  <input type="checkbox" id="dia" name="dia[]" value="Martes"> Martes
+                  <input type="checkbox" id="martes" name="dia[]" value="Martes"> Martes
                 </label>
               </div>
               <div class="checkbox" style="display:inline-block;">
                 <label>
-                  <input type="checkbox" id="dia" name="dia[]" value="Miércoles"> Miércoles
+                  <input type="checkbox" id="miercoles" name="dia[]" value="Miércoles"> Miércoles
                 </label>
               </div>
               <div class="checkbox" style="display:inline-block;">
                 <label>
-                  <input type="checkbox" id="dia" name="dia[]" value="Jueves">Jueves
+                  <input type="checkbox" id="jueves" name="dia[]" value="Jueves">Jueves
                 </label>
               </div>
               <div class="checkbox" style="display:inline-block;">
                 <label>
-                  <input type="checkbox" id="dia" name="dia[]" value="viernes">Viernes
+                  <input type="checkbox" id="viernes" name="dia[]" value="viernes">Viernes
                 </label>
               </div>
               <div class="checkbox" style="display:inline-block;">
                 <label>
-                  <input type="checkbox" id="dia" name="dia[]" value="Sábado">Sábado
+                  <input type="checkbox" id="sabado" name="dia[]" value="Sábado">Sábado
                 </label>
               </div>
               <div class="checkbox"  style="display:inline-block;">
                 <label>
-                  <input type="checkbox" id="dia"  name="dia[]" value="Domingo">Domingo
+                  <input type="checkbox" id="domingo"  name="dia[]" value="Domingo">Domingo
                 </label>
               </div>
              

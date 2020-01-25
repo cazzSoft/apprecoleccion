@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BandejaOpinionesModel;
+use App\UsuarioModel;
 use Illuminate\Support\Carbon;
 
 class BandejaOpinionesController extends Controller
@@ -16,12 +17,21 @@ class BandejaOpinionesController extends Controller
     public function index()
     {
      //consultas de datos
+     
+
      $listaOpiniones = BandejaOpinionesModel::with('usuario')->get();
+
         return view('apprecoleccion.administrador.bandejaOpiniones.GestionBandejaOpiniones')->with([
             'listaOpiniones'=>$listaOpiniones
         ]);
     }
 
+    public function datos_usuario($id)
+    {
+        $usuario = UsuarioModel::find($id);
+       return response()->json($usuario);
+ 
+    }
 
     /**
      * Show the form for creating a new resource.

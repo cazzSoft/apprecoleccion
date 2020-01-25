@@ -27,7 +27,7 @@
                                         <h4>Rutas registradas</h4>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <div class="chosen-select-content">
-                                                    <select   data-placeholder="Seleccione una ruta..." name="Seleccionar_ruta xxx" id="Seleccionar_ruta" onchange="ShowSelected()" required="required" class="chosen-select form-control" tabindex="5">
+                                                    <select   data-placeholder="Seleccione una ruta..." name="Seleccionar_ruta" id="Seleccionar_ruta" onchange="ShowSelected()" required="required" class="chosen-select form-control" tabindex="5">
                                                         <option value=""></option>
                                                             @if(isset($listaRutas))
                                                                 @foreach($listaRutas as $n)
@@ -50,7 +50,7 @@
                                                     <button class="btn btn-success btn-block" type="submit" > <i class="fa fa-save" > </i>  Guardar</button>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <a class="btn btn-warning btn-block" onclick="initMap1()"><i class="fa fa-remove"> </i>  Cancelar</a>
+                                                    <a class="btn btn-warning btn-block" id ="btn_puntoRutaCancelar" onclick="initMap1()"><i class="fa fa-remove"> </i>  Cancelar</a>
                                                 </div>
                                             </div>
                                         </div>

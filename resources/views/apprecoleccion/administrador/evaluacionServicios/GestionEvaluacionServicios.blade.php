@@ -9,7 +9,7 @@
 <div class="" id="RegistroEvaluacionServicios">
         <div class="x_panel">
             <div class="x_title">
-                <h2><i class="fa fa-check"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> <h4><b>GESTIÓN DE LA EVALUACIÓN DE SERVICIOS</b></h4></font></font></h2>
+                <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><h4><b>GESTIÓN DE LA EVALUACIÓN DE SERVICIOS</b></h4></font></font></h2>
                 <ul class="nav navbar-right panel_toolbox">
                     <li style="float: right;"><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
                 </ul>
@@ -20,14 +20,14 @@
                 <div class="" role="tabpanel" data-example-id="togglable-tabs">
 
                     <ul id="myTab" class="nav nav-tabs bar_tabs ul_mobil" role="tablist">
-                        <li role="presentation" class="@if(session()->has('mensajePInfoPregunta')) active @endif ">
-                            <a href="#pregunta" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
-                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crear Pregunta</font></font>
-                            </a>
-                        </li>
                         <li role="presentation" class="@if(session()->has('mensajePInfoEvaluacion')) active @endif ">
                             <a href="#evaluacion" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">
                                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crear Evaluación</font></font>
+                            </a>
+                        </li>
+                        <li role="presentation" class="@if(session()->has('mensajePInfoPregunta')) active @endif ">
+                            <a href="#pregunta" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">
+                                <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Crear Pregunta</font></font>
                             </a>
                         </li>
                         <li role="presentation" class="@if(session()->has('mensajePInfoPreguntaEvaluacion')) active @endif ">

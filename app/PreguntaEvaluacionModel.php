@@ -17,4 +17,9 @@ class PreguntaEvaluacionModel extends Model
     public function evaluacion(){
         return $this->belongsTo('App\EvaluacionModel','idevaluacion','idevaluacion');
     }
+
+    public function respuesta(){
+        return $this->hasMany('App\RespuestaModel', 'idrespuesta', 'idrespuesta');
+}
+
 }

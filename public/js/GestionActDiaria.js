@@ -4,19 +4,25 @@
 //EDITAR LOS REGISTROS
 function actDiaria_editar(idactividad_diaria){
     $.get("actividad_diaria/"+idactividad_diaria+"/edit", function (data) {
-        $('#Seleccionar_ruta').val(data.ruta_idruta);
-        $('#dia').val(data.dia);
+        //RUTA
+        $('.Seleccionar_ruta').attr("selected", false);
+        $(`#Seleccionar_ruta option[value="${data.ruta_idruta}"]`).attr("selected", true);
+        $('#Seleccionar_ruta_chosen').children('a').children('span').html($(`#Seleccionar_ruta option[value="${data.ruta_idruta}"]`).html());
+        //DIAS DE LA SEMANA pasar a checkbox
+
+        //HORARIO
         $('#hora_inicio').val(data.hora_inicio);
         $('#hora_fin').val(data.hora_fin);
-        $('#Seleccionar_recolector').val(data.recolector_idrecolector);
-        $('#Seleccionar_chofer').val(data.persona_idpersona);
+        //RECOLECTOR 
+        $('.Seleccionar_recolector').attr("selected", false);
+        $(`#Seleccionar_recolector option[value="${data.recolector_idrecolector}"]`).attr("selected", true);
+        $('#Seleccionar_recolector_chosen').children('a').children('span').html($(`#Seleccionar_recolector option[value="${data.recolector_idrecolector}"]`).html());
+        //CHOFER
+        $('.Seleccionar_chofer').attr("selected", false);
+        $(`#Seleccionar_chofer option[value="${data.persona_idpersona}"]`).attr("selected", true);
+        $('#Seleccionar_chofer_chosen').children('a').children('span').html($(`#Seleccionar_chofer option[value="${data.persona_idpersona}"]`).html());
 
 
-        //  $('.Seleccionar_ruta').attr("selected", false); // quitamos el selected a los seleccionados anteriormente
-        //  $(`#Seleccionar_ruta option[value="${data.ruta_idruta}"]`).attr("selected", true);
-        //  $('#Seleccionar_ruta_chosen').children('a').children('span').html($(`#Seleccionar_ruta option[value="${data.ruta_idruta}"]`).html());
-
-        
      
     });
     
@@ -27,23 +33,36 @@ function actDiaria_editar(idactividad_diaria){
  
 }
 
-
 //Botón  Cancelar: limpia los input y se desaparece
 
 $('#btn_ActDiariaCancelar').click(function(){
-    $('#Seleccionar_ruta').val('');
-    $('#dia').val('');
+ 
+    $('.Seleccionar_ruta').attr("selected", false);
+    $('#Seleccionar_ruta_chosen').children('a').children('span').html('Seleccione una ruta');
+    //limpiar los checkbox
+    $('#lunes').val('');
+    $('#martes').val('');
+    $('#miercoles').val('');
+    $('#jueves').val('');
+    $('#viernes').val('');
+    $('#sabado').val('');
+    $('#domingo').val('');
+
     $('#hora_inicio').val('');
     $('#hora_fin').val('');
-    $('#Seleccionar_recolector').val('');
-    $('#Seleccionar_chofer').val('');
-  
+
+    $('.Seleccionar_recolector').attr("selected", false);
+    $('#Seleccionar_recolector_chosen').children('a').children('span').html('Seleccione una recolector');
+
+    $('.Seleccionar_chofer').attr("selected", false);
+    $('#Seleccionar_chofer_chosen').children('a').children('span').html('Seleccione una chofer');
+   
     $('#method_ActDiaria').val('POST'); 
     $('#frm_ActDiaria').prop('action',window.location.protocol+'//'+window.location.host+'/actividad_diaria/');
     $(this).addClass('hidden');
 });
 
-
+//metodo para eliminar 
 function btn_eliminar(btn){
     if(confirm('¿Está seguro de eliminar el registro?')){
         $(btn).parent('.frm_eliminar').submit();

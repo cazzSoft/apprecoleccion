@@ -25,7 +25,7 @@
                 <option value=""></option>
                     @if(isset($listaPreguntas))
                         @foreach($listaPreguntas as $item)
-                            <option class="opcion_pregunta" value="{{$item->idpregunta}}">{{$item->descripcion}} <button>hola</button></option>
+                            <option class="opcion_pregunta" value="{{$item->idpregunta}}">{{$item->descripcion}} </option>
                         @endforeach
                     @endif
                 </select>
@@ -42,7 +42,7 @@
                 <option value=""></option>
                 @if(isset($listaEvaluacion))
                     @foreach($listaEvaluacion as $evaluacion)
-                    <optgroup label="{{$evaluacion->fecha_inicio}} --> {{$evaluacion->fecha_fin}}">
+                    <optgroup label="Inicio: {{$evaluacion->fecha_inicio}} ---- Fin: {{$evaluacion->fecha_fin}}">
                         <option class="opcion_evaluacion" value="{{$evaluacion->idevaluacion}}">{{$evaluacion->nombre}}</option>
                     <optgroup>
                     @endforeach
@@ -69,8 +69,8 @@
             <table id="datatable-fixed-header" class="table table-striped table-bordered">
                 <thead>
                 <tr role="row">
-                    <th class="sorting_desc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" aria-sort="descending" style="width: 157px;">Pregunta</th>
-                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Evaluación</th>
+                    <th class="sorting_desc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" aria-sort="descending" style="width: 157px;">Evaluación</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Pregunta</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 117px;">Acciones</th>
                 </tr>
                 </thead>
@@ -79,8 +79,9 @@
                 @if(isset($listaPreguntaEvaluacion))
                         @foreach($listaPreguntaEvaluacion as $item)
                             <tr role="row" class="odd">
-                                <td class="sorting_1">{{$item->pregunta->descripcion}}</td>
-                                <td >{{$item->evaluacion->nombre}}</td>
+                                <td class="sorting_1">{{$item->evaluacion->nombre}}</td>
+                                <td >{{$item->pregunta->descripcion}}</td> 
+                          
                                 <td   class="paddingTR">
                                     <center>
                                     <form method="POST" class="frm_eliminar" action="{{url('pregunta_evaluacion/'.encrypt($item->idpregunta_evaluacion))}}"  enctype="multipart/form-data">
