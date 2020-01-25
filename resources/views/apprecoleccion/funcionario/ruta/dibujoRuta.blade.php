@@ -35,6 +35,13 @@
                                             <div class="message_wrapper">
                                                 <blockquote class="message" id="sectores1">Ninguna ruta seleccionada</blockquote>
                                             </div>
+                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                               <form id="frm_Grafica" method="PUT"  enctype="multipart/form-data"  class="form-horizontal form-label-left">
+                                                    @csrf
+                                                      <button class="btn btn-danger btn-block" type="submit" > <i class="fa fa-close" > </i>  Eliminar grafica</button>
+                                                 </form>
+
+                                            </div>
                                         </div>
 
                                     </div>

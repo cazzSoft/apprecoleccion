@@ -4,8 +4,8 @@
     <input id="method_choferes" type="hidden" name="_method" value="POST">
     <div class="x_title">
       <h2>SUB-DIRECCIÓN DE GESTIÓN DE DESECHOS</h2>
-      
-     
+
+
       <div class="clearfix"></div>
     </div>
 <!-- MENSAJES PARA CONFIRMACIÓN DE REGISTROS Y ERRORES -->
@@ -24,9 +24,9 @@
 <!-- FORMULARIO PARA EL REGISTRO -->
         <br>
             <center><h4><b>CHOFERES DE LOS VEHÍCULOS ENCARGADOS DE LA RECOLECCIÓN DE DESECHOS</b></h4></center>
-               
+
         <br>
-       
+
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Nombres del Chofer:<span class="required">*</span>
             </label>

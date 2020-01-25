@@ -119,18 +119,27 @@ class PuntoRutaController extends Controller
 
     public function edit($id)
     {
-        //
+         $puntos=PuntoRutaModel::where('ruta_idruta',$id)->get();
+          foreach ($puntos as $key => $value) {
+            $delete=PuntoRutaModel::find($value->idpunto_ruta);
+            $delete->delete();
+          }
+          $ruta=RutaModel::find($id);
+            $ruta->estado_grafica="NO";
+            $ruta->save();
+         return 'success';
     }
 
 
     public function update(Request $request, $id)
     {
-        //
+
     }
 
 
     public function destroy($id)
     {
-        //
+
+         dd($id);
     }
 }

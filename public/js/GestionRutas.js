@@ -72,6 +72,7 @@ function initMap1() {
     });
      poly.setMap(map);
      map.addListener('click', addLatLng);
+
 }
 
     // Handles click events on a map, and adds a new point to the Polyline.
@@ -105,6 +106,7 @@ function initMap1() {
                   strokeWeight: 5,
                   map:map,
                 });
-                 flightPath.setMap(map);
+
+                 map.addListener('click', addLatLng);
             });
  }
