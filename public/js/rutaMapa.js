@@ -36,12 +36,14 @@ $("#frm_PuntoRuta").on("submit", function(e){
     });
 //funcion para refrescar select ruta
   function apdateSelectRuta() {
+
     $.get("obtenerRuta/", function (data) {
 
       $('.opcion_sectores').prop('selected',false);
-      $('#Seleccionar_ruta').prop('selected',false);
-      $("#Seleccionar_ruta").html("");
-      $("#Seleccionar_ruta1").html("");
+      $('.opcion_sectores1').prop('selected',false);
+      $("#Seleccionar_ruta").html(` <option value=""></option>`);
+      $("#Seleccionar_ruta1").html(" <option value=''></option>");
+
         $.each(data, function(i, item) {
           //console.log(item.estado_grafica);
            if(item.estado_grafica=='NO'){
