@@ -1,44 +1,3 @@
-  // var poly;
-  // var map;
-  // var markers =[];
-  //    function initMap() {
-  //      markers.length=0;
-  //      map = new google.maps.Map(document.getElementById('map'), {
-  //        zoom: 14,
-  //        center: {lat: -0.698418, lng: -80.094792}  // Center the map on Chicago, USA.
-  //      });
-
-  //      poly = new google.maps.Polyline({
-  //        strokeColor: '#E50DC1',
-  //        strokeOpacity: 1.9,
-  //        strokeWeight: 2
-  //      });
-  //      poly.setMap(map);
-  //      // Add a listener for the click event
-  //      map.addListener('click', addLatLng);
-  //    }
-
-  //    // Handles click events on a map, and adds a new point to the Polyline.
-  //    function addLatLng(event) {
-  //      var path = poly.getPath();
-  //      path.push(event.latLng);
-  //      console.log(event.latLng);
-  //      var marker = new google.maps.Marker({
-  //        position: event.latLng,
-  //        title: '#' + path.getLength(),
-  //        map: map
-  //      });
-  //      var arr={lat:event.latLng.lat(),lng:event.latLng.lng()};
-  //       //markers.push(event.latLng.lat(),event.latLng.lng());
-  //       markers.push(arr);
-  //       console.log(markers);
-
-  //       //agregas tu listener
-  //           marker.addListener('click', function() {
-
-  //             //poly.setVisible(false)
-  //           });
-  // }
 
 $("#frm_PuntoRuta").on("submit", function(e){
      e.preventDefault();
@@ -47,6 +6,7 @@ $("#frm_PuntoRuta").on("submit", function(e){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
         var FrmData = {
             idruta: $('#Seleccionar_ruta').val(),
             puntos:markers,
@@ -58,10 +18,7 @@ $("#frm_PuntoRuta").on("submit", function(e){
             dataType: 'json',
             success: function(requestData)   // Una función a ser llamada si la solicitud tiene éxito
             {
-              markers.length=0;
-              // $('.alerta').attr('class','alert alert-'+requestData.estado+' alert-dismissible fade in  alerta');
-              // $('#msm').html('<strongr>nfotmación </stronge>  '+requestData.msm);
-              // window.setInterval("$('.alerta').attr('class','fade in hide  alerta text-center')",7000);
+              apdateSelectRuta();
               initMap1();
               $('#sectores').html("");
               $('#alerta1').html(
@@ -77,6 +34,41 @@ $("#frm_PuntoRuta").on("submit", function(e){
         });
 
     });
+//funcion para refrescar select ruta
+  function apdateSelectRuta() {
+
+    $.get("obtenerRuta/", function (data) {
+
+      $('.opcion_sectores').prop('selected',false);
+      $('.opcion_sectores1').prop('selected',false);
+      $("#Seleccionar_ruta").html(` <option value=""></option>`);
+      $("#Seleccionar_ruta1").html(" <option value=''></option>");
+
+        $.each(data, function(i, item) {
+          //console.log(item.estado_grafica);
+           if(item.estado_grafica=='NO'){
+              $('#Seleccionar_ruta').append(
+                  ` <optgroup label="${item.nombre_ruta}">
+                      <option class="opcion_sectores" value="${item.idruta}">${item.descripcion}
+                      </option>
+                  </optgroup>`
+              );
+           }
+           if(item.estado_grafica=='SI'){
+              $('#Seleccionar_ruta1').append(
+                  ` <optgroup label="${item.nombre_ruta}">
+                      <option class="opcion_sectores" value="${item.idruta}">${item.descripcion}
+                      </option>
+                  </optgroup>`
+              );
+           }
+        });
+
+        $("#Seleccionar_ruta").trigger("chosen:updated");
+        $("#Seleccionar_ruta1").trigger("chosen:updated");
+
+    });
+  }
 
 
 
