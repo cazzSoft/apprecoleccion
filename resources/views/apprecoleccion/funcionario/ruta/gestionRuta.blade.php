@@ -36,7 +36,7 @@
                             <a href="#puntoRuta" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false" ><i class="fa fa-code-fork" ></i> Establecer Ruta en el mapa</font></font>
                             </a>
                         </li>
-                        <li role="presentation" class="@if(session()->has('mensajePInfoPuntoRuta')) active @endif " >
+                        <li role="presentation" class="" >
                             <a href="#dibujoRuta" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">
                                 <font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><i class="fa fa-eye"></i> Ver Ruta en el mapa</font></font>
                             </a>
@@ -50,7 +50,7 @@
                     <div role="tabpanel" class="tab-pane fade @if(session()->has('mensajePInfoPuntoRuta')) active in @endif" id="puntoRuta" aria-labelledby="profile-tab">
                         @include('apprecoleccion.funcionario.ruta.puntoRuta')
                     </div>
-                    <div role="tabpanel" class="tab-pane fade @if(session()->has('mensajePInfoPuntoRuta')) active in @endif" id="dibujoRuta" aria-labelledby="profile-tab">
+                    <div role="tabpanel" class="tab-pane fade" id="dibujoRuta" aria-labelledby="profile-tab">
                         @include('apprecoleccion.funcionario.ruta.dibujoRuta')
                     </div>
                 </div>

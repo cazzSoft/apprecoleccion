@@ -20,7 +20,7 @@
                                             <br>
                                             <br>
                                             <br>
-                                            <img src="images/body2.png" style=" width: 30%;"  ><br>
+                                            <img src="images/body3.png" style=" width: 30%;"  ><br>
                                         </div>
                                     </div>
                                 </div>
