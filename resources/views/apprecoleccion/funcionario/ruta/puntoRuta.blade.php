@@ -1,4 +1,4 @@
- <!-- FORMULARIO PARA EL REGISTRO -->
+! <!-- FORMULARIO PARA EL REGISTRO -->
 <div class="" id="divMapa1">
     <form id="frm_PuntoRuta" method="POST"   enctype="multipart/form-data"  class="form-horizontal form-label-left ">
         @csrf
