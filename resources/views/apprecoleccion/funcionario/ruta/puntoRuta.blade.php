@@ -1,5 +1,6 @@
-! <!-- FORMULARIO PARA EL REGISTRO -->
-<div class="" id="divMapa1">
+ <!-- FORMULARIO PARA EL REGISTRO -->
+<div id="tabs">
+ <div class="" id="divMapa1">
     <form id="frm_PuntoRuta" method="POST"   enctype="multipart/form-data"  class="form-horizontal form-label-left ">
         @csrf
         <input id="method_PuntoRuta" type="hidden" name="_method" value="POST">
@@ -45,7 +46,7 @@
                                                     <blockquote class="message" id="sectores">Ninguna ruta seleccionada</blockquote>
                                                 </div>
                                                 <div class="col-md-6">
-                                                     <button class="btn btn-success btn-block" id="btn_Guardar" onClick="window.location.reload()" type="submit" > <i class="fa fa-save" > </i>  Guardar</button> 
+                                                     <button class="btn btn-success btn-block" id="btn_Guardar"  type="submit" > <i class="fa fa-save" > </i>  Guardar</button> 
                                                     <!-- <input type="button" value="Guardar" id="" onclick="guardar()" class="btn btn-primary btn-sm"> -->
                                                 </div>
                                                 <div class="col-md-6">
