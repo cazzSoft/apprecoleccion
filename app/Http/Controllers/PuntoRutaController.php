@@ -57,7 +57,7 @@ class PuntoRutaController extends Controller
             $ruta->save();
           $data=[
                     'estado'=>'success',
-                    'msm'=>'Registro ingresado con exitoso',
+                    'msm'=>'Registro ingresado con exito',
              ];
             return $data;
        } catch (\Throwable $th) {

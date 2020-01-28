@@ -33,7 +33,7 @@ function btn_eliminar(btn){
     }
 }
 
-//GESTION PUNTO RUTA
+//************GESTION DIBUJAR RUTA********************
 $("#btn_puntoRutaCancelar").click(function () {
 
     // limpiamos los datos de los seleccionados
@@ -42,6 +42,7 @@ $("#btn_puntoRutaCancelar").click(function () {
     $("#sectores").html("Ninguna ruta seleccionada");
 
 });
+
 //funcion para enviar los datos seleccionados en el select  al cuadro (flip-card)
  function ShowSelected(){
     var combo = document.getElementById("Seleccionar_ruta");

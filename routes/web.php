@@ -11,9 +11,16 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('apprecoleccion.home');
 });
+
+Route::get('/inicio', function () {
+    return view('apprecoleccion.home');
+});
+
 
 Auth::routes();
 

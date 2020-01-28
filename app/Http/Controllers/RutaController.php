@@ -80,6 +80,9 @@ class RutaController extends Controller
     {
         return RutaModel::all();
     }
+
+
+    
     public function obtenerRutaGrafica($id)
     {
         $consul= PuntoRutaModel::where('ruta_idruta',$id)->select('latitud as lat','longitud as lng')->get();
