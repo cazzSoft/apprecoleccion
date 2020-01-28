@@ -46,7 +46,8 @@
                                                     <blockquote class="message" id="sectores">Ninguna ruta seleccionada</blockquote>
                                                 </div>
                                                 <div class="col-md-6">
-                                                     <button class="btn btn-success btn-block" id="btn_Guardar" onClick="window.location.reload()" type="sub <!-- <input type="button" value="Guardar" id="" onclick="guardar()" class="btn btn-primary btn-sm"> -->
+                                                     <button class="btn btn-success btn-block" id="btn_Guardar"  type="submit" > <i class="fa fa-save" > </i>  Guardar</button> 
+                                                    <!-- <input type="button" value="Guardar" id="" onclick="guardar()" class="btn btn-primary btn-sm"> -->
                                                 </div>
                                                 <div class="col-md-6">
                                                     <a class="btn btn-warning btn-block" id ="btn_puntoRutaCancelar" onclick="initMap1()"><i class="fa fa-remove"> </i>  Cancelar</a>

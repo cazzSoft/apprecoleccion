@@ -6,11 +6,11 @@ function ShowSelected1(){
     var idruta=$('#Seleccionar_ruta1').val();
      initMap2();
 }
-//funcion para eliminar las puntos de la ruta
+//funcion para eliminar las puntos de la grafica de la ruta
 $("#frm_Grafica").on("submit", function(e){
      e.preventDefault();
      var idruta= $('#Seleccionar_ruta1').val();
-     var con=confirm('Estas seguro que desea eliminar la gráfica de esta ruta.?');
+     var con=confirm('Estas seguro que desea eliminar la gráfica de esta ruta ?');
      if(con){
      	$.get("puntoRuta/"+idruta+'/edit', function (data) {
 
