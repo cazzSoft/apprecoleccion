@@ -14,7 +14,7 @@
 
 
 Route::get('/', function () {
-    return view('apprecoleccion.home');
+    return view('auth.login');
 });
 
 Route::get('/inicio', function () {
