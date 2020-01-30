@@ -34,8 +34,8 @@
                         {{ csrf_field() }}
               <img  class="" src="images/logochone.png" width="36%">
               <h2>Autenticación de usuario</h2>
-              </br>
-              </br>
+              
+              <br/>
               <div class="col-xs-12 form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
                   <input id="email" type="email" class="form-control has-feedback-left" name="email" placeholder="usuario" style="margin-bottom: 8px;" required autofocus>
                   <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
@@ -74,7 +74,7 @@
 
                 <div>
               
-                  <p>GADM Chone </p>
+                  <p> © 2020 GADM Chone </p>
                 </div>
               </div>
             </form>
