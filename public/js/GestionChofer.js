@@ -6,6 +6,7 @@ function chofer_editar(idpersona){
     $.get("chofer/"+idpersona+"/edit", function (data) {
         $('#nombres').val(data.nombres);
         $('#dni').val(data.dni);
+        $('#celular').val(data.celular);
      
     });
     
@@ -22,6 +23,7 @@ function chofer_editar(idpersona){
 $('#btn_choferCancelar').click(function(){
     $('#nombres').val('');
     $('#dni').val('');
+    $('#celular').val('');
 
   
     $('#method_choferes').val('POST'); 

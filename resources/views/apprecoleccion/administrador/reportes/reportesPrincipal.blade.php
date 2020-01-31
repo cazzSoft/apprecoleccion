@@ -25,7 +25,7 @@
 <div class="table-responsive">
     <div class="row">
         <div class="col-sm-12">
-        <table id="datatable-checkbox" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
+            <table id="datatable-fixed-header" class="table table-striped table-bordered">
                 <thead>
                 <tr role="row">
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Nombre de la Evaluación</th>
@@ -46,11 +46,11 @@
                             <td >{{$n->evaluacion->fecha_fin}}</td>
                             <td >{{$n->evaluacion->objetivo}}</td>
                             <td class="paddingTR">
-                            <div class="form-group col-md-12">
-                            <a onclick="ver({{$n->evaluacion->idevaluacion}})" id="button" class="btn btn-sm btn-success btn-block"  >VISUALIZAR    <i class="fa fa-eye"></i></a>
-                                <!-- <a href="ReporteEvaluacionServiciosIndividual/{{$n->evaluacion->idevaluacion}}" class="btn btn-sm btn-success btn-block"  target="_blank">IMPRIMIR REPORTE    <i class="fa fa-print"></i></a> -->
-                                
-                            </div>   
+                                <div class="form-group col-md-12">
+                                    <a onclick="ver({{$n->evaluacion->idevaluacion}})" id="button" class="btn btn-sm btn-success btn-block"  >VISUALIZAR    <i class="fa fa-eye"></i></a>
+                                    <!-- <a href="ReporteEvaluacionServiciosIndividual/{{$n->evaluacion->idevaluacion}}" class="btn btn-sm btn-success btn-block"  target="_blank">IMPRIMIR REPORTE    <i class="fa fa-print"></i></a> -->
+                                    
+                                </div>   
                             </td>
                         </tr>
                 @endforeach

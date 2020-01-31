@@ -38,7 +38,14 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Cédula de Identidad: <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="dni" name="dni"required="required" class="form-control col-md-7 col-xs-12">
+              <input type="number" max="9999999999" id="dni" name="dni"required="required" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Celular: <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="number" max="999999999"  id="celular" name="celular" required="required" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
 
@@ -60,6 +67,7 @@
                 <tr role="row">
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Nombre del Chófer</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Cédula de Identidad</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Celular</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Acciones</th>
                 </tr>
                 </thead>
@@ -70,6 +78,7 @@
                     <tr role="row" class="odd">
                         <td class="sorting_1">{{$item->nombres}}</td>
                         <td >{{$item->dni}}</td>
+                        <td >{{$item->celular}}</td>
                         <td   class="paddingTR">
                             <center>
                             <form method="POST" class="frm_eliminar" action="{{url('chofer/'.encrypt($item->idpersona))}}"  enctype="multipart/form-data">
