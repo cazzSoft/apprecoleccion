@@ -38,6 +38,7 @@ class PreguntaEvaluacionController extends Controller
 
  //se guardan los valores en la base de datos
     $pregunta_evaluacion = new PreguntaEvaluacionModel();
+
     $pregunta_evaluacion->idpregunta=$request->get('pregunta');
     $pregunta_evaluacion->idevaluacion=$request->get('evaluacion');
     //para verificar que no se realice la misma asignacion dos veces
@@ -52,7 +53,7 @@ class PreguntaEvaluacionController extends Controller
         $pregunta_evaluacion->save();
         return back()->with(['mensajePInfoPreguntaEvaluacion'=>'Registro Exitoso','estado'=>'success']);
     } catch (\Throwable $th) {
-        return back()->with(['mensajePInfoPreguntaEvaluacion'=>'No se pudo realizar el registro','estado'=>'danger']);
+        return back()->with(['mensajePInfoPreguntaEvaluacion'=>'No ha realizado el registro correctamente','estado'=>'danger']);
     }
     }
 
@@ -122,9 +123,9 @@ class PreguntaEvaluacionController extends Controller
 
         try {
             $pregunta_evaluacion->delete();
-            return back()->with(['mensajePInfoPreguntaEvaluacion'=>'Registro eliminado con exito','estado'=>'success']);
+            return back()->with(['mensajePInfoPreguntaEvaluacion'=>'Registro eliminado con éxito','estado'=>'success']);
         } catch (\Throwable $th) {
-            return back()->with(['mensajePInfoPreguntaEvaluacion'=>'No se pudo eliminar el registro porque esta relacionado','estado'=>'danger']);
+            return back()->with(['mensajePInfoPreguntaEvaluacion'=>'No se puede eliminar el registro porque se encuentra relacionado con otros datos','estado'=>'danger']);
         }
     }
 }

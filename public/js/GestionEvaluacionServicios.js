@@ -69,12 +69,12 @@ function PreguntaEvaluacion_editar(idpregunta_evaluacion){
 
 
         $('.opcion_pregunta').attr("selected", false);
-        $(`#pregunta option[value="${data.idpregunta}"]`).attr("selected", true);
-        $('#pregunta_chosen').children('a').children('span').html($(`#pregunta option[value="${data.idpregunta}"]`).html());
+        $(`#Seleccionar_pregunta option[value="${data.idpregunta}"]`).attr("selected", true);
+        $('#Seleccionar_pregunta_chosen').children('a').children('span').html($(`#Seleccionar_pregunta option[value="${data.idpregunta}"]`).html());
 
         $('.opcion_evaluacion').attr("selected", false);
-        $(`#evaluacion option[value="${data.idevaluacion}"]`).attr("selected", true);
-        $('#evaluacion_chosen').children('a').children('span').html($(`#evaluacion option[value="${data.idevaluacion}"]`).html());
+        $(`#Seleccionar_evaluacion option[value="${data.idevaluacion}"]`).attr("selected", true);
+        $('#Seleccionar_evaluacion_chosen').children('a').children('span').html($(`#Seleccionar_evaluacion option[value="${data.idevaluacion}"]`).html());
 
     });
 
@@ -87,9 +87,9 @@ function PreguntaEvaluacion_editar(idpregunta_evaluacion){
 
 $('#btn_PreguntaEvaluacionCancelar').click(function(){
     $('.opcion_pregunta').attr("selected", false);
-    $('#pregunta_chosen').children('a').children('span').html('Seleccione una pregunta');
+    $('#Seleccionar_pregunta_chosen').children('a').children('span').html('Seleccione una pregunta');
     $('.opcion_evaluacion').attr("selected", false);
-    $('#evaluacion_chosen').children('a').children('span').html('Seleccione una evaluación');
+    $('#Seleccionar_evaluacion_chosen').children('a').children('span').html('Seleccione una evaluación');
     $('#method_PreguntaEvaluacion').val('POST');
     $('#frm_PreguntaEvaluacion').prop('action',window.location.protocol+'//'+window.location.host+'/pregunta_evaluacion');
     $(this).addClass('hidden');
