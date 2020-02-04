@@ -51,62 +51,54 @@ class ActividadDiariaController extends Controller
     public function store(Request $request)
     {
       //INGRESO DE DATOS
-  
-        $ActDiaria= new ActividadDiariaModel();
+      $ActDiaria= new ActividadDiariaModel();
+      if($request->ruta==''){
+        return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado una ruta','estado'=>'danger']);
+    }else{
 
-        if($request->ruta==''){
-            return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado una ruta','estado'=>'danger']);
-        }else{
+    $ActDiaria->ruta_idruta=$request->get('ruta');
 
-        $ActDiaria->ruta_idruta=$request->get('ruta');
+    }
 
-        }
-        if($request->dia==''){
-            return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado días de la semana','estado'=>'danger']);
-        }else{
+    if($request->dia==''){
+        return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado días de la semana','estado'=>'danger']);
+    }else{
 //almacenamiento de los valores de los checkbox en un campo de la base de datos (dias de la semana)
 //primero declaro una variable vacia
-            $dias = '';
-            //realizo el foreach con el request que recibo
-            foreach ($request->dia as $d){
-                //la variable $s es solo un separador para los dias de la semana que se van almacenando
-                $s = ', ';
-                //y entonces pregunto en el if si la cadena de datos esta vacia, si esta vacia guardo una vez el dia sin separador (porque hago esto? porque la primera vez que entre al foreach estará vacio 
-                //y ingresa el primer valor que tenga, por lo tanto si  se escoge un solo día, se guarda sin la coma, que es el separador)
-                //entonces sucede que la segunda vez que entre al foreach ya no estará vacia la cadena y meto el o los siguientes días con el separador (la coma) y listo.
-                if($dias == ''){
-                    $dias =$d;
-                }else{
-                    $dias .= $s.$d;
-                }
+        $dias = '';
+        //realizo el foreach con el request que recibo
+        foreach ($request->dia as $d){
+            //la variable $s es solo un separador para los dias de la semana que se van almacenando
+            $s = ', ';
+            //y entonces pregunto en el if si la cadena de datos esta vacia, si esta vacia guardo una vez el dia sin separador (porque hago esto? porque la primera vez que entre al foreach estará vacio 
+            //y ingresa el primer valor que tenga, por lo tanto si  se escoge un solo día, se guarda sin la coma, que es el separador)
+            //entonces sucede que la segunda vez que entre al foreach ya no estará vacia la cadena y meto el o los siguientes días con el separador (la coma) y listo.
+            if($dias == ''){
+                $dias =$d;
+            }else{
+                $dias .= $s.$d;
             }
+        }
         $ActDiaria->dia=$dias; 
-        }
+    }
+    
+    $ActDiaria->hora_inicio=$request->get('hora_inicio');
+    $ActDiaria->hora_fin=$request->get('hora_fin');
+    
+    if($request->vehiculo==''){
+        return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un recolector','estado'=>'danger']);
+    }else{
 
-        if($request->hora_inicio==''){
-            return back()->with(['mensajeInfoAcDiaria'=>'No ha ingresado una hora de inicio','estado'=>'danger']);
-        }else{
-        $ActDiaria->hora_inicio=$request->get('hora_inicio');
-        }
-
-        if($request->hora_fin==''){
-            return back()->with(['mensajeInfoAcDiaria'=>'No ha ingresado una hora fin','estado'=>'danger']);
-        }else{
-
-            $ActDiaria->hora_fin=$request->get('hora_fin');
-        }
-        if($request->recolector_idrecolector==''){
-            return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un recolector','estado'=>'danger']);
-        }else{
-
-            $ActDiaria->recolector_idrecolector =$request->get('vehiculo');
-        }
+        $ActDiaria->recolector_idrecolector=$request->get('vehiculo');
+    }
+   
+    if($request->chofer==''){
+        return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un chofer','estado'=>'danger']);
+    }else{
+    $ActDiaria->persona_idpersona=$request->get('chofer');
+    }
+   
        
-        if($request->persona_idpersona==''){
-            return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un chofer','estado'=>'danger']);
-        }else{
-        $ActDiaria->persona_idpersona=$request->get('chofer');
-        }
         //información de la verificación de ingreso de datos
         if($ActDiaria->save()){
             return back()->with(['mensajeInfoAcDiaria'=>'Registro exitoso','estado'=>'success']);
@@ -181,26 +173,18 @@ class ActividadDiariaController extends Controller
             }
         $ActDiaria->dia=$dias; 
         }
-        if($request->hora_inicio==''){
-            return back()->with(['mensajeInfoAcDiaria'=>'No ha ingresado una hora de inicio','estado'=>'danger']);
-        }else{
+
         $ActDiaria->hora_inicio=$request->get('hora_inicio');
-        }
-
-        if($request->hora_fin==''){
-            return back()->with(['mensajeInfoAcDiaria'=>'No ha ingresado una hora fin','estado'=>'danger']);
-        }else{
-
-            $ActDiaria->hora_fin=$request->get('hora_fin');
-        }
-        if($request->recolector_idrecolector==''){
+        $ActDiaria->hora_fin=$request->get('hora_fin');
+        
+        if($request->vehiculo==''){
             return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un recolector','estado'=>'danger']);
         }else{
 
             $ActDiaria->recolector_idrecolector =$request->get('vehiculo');
         }
        
-        if($request->persona_idpersona==''){
+        if($request->chofer==''){
             return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un chofer','estado'=>'danger']);
         }else{
         $ActDiaria->persona_idpersona=$request->get('chofer');
