@@ -9,26 +9,20 @@
                     <div class="bs-example" data-example-id="simple-jumbotron">
                   
                  
-                                    <div class="content">
+                        <div class="content">
 
-                                        <div class="title m-b-ms" align="center">
-                                            <img src="images/header.png" style=" width: 100%;" ><br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <img src="images/body3.png" style=" width: 30%;"  ><br>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="title m-b-ms" align="center">
+                                <img src="images/header.png" style=" width: 100%;" ><br>
+
+                                <img src="images/mapa.png" style=" width: 100%;"  ><br>
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
+        </div>
+    </div> 
+</div>
  
 @endsection
  

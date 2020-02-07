@@ -3,7 +3,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel ">
                 <div class="x_title ">
-                    <h4><center>GRÁFICA DE LAS RUTAS DE RECOLECCIÓN DE DESECHOS REGISTRADAS</center></h4>
+                    <h4><center>GRÁFICAS DE LAS RUTAS DE RECOLECCIÓN DE DESECHOS REGISTRADAS</center></h4>
                     <div id="alerta2">
                     </div>
                 </div>

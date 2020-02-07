@@ -4,7 +4,7 @@
 
  
     <div class="x_title">
-      <h2>SUB-DIRECCIÓN DE GESTIÓN DE DESECHOS</h2>
+    <h2><b><center>SUB-DIRECCIÓN DE GESTIÓN DE DESECHOS</center></b></h2> 
      
 
       <div class="clearfix"></div>

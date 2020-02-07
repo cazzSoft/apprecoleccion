@@ -1,5 +1,15 @@
 @extends('apprecoleccion.home_recoleccion')
 @section('content1')
+<!-- Datatables -->
+<link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  
+<link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+ <!-- Datatables -->
+<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="{{asset('/js/GestionOpiniones.js')}}"></script>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -25,7 +35,7 @@
 <div class="table-responsive">
     <div class="row">
         <div class="col-sm-12">
-            <table id="datatable-fixed-header" class="table table-striped table-bordered">
+        <table id="datatable-checkbox" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
                 <thead>
                 <tr role="row">
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Nombre de la Evaluación</th>
@@ -71,7 +81,7 @@
             <input type="hidden" name="id" id="id"/>
             </br>
     
-            <button type="submit" name="create_pdf" id="create_pdf" class="btn btn-sm btn-success">IMPRIMIR REPORTE   <i class="fa fa-print"></i></button>
+            <button type="submit" name="create_pdf" id="create_pdf" class="btn btn-sm btn-primary">IMPRIMIR REPORTE   <i class="fa fa-print"></i></button>
         </form>
     </div>
 <!-- visualizacion de los resultados con sus graficas -->

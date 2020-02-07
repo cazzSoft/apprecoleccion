@@ -33,7 +33,7 @@
              <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
               <img  class="" src="images/logochone.png" width="36%">
-              <h2>Autenticación de usuario</h2>
+              <h2>Gobierno Autónomo Descentralizado Municipal del cantón Chone</h2>
               
               <br/>
               <div class="col-xs-12 form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
@@ -59,7 +59,7 @@
           
 
               <div class="col-md-12 col-sm-12 col-xs-12" >
-                <button type="submit" class="btn btn-success btn-block submit">Aceptar</button>
+                <button type="submit" class="btn btn-success btn-block submit">Iniciar Sesión</button>
                 
               </div>
 
@@ -74,7 +74,7 @@
 
                 <div>
               
-                  <p> © 2020 GADM Chone </p>
+                
                 </div>
               </div>
             </form>
