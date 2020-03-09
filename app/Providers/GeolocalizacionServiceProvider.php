@@ -15,8 +15,8 @@ class GeolocalizacionServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('GuzzleHttp\Client', function(){
-            return new   Client ([        
-             'base_uri'  =>  'https://optimustracking.com:444',     
+            return new   Client ([
+             'base_uri'  =>  'https://optimustracking.com:444',
             ]);
         });
     }

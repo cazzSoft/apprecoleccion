@@ -13,8 +13,4 @@ class RutaModel extends Model
     public function PuntoRuta(){
         return $this->hasMany('App\PuntoRutaModel','ruta_idruta','idruta');
     }
-
-
-
-
 }

@@ -15,8 +15,8 @@
     // para verificar si un campo tiene caracteres epeciales
     // retorna verdadero si  tiene CE   $resultado=preg_match("/[$%&|\/\<>#&=?¿'`*!¡\[\]{}()".'"'."]/",$texto);
     function tieneCaracterEspecial($texto){
-        $resultado=preg_match("/[$%&|<>#&'`*!¡\[\]{}()".'"'."]/",$texto);
-        if($resultado==1):return true;else:return false;endif; // si es 1 es porque se han encontrado CE   
+        $resultado=preg_match("/[$%&|<>#&*!¡\[\]{}()".'"'."]/",$texto);
+        if($resultado==1):return true;else:return false;endif; // si es 1 es porque se han encontrado CE
     }
 
 

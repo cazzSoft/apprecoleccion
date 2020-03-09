@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\PuntoReferenciaModel;
+use App\UsuarioModel;
+use Illuminate\Http\Request;
 class PuntoReferenciaController extends Controller
 {
     /**
@@ -13,10 +14,7 @@ class PuntoReferenciaController extends Controller
      */
      public function getPundoInteres($id){
         $punto=PuntoReferenciaModel::where('usuario_idusuario',$id)->get();
-        foreach ($punto as $key => $value) {
-            $puntos[$key]='{ lat:'.$value->latitud.', lng:'.$value->longuitud.'}';
-        }
-       return $punto;
+        return response()->json($punto);
    }
 
     /**
@@ -37,7 +35,25 @@ class PuntoReferenciaController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        //return $request->id;
+         $registrar=new PuntoReferenciaModel();
+          $registrar->longuitud=$request->lng;
+          $registrar->latitud=$request->lat;
+          $registrar->descripcion=$request->des;
+          $registrar->estado='true';
+          $registrar->usuario_idusuario=$request->id;
+          if ($registrar->save()) {
+            $updateUser=UsuarioModel::find($registrar->usuario_idusuario);
+            $updateUser->estado_configuracion='1';
+            if ($updateUser->save()) {
+                 return response()->json($registrar->idpunto_de_referencia);
+            }else{
+               return 'error';
+            }
+          }else{
+            return 'error';
+          }
+
     }
 
     /**
@@ -59,7 +75,7 @@ class PuntoReferenciaController extends Controller
      */
     public function edit($id)
     {
-        //
+        return 'hola';
     }
 
     /**
@@ -71,7 +87,13 @@ class PuntoReferenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $puntoRe=PuntoReferenciaModel::find($id);
+        $puntoRe->estado=$request->estado;
+        if ($puntoRe->save()) {
+            return response()->json($puntoRe->estado);
+        }else{
+            return 'error';
+        }
     }
 
     /**

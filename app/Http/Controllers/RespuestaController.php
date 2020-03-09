@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\RespuestaModel;
-use Illuminate\Http\Request;
+use App\EvaluacionModel;
+use App\Evaluacion_usuarioModel;
 use App\PreguntaEvaluacionModel;
 use App\PreguntaModel;
-use App\EvaluacionModel;
+use App\RespuestaModel;
 use App\UsuarioModel;
 use Carbon\Carbon;
-
 use DB;
+use Illuminate\Http\Request;
 use PDF;
 
 class RespuestaController extends Controller
@@ -41,34 +41,34 @@ class RespuestaController extends Controller
         $respuesta=RespuestaModel::with('pregunta_evaluacion','usuario')->get();
         $today = Carbon::now()->format('d/m/Y');//la fecha de hoy
        $pdf = PDF::loadView('apprecoleccion.administrador.reportes.reporteEvaluaciones', compact('today'), ['mostrarRespuesta'=>$respuesta]);
-       return $pdf->stream();  
+       return $pdf->stream();
 
-       
+
   }
   public function ObtenerDatos($id){
  //METODO PARA OBTENER LOS DATOS QUE VAN EN LAS GRAFICAS DE RESULTADOS
     $pregunta_evaluacion=PreguntaModel::select('pregunta.descripcion','pregunta.idpregunta')
     ->join('pregunta_evaluacion','pregunta_evaluacion.idpregunta','=','pregunta.idpregunta')
-   
+
      ->where('pregunta_evaluacion.idevaluacion',$id)
       ->get();
       $evaluacion=EvaluacionModel::find($id);
-       return response()->json([$pregunta_evaluacion,$evaluacion]);  
+       return response()->json([$pregunta_evaluacion,$evaluacion]);
 
-       
+
   }
   public function ObtenerRespuestas($id){
 
     //METODO PARA OBTENER LAS RESPUESTAS DADAS EN LAS EVALUACIONES PARA LAS GRAFICAS DE LOS RESULTADOS
     $pregunta_evaluacion=PreguntaModel::select('pregunta.descripcion','respuesta.puntaje','respuesta.idrespuesta','pregunta.idpregunta')
     ->join('pregunta_evaluacion','pregunta_evaluacion.idpregunta','=','pregunta.idpregunta')
-   
+
     ->join('respuesta','respuesta.idpregunta_evaluacion','=','pregunta_evaluacion.idpregunta_evaluacion')
-  
+
      ->where('pregunta.idpregunta',$id)
       ->get();
       $evaluacion=EvaluacionModel::find($id);
-      return response()->json($pregunta_evaluacion);     
+      return response()->json($pregunta_evaluacion);
   }
 //reporte de indivual de cada evaluacion FINALIZADA
   public function imprimirReporteIndividual(Request $request){
@@ -83,9 +83,9 @@ class RespuestaController extends Controller
     $totalUsuarios=RespuestaModel::distinct('idusuario')->count('idusuario');
     $today = Carbon::now()->format('d/m/Y');//la fecha de hoy
     $pdf = PDF::loadView('apprecoleccion.administrador.reportes.reporteEvaluaciones', compact('today'), ['evaluacion'=>$evaluacion,'datosRespuesta'=>$pregunta_evaluacion,'totalUsuarios'=>$totalUsuarios,'chart'=>$chart]);
-   
+
     return $pdf->stream();
-    
+
  }
 
 
@@ -107,22 +107,27 @@ class RespuestaController extends Controller
      */
     public function store(Request $request)
     {
-     // $existe=[''];
-      $existe=RespuestaModel::where('idpregunta_evaluacion',$request->idpregunta_evaluacion)->where('idusuario',$request->idusuario)->get();
-       $res=$existe->pluck('idrespuesta');
-
-       if ($existe=="[]") {
+         //return  $request;
+        // for ($i=0; $request->len; $i++) {
+        //     $var=$request[$i];
+        // }
+    $eva_user=0;
+         foreach ($request->all() as $key => $item) {
+            //return  $item['puntaje'];
+            $eva_user= $item['evaluacion_usuario'];
             $consulta= new RespuestaModel();
-            $consulta->puntaje=$request->puntaje;
-            $consulta->idpregunta_evaluacion=$request->idpregunta_evaluacion;
-            $consulta->idusuario=$request->idusuario;
-            $consulta->estado=$request->estado;
+            $consulta->puntaje=$item['puntaje'];
+            $consulta->idpregunta_evaluacion=$item['idpregunta_evaluacion'];
+            $consulta->idusuario=$item['idusuario'];
             $consulta->save();
-             return "ingresado";
-       }else{
-            return $this->update($request,$res[0]);
-       }
-
+        }
+       // return $eva_user;
+        if ($eva_user!=0) {
+            $actualizarEva_user=Evaluacion_usuarioModel::find($eva_user);
+            $actualizarEva_user->estado='F';
+            $actualizarEva_user->save();
+        }
+        return "true";
     }
 
     /**

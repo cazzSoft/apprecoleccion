@@ -42,9 +42,11 @@
                 <option value=""></option>
                 @if(isset($listaEvaluacion))
                     @foreach($listaEvaluacion as $evaluacion)
-                    <optgroup label="Inicio: {{$evaluacion->fecha_inicio}} ---- Fin: {{$evaluacion->fecha_fin}}">
-                        <option class="opcion_evaluacion" value="{{$evaluacion->idevaluacion}}">{{$evaluacion->nombre}}</option>
-                    <optgroup>
+                    @if($evaluacion->estado=='E')
+                        <optgroup label="Inicio: {{$evaluacion->fecha_inicio}} ---- Fin: {{$evaluacion->fecha_fin}}">
+                            <option class="opcion_evaluacion" value="{{$evaluacion->idevaluacion}}">{{$evaluacion->nombre}}</option>
+                        <optgroup>
+                    @endif
                     @endforeach
                 @endif
                 </select>
@@ -80,8 +82,8 @@
                         @foreach($listaPreguntaEvaluacion as $item)
                             <tr role="row" class="odd">
                                 <td class="sorting_1">{{$item->evaluacion->nombre}}</td>
-                                <td >{{$item->pregunta->descripcion}}</td> 
-                          
+                                <td >{{$item->pregunta->descripcion}}</td>
+
                                 <td   class="paddingTR">
                                     <center>
                                     <form method="POST" class="frm_eliminar" action="{{url('pregunta_evaluacion/'.encrypt($item->idpregunta_evaluacion))}}"  enctype="multipart/form-data">

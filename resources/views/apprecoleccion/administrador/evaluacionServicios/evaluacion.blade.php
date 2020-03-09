@@ -70,6 +70,7 @@
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Fecha de Inicio</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Fecha Fin</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Objetivo</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Estado</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 117px;">Acciones</th>
                 </tr>
                 </thead>
@@ -84,6 +85,7 @@
                             <td >{{$item->fecha_inicio}}</td>
                             <td >{{$item->fecha_fin}}</td>
                             <td >{{$item->objetivo}}</td>
+                            <td @if($item->estado=='E')class="bg-success"@else class="bg-danger" @endif >{{$item->estado}}</td>
                             <td class="paddingTR">
                                 <center>
                                 <form method="POST" class="frm_eliminar" action="{{url('evaluacion/'.encrypt($item->idevaluacion))}}"  enctype="multipart/form-data">

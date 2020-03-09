@@ -31,6 +31,7 @@ function btn_eliminar(btn){
 //GESTIÓN EVALUACIÓN
 function evaluacion_editar(idevaluacion){
     $.get("evaluacion/"+idevaluacion+"/edit", function (data) {
+
         $('#nombre').val(data.nombre);
         $('#fecha_inicio').val(data.fecha_inicio);
         $('#fecha_fin').val(data.fecha_fin);

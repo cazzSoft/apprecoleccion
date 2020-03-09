@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use  GuzzleHttp\Client;
-
+use App\EvaluacionModel;
+use App\Evaluacion_usuarioModel;
 class HomeController extends Controller
 {
     /**
@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -24,22 +24,19 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd(1);
-        $client  =  new  Client ([ 
-            
-            'base_uri'  =>  'https://optimustracking.com:444' , 
-            'timeout'   =>  2.0 , 
-        ]);
-        $body = ['grant_type' => 'password',
-                 'username' => 'practica', 
-                 'password' => 'practica',
-                 'client_id' => 'goldTrack',
-                 'client_secret' => 'MobileAppOptimus',
-                 'udid' => '0',
-                 'gcm_token' => '0',
-                ];
-        $response  =  $client->request ( 'POST' ,  'token','$body' ); 
-        return json_decode((string) $response->getBody(), true);
-        //return view('home');
+        //Finalizavion de las evaluacion por fecha fin de la evaluacion
+         $fecha =date("Y-m-d");
+         $listaEvaluacion = EvaluacionModel::where('fecha_fin','<=',$fecha)->where('estado','E')->get();
+        foreach ($listaEvaluacion as $key => $value) {
+            $actualizarEstadoEvaluacion =  EvaluacionModel::find($value->idevaluacion);
+            $actualizarEstadoEvaluacion->estado='F';
+            $actualizarEstadoEvaluacion->save();
+        }
+        //asignamos las evaluaciones a los usuarios en fecha de inicio de la evaluacion
+       // $consultaEva=EvaluacionModel::where('fecha_inicio','=',$fecha)->where('estado','E')->get();
+
+        //return $res;
+
+        return view('apprecoleccion.home');
     }
 }
