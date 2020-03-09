@@ -1,5 +1,15 @@
 @extends('apprecoleccion.home_recoleccion')
 @section('content1')
+<!-- Datatables -->
+<link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  
+<link href="../vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+ <!-- Datatables -->
+<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<script src="{{asset('/js/GestionOpiniones.js')}}"></script>
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -46,11 +56,11 @@
                             <td >{{$n->evaluacion->fecha_fin}}</td>
                             <td >{{$n->evaluacion->objetivo}}</td>
                             <td class="paddingTR">
-                            <div class="form-group col-md-12">
-                            <a onclick="ver({{$n->evaluacion->idevaluacion}})" id="button" class="btn btn-sm btn-success btn-block"  >VISUALIZAR    <i class="fa fa-eye"></i></a>
-                                <!-- <a href="ReporteEvaluacionServiciosIndividual/{{$n->evaluacion->idevaluacion}}" class="btn btn-sm btn-success btn-block"  target="_blank">IMPRIMIR REPORTE    <i class="fa fa-print"></i></a> -->
-                                
-                            </div>   
+                                <div class="form-group col-md-12">
+                                    <a onclick="ver({{$n->evaluacion->idevaluacion}})" id="button" class="btn btn-sm btn-success btn-block"  >VISUALIZAR    <i class="fa fa-eye"></i></a>
+                                    <!-- <a href="ReporteEvaluacionServiciosIndividual/{{$n->evaluacion->idevaluacion}}" class="btn btn-sm btn-success btn-block"  target="_blank">IMPRIMIR REPORTE    <i class="fa fa-print"></i></a> -->
+                                    
+                                </div>   
                             </td>
                         </tr>
                 @endforeach
@@ -71,7 +81,7 @@
             <input type="hidden" name="id" id="id"/>
             </br>
     
-            <button type="submit" name="create_pdf" id="create_pdf" class="btn btn-sm btn-success">IMPRIMIR REPORTE   <i class="fa fa-print"></i></button>
+            <button type="submit" name="create_pdf" id="create_pdf" class="btn btn-sm btn-primary">IMPRIMIR REPORTE   <i class="fa fa-print"></i></button>
         </form>
     </div>
 <!-- visualizacion de los resultados con sus graficas -->

@@ -21,7 +21,7 @@
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="chosen-select-content">
-                <select data-placeholder="Seleccione una Pregunta" name="pregunta" id="pregunta" required="required" class="chosen-select form-control" tabindex="5">
+                <select data-placeholder="Seleccione una Pregunta" name="pregunta" id="Seleccionar_pregunta"  class="chosen-select form-control" tabindex="5">
                 <option value=""></option>
                     @if(isset($listaPreguntas))
                         @foreach($listaPreguntas as $item)
@@ -38,7 +38,7 @@
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="chosen-select-content">
-                <select data-placeholder="Seleccione una Evaluación" name="evaluacion" id="evaluacion" required="required" class="chosen-select form-control" tabindex="5">
+                <select data-placeholder="Seleccione una Evaluación" name="evaluacion" id="Seleccionar_evaluacion"  class="chosen-select form-control" tabindex="5">
                 <option value=""></option>
                 @if(isset($listaEvaluacion))
                     @foreach($listaEvaluacion as $evaluacion)

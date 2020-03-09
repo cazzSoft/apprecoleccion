@@ -12,10 +12,11 @@
 */
 
 
-Route::get('/', 'HomeController@index');
-// Route::get('/', function () {
-//     return view('apprecoleccion.home');
-// });
+Route::get('/home', 'HomeController@index');
+
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 Route::get('/inicio', function () {
     return view('apprecoleccion.home');

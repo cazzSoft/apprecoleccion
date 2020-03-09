@@ -3,7 +3,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel ">
                 <div class="x_title ">
-                    <h4><center>GRÁFICA DE LAS RUTAS DE RECOLECCIÓN DE DESECHOS REGISTRADAS</center></h4>
+                    <h4><center>GRÁFICAS DE LAS RUTAS DE RECOLECCIÓN DE DESECHOS REGISTRADAS</center></h4>
                     <div id="alerta2">
                     </div>
                 </div>
@@ -35,10 +35,10 @@
                                             <div class="message_wrapper">
                                                 <blockquote class="message" id="sectores1">Ninguna ruta seleccionada</blockquote>
                                             </div>
-                                            <div class="col-md-4 col-sm-6 col-xs-12">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
                                                <form id="frm_Grafica" method="PUT"  enctype="multipart/form-data"  class="form-horizontal form-label-left">
                                                     @csrf
-                                                      <button class="btn btn-danger btn-block" type="submit" > <i class="fa fa-close" > </i>  Eliminar grafica</button>
+                                                      <button class="btn btn-danger btn-block" type="submit" > <i class="fa fa-close" > </i>  Eliminar gráfica   </button>
                                                  </form>
 
                                             </div>

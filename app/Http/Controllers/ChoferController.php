@@ -45,7 +45,8 @@ class ChoferController extends Controller
         $validar=array(
             'nombres'=>$request->get('nombres'),
             'dni'=>$request->get('dni'),
- 
+            'celular'=>$request->get('celular'),
+      
         );
 
         if(tieneCaracterEspecialRequest($validar)){
@@ -55,6 +56,7 @@ class ChoferController extends Controller
         $chofer= new ChoferModel();
         $chofer->nombres=$request->get('nombres');
         $chofer->dni=$request->get('dni');
+        $chofer->celular=$request->get('celular');
   
         //información de la verificación de los datos ingresados 
         if($chofer->save()){
@@ -102,6 +104,7 @@ class ChoferController extends Controller
         'id'=>decrypt($id),
         'nombres'=>$request->get('nombres'),
         'dni'=>$request->get('dni'),
+        'celular'=>$request->get('celular'),
       
         );
 
@@ -112,6 +115,7 @@ class ChoferController extends Controller
         $chofer= ChoferModel::find(decrypt($id));
         $chofer->nombres=$request->get('nombres');
         $chofer->dni=$request->get('dni');
+        $chofer->celular=$request->get('celular');
   
         //información de la verificación de los datos quefueron ingresados
         if($chofer->save()){

@@ -33,9 +33,11 @@
              <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
               <img  class="" src="images/logochone.png" width="36%">
-              <h2>Inciar Sesión</h2>
+              <h2>Gobierno Autónomo Descentralizado Municipal del cantón Chone</h2>
+              
+              <br/>
               <div class="col-xs-12 form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
-                  <input id="email" type="email" class="form-control has-feedback-left" name="email" placeholder="Email" style="margin-bottom: 8px;" required autofocus>
+                  <input id="email" type="email" class="form-control has-feedback-left" name="email" placeholder="usuario" style="margin-bottom: 8px;" required autofocus>
                   <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                   @if ($errors->has('email'))
                       <span class="help-block" role="alert" style="margin-bottom: 0px;">
@@ -45,7 +47,7 @@
               </div>
 
               <div class="col-xs-12 form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
-                  <input id="password" type="password" class="form-control has-feedback-left" name="password" placeholder="Clave" style="margin-bottom: 8px;" required>
+                  <input id="password" type="password" class="form-control has-feedback-left" name="password" placeholder="contraseña" style="margin-bottom: 8px;" required>
                   <span class="glyphicon glyphicon-lock form-control-feedback left" aria-hidden="true"></span>
                   @if ($errors->has('password'))
                       <span class="help-block" role="alert" style="margin-bottom: 0px;">
@@ -56,10 +58,11 @@
               
           
 
-              <div>
-                <button type="submit" class="btn btn-default submit">Aceptar</button>
-                <a class="reset_pass" href="">Olvidó su clave?</a>
+              <div class="col-md-12 col-sm-12 col-xs-12" >
+                <button type="submit" class="btn btn-success btn-block submit">Iniciar Sesión</button>
+                
               </div>
+
               <div class="clearfix"></div>
 
               <div class="separator">
@@ -71,7 +74,7 @@
 
                 <div>
               
-                  <p>GADM Chone </p>
+                
                 </div>
               </div>
             </form>
