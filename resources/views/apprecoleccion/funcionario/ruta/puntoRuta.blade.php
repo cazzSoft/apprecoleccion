@@ -50,7 +50,10 @@
                                                     <!-- <input type="button" value="Guardar" id="" onclick="guardar()" class="btn btn-primary btn-sm"> -->
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <a class="btn btn-warning btn-block" id ="btn_puntoRutaCancelar" onclick="initMap1()"><i class="fa fa-remove"> </i>  Cancelar</a>
+                                                    <a class="btn btn-warning btn-block" id ="btn_puntoRutaCancelar" onclick="initMap1()" ><i class="fa fa-remove"> </i>  Cancelar</a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a  onclick="eliminarUltimoPunto()" accesskey="z"></a>
                                                 </div>
                                             </div>
                                         </div>

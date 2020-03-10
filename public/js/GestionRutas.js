@@ -112,3 +112,13 @@ function initMap1() {
                  map.addListener('click', addLatLng);
             });
  }
+
+
+ 
+
+ //eliminar ultimo punto
+ function eliminarUltimoPunto() {
+    
+   
+
+}
