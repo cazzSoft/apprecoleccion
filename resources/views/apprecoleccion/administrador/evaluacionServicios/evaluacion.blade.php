@@ -84,6 +84,7 @@
                             <td >{{$item->fecha_inicio}}</td>
                             <td >{{$item->fecha_fin}}</td>
                             <td >{{$item->objetivo}}</td>
+                            <td @if($item->estado=='E')class="bg-success"@else class="bg-danger" @endif >{{$item->estado}}</td>
                             <td class="paddingTR">
                                 <center>
                                 <form method="POST" class="frm_eliminar" action="{{url('evaluacion/'.encrypt($item->idevaluacion))}}"  enctype="multipart/form-data">

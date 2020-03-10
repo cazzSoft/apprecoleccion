@@ -140,6 +140,12 @@ class PuntoRutaController extends Controller
     public function destroy($id)
     {
 
-         dd($id);
+    }
+    public function obtenerRuta($ruta='')
+    {
+      $consulta =RutaModel::with('PuntoRuta')->where('descripcion','like','%'.$ruta.'%')->first();
+       return $request=['ruta'=>$consulta->PuntoRuta,
+                  'idruta'=>$consulta->idruta];
+        return response()->json($request);
     }
 }

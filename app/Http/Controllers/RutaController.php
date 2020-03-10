@@ -76,13 +76,14 @@ class RutaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function obtenerRuta()
+    public function obtenerRuta($ruta='')
     {
-        return RutaModel::all();
+        dd($ruta);
+        return RutaModel::where('descripcion','ilike','%'.$ruta.'%')->first();
     }
 
 
-    
+
     public function obtenerRutaGrafica($id)
     {
         $consul= PuntoRutaModel::where('ruta_idruta',$id)->select('latitud as lat','longitud as lng')->get();

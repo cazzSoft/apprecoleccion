@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\EvaluacionModel;
+use App\UsuarioModel;
+use App\Evaluacion_usuarioModel;
 
 class EvaluacionController extends Controller
 {
@@ -43,7 +45,7 @@ class EvaluacionController extends Controller
        // dd($validarFecha->fecha_fin);
 
         //validar fechas
-        if($request->fecha_inicio < $request->fecha_fin && $request->fecha_fin < $request->fecha_inicio &&  $request->fecha_inicio > $validarFecha->fecha_fin){
+        if($request->fecha_inicio < $request->fecha_fin ){
 
             $evaluacion= new EvaluacionModel();
             $evaluacion->nombre=$request->get('nombre');
@@ -52,21 +54,23 @@ class EvaluacionController extends Controller
             $evaluacion->objetivo=$request->get('objetivo');
             $evaluacion->estado='E';
             if($evaluacion->save()){
+                $user=UsuarioModel::all();
+                foreach ($user as $key => $idusuario) {
+                    $asignarEvaUsuario=new Evaluacion_usuarioModel();
+                    $asignarEvaUsuario->idevaluacion=$evaluacion->idevaluacion;
+                    $asignarEvaUsuario->idusuario=$idusuario->idusuario;
+                    $asignarEvaUsuario->estado='E';//estado pendiente
+                    $asignarEvaUsuario->save();
+                }
                 return back()->with(['mensajeInfoEvaluacion'=>'Registro exitoso','estado'=>'success']);
             }else{
                 return back()->with(['mensajeInfoEvaluacion'=>'No se pudo realizar el registro','estado'=>'danger']);
             }
         }else{
-            return back()->with(['mensajeInfoEvaluacion'=>'Error no puedes ingresar una fechas inferiores a las Ingresadas','estado'=>'warning']);
+            return back()->with(['mensajeInfoEvaluacion'=>'Error la fecha fin es menor a la de inicio','estado'=>'warning']);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
@@ -142,6 +146,11 @@ class EvaluacionController extends Controller
               //información para la verificación de la eliminación de datos
             try {
                 $evaluacion->delete();
+                $user=UsuarioModel::all();
+                foreach ($user as $key => $idusuario) {
+                    $asignarEvaUsuario= Evaluacion_usuarioModel::where('idevaluacion',$evaluacion->idevaluacion)->first();
+                    $asignarEvaUsuario->delete();
+                }
                 return back()->with(['mensajeInfoEvaluacion'=>'Registro eliminado con éxito','estado'=>'success']);
             } catch (\Throwable $th) {
                 return back()->with(['mensajeInfoEvaluacion'=>'No se pudo realizar eliminar el registro','estado'=>'danger']);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\EvaluacionModel;
 use App\PreguntaEvaluacionModel;
+use App\Evaluacion_usuarioModel;
 use App\PreguntaModel;
 use App\RespuestaModel;
 use DB;
@@ -14,11 +15,7 @@ use Illuminate\Support\Carbon;
 
 class EvaluacionServiciosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $listaPreguntas = PreguntaModel::All();
@@ -28,49 +25,32 @@ class EvaluacionServiciosController extends Controller
         'listaPreguntaEvaluacion'=>$listaPreguntaEvaluacion]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function obtenerEvaluacion($id)
     {
-        $verificar=null;
-        $verificar=RespuestaModel::where('idusuario',$id)->get();
-        //return $verificar;
-        // if ($verificar==false) {
-        //     return $verificar;
-        // }else{
-        //     return 2;
-        // }
         $fecha =date("Y-m-d");
-        $primerEncuest=EvaluacionModel::where('estado','E')->first();
-       // dd($primerEncuest->idevaluacion);
-        $consulta=DB::table('pregunta_evaluacion')
-                            ->join('evaluacion','pregunta_evaluacion.idevaluacion','=','evaluacion.idevaluacion')
-                            ->join('pregunta','pregunta_evaluacion.idpregunta','=','pregunta.idpregunta')
-                            ->where('evaluacion.estado','=','E')
-                            ->where('pregunta_evaluacion.idevaluacion','=',$primerEncuest->idevaluacion)
-                            ->select('pregunta_evaluacion.idpregunta_evaluacion',
-                                    'evaluacion.idevaluacion',
-                                    'evaluacion.fecha_inicio',
-                                    'evaluacion.fecha_fin',
-                                    'evaluacion.nombre',
-                                    'evaluacion.objetivo',
-                                    'pregunta.descripcion',
-                                    'pregunta.idpregunta',
-                                    )
-                            ->get();
-        //$consulta=$consulta->groupBy('nombre');
+         // $verificarEva=Evaluacion_usuarioModel::with('evaluacion')->whereHas('evaluacion',function ($query) use ($fecha) {
+         //    $query->where('fecha_inicio', '>=', $fecha);
+         //   })->where('idusuario',$id)->get();
+          $consulta=DB::table('evaluacion_usuario')
+                                    ->leftjoin('evaluacion','evaluacion_usuario.idevaluacion','=','evaluacion.idevaluacion')
+                                    ->where('evaluacion.fecha_inicio','<=',$fecha)
+                                    ->where('evaluacion.fecha_fin','>=',$fecha)
+                                    ->where('evaluacion_usuario.idusuario','=',$id)
+                                    ->where('evaluacion.estado','=','E')
+                                    ->where('evaluacion_usuario.estado','=','E')
+                                    ->get();
         return  response()->json($consulta);
     }
+    public function obtenerEvaluacionPregunta($id)
+    {
+         $preguntas=PreguntaEvaluacionModel::with('pregunta')->where('idevaluacion',$id)->get();
+         $array=[];
+         foreach ($preguntas as $key => $value) {
+              $array[$key]=['descripcion'=>$value->pregunta->descripcion,'idE_P'=>$value->idpregunta_evaluacion];
+         }
+         return  response()->json($array);
+    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
