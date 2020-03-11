@@ -14,7 +14,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-8">
-                             Para realizar el registro de la ruta en el mapa, primero deberá seleccionar la ruta y posteriormente graficarla en el mapa.
+                             Para realizar el registro de la ruta en el mapa, primero deberá seleccionar la ruta y posteriormente graficarla.
                         </div>
                     </div>
                     <div class="x_content">
