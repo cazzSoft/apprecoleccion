@@ -59,7 +59,7 @@
                                 <div class="form-group col-md-12">
                                     <a onclick="ver({{$n->evaluacion->idevaluacion}})" id="button" class="btn btn-sm btn-success btn-block"  >VISUALIZAR    <i class="fa fa-eye"></i></a>
                                     <!-- <a href="ReporteEvaluacionServiciosIndividual/{{$n->evaluacion->idevaluacion}}" class="btn btn-sm btn-success btn-block"  target="_blank">IMPRIMIR REPORTE    <i class="fa fa-print"></i></a> -->
-                                    
+                                  
                                 </div>   
                             </td>
                         </tr>
@@ -86,7 +86,7 @@
     </div>
 <!-- visualizacion de los resultados con sus graficas -->
     <div class="container" id="testing">    
-    <div class="panel panel-default">
+        <div class="panel panel-default">
             <div class="panel-heading">
                 <h5 class="panel-title" align="center">RESULTADOS OBTENIDOS </h5>
             </div>
@@ -94,12 +94,11 @@
                 <div id="contenidoHtml" class="row" >
                 </div>
             </div>
-    </div>
+        </div>
     </div>
 </div>
 @endif
 
-<!-- para esconder y ocultar la visualizacion de los resultados -->
 
 <!-- el desarrollo de las graficas con google charts -->
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -115,11 +114,15 @@ $(document).ready(function(){
 
 </script>
 <script type="text/javascript">
+
 //metodo para las puntaciones obtenidas en las preguntas de las evalauciones para mostrar en la grafica
 function ver(id){
-   
-//mostrar el div que esta oculto
+    //mostrar el div que esta oculto
       document.getElementById('GraficasResultados').style.display="block";
+      //dezplazar hacia la parte de abajo de la página donde se muestran los resultados
+      $('html,body').animate({
+        scrollTop: $("#GraficasResultados").offset().top
+    }, 2000);
 //obtener puntaciones para las graficas
 $("#contenidoHtml").html("");
  var url="{{url('ObtenerDatos')}}/"+id;
