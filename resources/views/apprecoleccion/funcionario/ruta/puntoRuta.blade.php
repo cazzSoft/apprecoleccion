@@ -14,7 +14,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-8">
-                             Para realizar el registro de la ruta en el mapa, primero deberá seleccionar la ruta y posteriormente graficarla en el mapa.
+                             Para realizar el registro de la ruta en el mapa, primero deberá seleccionar la ruta y posteriormente graficarla.
                         </div>
                     </div>
                     <div class="x_content">
@@ -50,7 +50,10 @@
                                                     <!-- <input type="button" value="Guardar" id="" onclick="guardar()" class="btn btn-primary btn-sm"> -->
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <a class="btn btn-warning btn-block" id ="btn_puntoRutaCancelar" onclick="initMap1()"><i class="fa fa-remove"> </i>  Cancelar</a>
+                                                    <a class="btn btn-warning btn-block" id ="btn_puntoRutaCancelar" onclick="initMap1()" ><i class="fa fa-remove"> </i>  Cancelar</a>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <a  onclick="eliminarUltimoPunto()" accesskey="z"></a>
                                                 </div>
                                             </div>
                                         </div>

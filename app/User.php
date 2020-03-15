@@ -33,7 +33,12 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
+
+    public function TipoUsuario()
+    {
+        return $this->belongsTo('App\TipoUsuarioModel', 'tipo_usuario_idtipo_usuario', 'idtipo_usuario');
+    }
 }

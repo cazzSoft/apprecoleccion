@@ -22,6 +22,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+
     public function index()
     {
         //Finalizavion de las evaluacion por fecha fin de la evaluacion
