@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\PuntoReferenciaModel;
 use App\PuntoRutaModel;
 use App\RutaModel;
 use DB;
@@ -147,5 +148,17 @@ class PuntoRutaController extends Controller
        return $request=['ruta'=>$consulta->PuntoRuta,
                   'idruta'=>$consulta->idruta];
         return response()->json($request);
+    }
+     public function obtenerRutaId($id)
+    {
+         $consulta =PuntoReferenciaModel::with('puntoReferenciaRuta')->where('usuario_idusuario',$id)->get();
+         dd($consulta);
+         $request=[];
+         // array_push($request,['idnotificacion'=>$value->idnotificacion,'ruta'=>$value->puntoReferenciaRuta[0]['ruta'][0]['nombre_ruta'],'descripcion'=>$value->puntoReferenciaRuta[0]['ruta'][0]['descripcion'],'puntoReferencia'=>$value->puntoReferenciaRuta[0]['puntoReferencia'][0]['descripcion'],'distancia'=>$value->distancia_metros,'estado'=>$value->estado]);
+        foreach ($consulta['puntoReferenciaRuta'] as $key => $value) {
+          return $value;
+          // array_push($request,['idruta'=>$value->ruta_idruta,'puntos'=>$value->ruta2->punto_ruta]);
+        }
+        return $request;
     }
 }

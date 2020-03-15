@@ -78,9 +78,10 @@ class RutaController extends Controller
      */
     public function obtenerRuta($ruta='')
     {
-        dd($ruta);
+        //dd($ruta);
         return RutaModel::where('descripcion','ilike','%'.$ruta.'%')->first();
     }
+
 
 
 

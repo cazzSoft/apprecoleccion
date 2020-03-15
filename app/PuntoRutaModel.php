@@ -13,4 +13,5 @@ class PuntoRutaModel extends Model
     public function Ruta(){
         return $this->belongsTo('App\RutaModel','idruta','ruta_idruta');
     }
+
 }

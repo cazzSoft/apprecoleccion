@@ -53,20 +53,20 @@ class ServiciosApiGpsController extends Controller
     {
         $consul=DB::table('punto_de_referencia')
                             ->join('punto_de_referencia_ruta','punto_de_referencia.idpunto_de_referencia','=','punto_de_referencia_ruta.idpunto_de_referencia')
-                             ->join('ruta','punto_de_referencia_ruta.ruta_idruta','=','ruta.idruta')
-                             ->join('actividad_diaria','ruta.idruta','=','actividad_diaria.ruta_idruta')
-                             ->join('recolector','actividad_diaria.recolector_idrecolector','=','recolector.idrecolector')
+                            ->join('ruta','punto_de_referencia_ruta.ruta_idruta','=','ruta.idruta')
+                            ->join('actividad_diaria','ruta.idruta','=','actividad_diaria.ruta_idruta')
+                            ->join('recolector','actividad_diaria.recolector_idrecolector','=','recolector.idrecolector')
                             ->where('usuario_idusuario','=',$id)
-                            ->select('recolector.id')
+                            ->select('recolector.id','recolector.numero')
                             ->get();
         if ($consul!='[]') {
             foreach ($consul as $key => $value) {
-               $prefer[$key]=$this->posts->LastReport($value->id);
+               $prefer[$key]=$this->posts->LastReport($value->id,$value->numero);
                 if($prefer){
-                  $prefer[$key]=$this->posts->LastReport($value->id);
+                  $prefer[$key]=$this->posts->LastReport($value->id,$value->numero);
                 }
             }
-            return $prefer;
+            return response()->json($prefer);
         }else{return 'false';}
     }
 

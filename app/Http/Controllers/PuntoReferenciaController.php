@@ -40,7 +40,7 @@ class PuntoReferenciaController extends Controller
           $registrar->longuitud=$request->lng;
           $registrar->latitud=$request->lat;
           $registrar->descripcion=$request->des;
-          $registrar->estado='true';
+          $registrar->estado='1';
           $registrar->usuario_idusuario=$request->id;
           if ($registrar->save()) {
             $updateUser=UsuarioModel::find($registrar->usuario_idusuario);

@@ -21,26 +21,25 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   Route::get('/loqinAutenticate/{dni?}/{pass?}', 'ServiciosApiGpsController@autenticateLogin');
   // Route::resource('crear', 'BandejaOpinionesController');
 
-  Route::get('/prue/{lat?}/{lng?}', 'ServiciosApiGpsController@calle');
+  Route::get('/prue/{lat?}/{lng?}', 'ServiciosApiGpsController@calle');//para prueba
 
-  Route::resource('postOpinion','BandejaOpinionesController');
+  Route::resource('postOpinion','BandejaOpinionesController');//insertar opinion
 
-  Route::get('/Getevaluacion/{id?}', 'EvaluacionServiciosController@obtenerEvaluacion');
-  Route::get('/GetevaluacionPregunta/{id}', 'EvaluacionServiciosController@obtenerEvaluacionPregunta');
-  Route::resource('postRespuesta','RespuestaController');
+  Route::get('/Getevaluacion/{id?}', 'EvaluacionServiciosController@obtenerEvaluacion');//traer evaluaciones
+  Route::get('/GetevaluacionPregunta/{id}', 'EvaluacionServiciosController@obtenerEvaluacionPregunta');//traer pregunta eva
+  Route::resource('postRespuesta','RespuestaController');//guardar respuestas de la evaluacion
 
-  Route::get('/carrosUser/{id}', 'ServiciosApiGpsController@rutasDeUsuario');
+  Route::get('/carrosUser/{id}', 'ServiciosApiGpsController@rutasDeUsuario');//coordenadas de los vehiculos
 
-  Route::get('/puntoInteres/{id}', 'PuntoReferenciaController@getPundoInteres');
+  Route::get('/puntoInteres/{id}', 'PuntoReferenciaController@getPundoInteres');//obtiene los puntos
   Route::get('/puntosRutas', 'PuntoRutaController@obtenerPuntosRutas');//esto era para prueba
   //funcion para obtener ruta
   Route::get('/obtenerRuta/{ruta?}', 'PuntoRutaController@obtenerRuta');
-
+  Route::get('/obtenerRutId/{id}', 'PuntoRutaController@obtenerRutaId');
   //configuracion de notificaciones
   Route::resource('/notificacion', 'NotificacionController');
   Route::get('/obtenerNotificacion/{id}', 'NotificacionController@obtenerNoficicacion');
-  Route::post('/postNotificacion', 'NotificacionController@actualizarNotificacion');
-  Route::post('/activarNotificacion', 'NotificacionController@activarNotificacion');
+  Route::post('/postNotificacionDistancia', 'NotificacionController@actualizarNotificacion');
   //crear punto referencia ruta
   Route::resource('/postPuntoReferenciaRuta','PuntoReferenciaRutaController');
 //insertar punto de referencia

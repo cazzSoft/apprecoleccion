@@ -34,12 +34,13 @@ class NotificacionController extends Controller
        foreach ($obtener as $key => $value) {
             array_push($request,['idnotificacion'=>$value->idnotificacion,'ruta'=>$value->puntoReferenciaRuta[0]['ruta'][0]['nombre_ruta'],'descripcion'=>$value->puntoReferenciaRuta[0]['ruta'][0]['descripcion'],'puntoReferencia'=>$value->puntoReferenciaRuta[0]['puntoReferencia'][0]['descripcion'],'distancia'=>$value->distancia_metros,'estado'=>$value->estado]);
        }
-       return response()->json($request);
+       return $request;
     }
     public function actualizarNotificacion(Request $request)
     {
-        $actualizar=NotificacionModel::find($request->id);
-        $actualizar->distancia_metros=$request->distancia_metros;
+
+        $actualizar=NotificacionModel::find($request->idnotificacion);
+        $actualizar->distancia_metros=$request->distancia;
 
         if ($actualizar->save()) {
             return 'success';
@@ -47,16 +48,7 @@ class NotificacionController extends Controller
             return 'false';
         }
     }
-    public function activarNotificacion(Request $request)
-    {
-        $actualizar=NotificacionModel::find($request->id);
-        $actualizar->estado=$request->estado;
-        if ($actualizar->save()) {
-            return 'success';
-        }else{
-            return 'false';
-        }
-    }
+
     public function store(Request $request)
     {
         $notificar=new NotificacionModel();
@@ -103,7 +95,13 @@ class NotificacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $actualizar=NotificacionModel::find($request->idnotificacion);
+        $actualizar->estado=$request->estado;
+        if ($actualizar->save()) {
+            return $actualizar->estado;
+        }else{
+            return 'error';
+        }
     }
 
     /**

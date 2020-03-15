@@ -109,7 +109,7 @@ class Posts{
 
 	}
 
-	public function LastReport($id){
+	public function LastReport($id,$ve=''){
 
     	try {
     	    $table=DB::table('service_api')->get();
@@ -125,7 +125,8 @@ class Posts{
 			 $arr['latitude'].','.$arr['longitude'];
              $array=[
                 'lat'=>$arr['latitude'],
-                'lng'=>$arr['longitude']
+                'lng'=>$arr['longitude'],
+                'des'=>$ve
              ];
 			 return $array;
     	} catch (\Throwable $th) {

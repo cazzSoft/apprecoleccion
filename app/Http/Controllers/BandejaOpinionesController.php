@@ -17,7 +17,7 @@ class BandejaOpinionesController extends Controller
     public function index()
     {
      //consultas de datos
-     
+
 
      $listaOpiniones = BandejaOpinionesModel::with('usuario')->get();
 
@@ -30,7 +30,7 @@ class BandejaOpinionesController extends Controller
     {
         $usuario = UsuarioModel::find($id);
        return response()->json($usuario);
- 
+
     }
 
     /**
@@ -58,16 +58,19 @@ class BandejaOpinionesController extends Controller
             'detalle'=>$request->detalle,
         );
          if(tieneCaracterEspecialRequest($validar)){
-            return "false";
+            return "error";
         };
         $opinion = new BandejaOpinionesModel();
         $opinion->detalle=$request->detalle;
         $opinion->fecha=$fecha;
         $opinion->estado='E';
         $opinion->usuario_idusuario=$request->id;
-         //return $opinion;
-     $opinion->save();
-        return "true";
+            if( $opinion->save()){
+                return "success";
+            }else{
+                return "danger";
+            }
+
     }
 
     /**
