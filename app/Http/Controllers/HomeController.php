@@ -29,12 +29,15 @@ class HomeController extends Controller
     {
         //Finalizavion de las evaluacion por fecha fin de la evaluacion
          $fecha =date("Y-m-d");
-         $listaEvaluacion = EvaluacionModel::where('fecha_fin','<=',$fecha)->where('estado','E')->get();
-        foreach ($listaEvaluacion as $key => $value) {
+        return $listaEvaluacion = EvaluacionModel::where('fecha_fin','<=',$fecha)->where('estado','E')->get();
+        if (isset($listaEvaluacion)) {
+             foreach ($listaEvaluacion as $key => $value) {
             $actualizarEstadoEvaluacion =  EvaluacionModel::find($value->idevaluacion);
             $actualizarEstadoEvaluacion->estado='F';
             $actualizarEstadoEvaluacion->save();
         }
+        }
+
         //asignamos las evaluaciones a los usuarios en fecha de inicio de la evaluacion
        // $consultaEva=EvaluacionModel::where('fecha_inicio','=',$fecha)->where('estado','E')->get();
 

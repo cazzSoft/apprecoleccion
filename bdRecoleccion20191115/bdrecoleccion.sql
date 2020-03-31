@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `bdrecoleccecion2` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `bdrecoleccecion2`;
+CREATE DATABASE  IF NOT EXISTS `bdrecoleccion` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `bdrecoleccion`;
 -- MySQL dump 10.13  Distrib 5.6.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bdrecoleccecion2
+-- Host: 127.0.0.1    Database: bdrecoleccion
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.1.38-MariaDB
 

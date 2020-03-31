@@ -12,6 +12,6 @@ class PuntoReferenciaModel extends Model
     public $timestamps = false;
 
     public function puntoReferenciaRuta(){
-        return $this->hasMany('App\PuntoReferenciaRutaModel','idpunto_de_referencia','idpunto_de_referencia')->with('ruta2');
+        return $this->hasMany('App\PuntoReferenciaRutaModel','idpunto_de_referencia','idpunto_de_referencia');
     }
 }

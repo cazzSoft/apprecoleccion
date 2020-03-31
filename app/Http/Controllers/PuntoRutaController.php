@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\PuntoReferenciaModel;
+use App\PuntoReferenciaRutaModel;
 use App\PuntoRutaModel;
 use App\RutaModel;
 use DB;
@@ -69,47 +70,6 @@ class PuntoRutaController extends Controller
             return $data;
         }
 
-        // $con1=0;
-        // $con2=0;
-        // foreach ($request->puntos as $key => $value) {
-        //     if ($key%2==0) {
-        //         $arrayLat[$con1]=$value;
-        //         $con1+=1;
-        //     }
-        // }
-        // foreach ($request->puntos as $key => $value) {
-        //     if ($key%2!=0) {
-        //         $arrayLng[$con2]=$value;
-        //          $con2+=1;
-        //     }
-        // }
-        // return $arrayLat;
-        //$cor=['lat'=>$arrayLat,'lng'=>$arrayLng,];
-        // foreach ($arrayLat as $key => $value) {
-        //     $punto_ruta  = new PuntoRutaModel();
-        //     $punto_ruta->ruta_idruta=$request->idruta;
-        //     $punto_ruta->latitud=$value;
-        //     $punto_ruta->longitud=$arrayLng[$key];
-        //     $punto_ruta->save();
-        // }
-        // return $punto_ruta;
-
-        //
-
-       // if($punto_ruta->save()){
-       //     $data=[
-       //      'estado'=>'success',
-       //      'msm'=>'Registro exitoso',
-       //     ];
-       //     return $data;
-       // }else{
-       //  $data=[
-       //      'estado'=>'danger',
-       //      'msm'=>'No se pudo realizar el registro',
-       //     ];
-       //      return $data;
-       // }
-       // return $request;
     }
 
 
@@ -151,14 +111,10 @@ class PuntoRutaController extends Controller
     }
      public function obtenerRutaId($id)
     {
-         $consulta =PuntoReferenciaModel::with('puntoReferenciaRuta')->where('usuario_idusuario',$id)->get();
-         dd($consulta);
-         $request=[];
-         // array_push($request,['idnotificacion'=>$value->idnotificacion,'ruta'=>$value->puntoReferenciaRuta[0]['ruta'][0]['nombre_ruta'],'descripcion'=>$value->puntoReferenciaRuta[0]['ruta'][0]['descripcion'],'puntoReferencia'=>$value->puntoReferenciaRuta[0]['puntoReferencia'][0]['descripcion'],'distancia'=>$value->distancia_metros,'estado'=>$value->estado]);
-        foreach ($consulta['puntoReferenciaRuta'] as $key => $value) {
-          return $value;
-          // array_push($request,['idruta'=>$value->ruta_idruta,'puntos'=>$value->ruta2->punto_ruta]);
-        }
-        return $request;
+         $consulta =PuntoReferenciaRutaModel::with('ruta')->where('idpunto_de_referencia',$id)->get();
+         foreach ($consulta->ruta as $key => $value) {
+           return $value;
+         }
+      return $consulta;
     }
 }
