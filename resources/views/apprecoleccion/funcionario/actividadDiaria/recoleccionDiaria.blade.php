@@ -2,10 +2,10 @@
     {{csrf_field() }}
     <input id="method_ActDiaria" type="hidden" name="_method" value="POST">
 
- 
+
     <div class="x_title">
-    <h2><b><center>SUB-DIRECCIÓN DE GESTIÓN DE DESECHOS</center></b></h2> 
-     
+    <h2><b><center>SUB-DIRECCIÓN DE GESTIÓN DE DESECHOS</center></b></h2>
+
 
       <div class="clearfix"></div>
     </div>
@@ -23,27 +23,27 @@
         </div>
     @endif
 <!-- FORMULARIO DE REGISTRO -->
- 
+
 
         <br>
         <center><h4><b>ACTIVIDAD DIARIA DE LOS RECOLECTORES DE DESECHOS</b></h4></center>
         <br>
         <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Escoga la Ruta:<span class="required">*</span>
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Escoja la Ruta:<span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="chosen-select-content">
                     <select   name="ruta" id="Seleccionar_ruta"  required="required" class="chosen-select form-control" tabindex="5">
-                        <option disabled selected>Seleccione una Ruta...</option>      
+                        <option disabled selected>Seleccione una Ruta...</option>
                             @if(isset($listaRutas))
                                 @foreach($listaRutas as $ruta)
-                                <optgroup label="{{$ruta->nombre_ruta}}"> 
+                                <optgroup label="{{$ruta->nombre_ruta}}">
                                     <option class="Seleccionar_ruta" value="{{$ruta->idruta}}">{{$ruta->descripcion}}</option>
                                 </optgroup>
                                 @endforeach
-                            @endif  
+                            @endif
                     </select>
-                </div> 
+                </div>
             </div>
         </div>
 
@@ -86,7 +86,7 @@
                   <input type="checkbox" id="domingo"  name="dia[]" value="Domingo">Domingo
                 </label>
               </div>
-             
+
             </div>
 
         </div>
@@ -95,14 +95,14 @@
                 <label for="name" class="control-label col-md-3 col-sm-3 col-xs-12">Horario:*</label>
                 <label for="name" class="control-label col-md-1 col-sm-1 col-xs-6">Inicio:<span class="required"></span></label>
                 <input  type="time" class="col-md-1 " id="hora_inicio" name="hora_inicio"  required autofocus>
-                <label for="name" class="control-label col-md-1 col-sm-1 col-xs-6">Fin:<span class="required"></span></label>   
+                <label for="name" class="control-label col-md-1 col-sm-1 col-xs-6">Fin:<span class="required"></span></label>
                 <input  type="time" class="col-md-1" id="hora_fin" name="hora_fin"  required autofocus>
             </div>
-<!-- 
+<!--
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                       
-                <label for="name" class="control-label col-md-3 col-sm-3 col-xs-12">Hora Fin:<span class="required">*</span></label>   
-                  
+
+                <label for="name" class="control-label col-md-3 col-sm-3 col-xs-12">Hora Fin:<span class="required">*</span></label>
+
 
             </div>
  -->
@@ -113,16 +113,16 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="chosen-select-content">
                     <select   name="vehiculo" id="Seleccionar_recolector"  required="required" class="chosen-select form-control" tabindex="5">
-                        <option disabled selected>Seleccione un Recolector...</option>      
+                        <option disabled selected>Seleccione un Recolector...</option>
                             @if(isset($listaRecolectores))
                                 @foreach($listaRecolectores as $recolector)
-                          
+
                                     <option class="Seleccionar_recolector" value="{{$recolector->idrecolector}}">{{$recolector->numero}}</option>
-                            
+
                                 @endforeach
-                            @endif  
+                            @endif
                     </select>
-                </div> 
+                </div>
             </div>
         </div>
         <div class="form-group">
@@ -131,14 +131,14 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
                 <div class="chosen-select-content">
                     <select   name="chofer" id="Seleccionar_chofer"  required="required" class="chosen-select form-control" tabindex="5">
-                        <option disabled selected>Seleccione un Chofer...</option>      
+                        <option disabled selected>Seleccione un Chofer...</option>
                             @if(isset($listaChoferes))
                                 @foreach($listaChoferes as $chofer)
                                     <option  class="Seleccionar_chofer" value="{{$chofer->idpersona}}">{{$chofer->nombres}}</option>
                                 @endforeach
-                            @endif  
+                            @endif
                     </select>
-                </div> 
+                </div>
             </div>
         </div>
 

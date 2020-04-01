@@ -112,9 +112,15 @@ class PuntoRutaController extends Controller
      public function obtenerRutaId($id)
     {
          $consulta =PuntoReferenciaRutaModel::with('ruta')->where('idpunto_de_referencia',$id)->get();
-         foreach ($consulta->ruta as $key => $value) {
-           return $value;
+         $rutas=[];
+         $con=0;
+         foreach ($consulta as $key => $value) {
+           foreach ($value->ruta as $key1 => $value2) {
+             $rutas[$key]=$value2['PuntoRuta'];
+            }
          }
-      return $consulta;
+
+
+      return response()->json($rutas);
     }
 }

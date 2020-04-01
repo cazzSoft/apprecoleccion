@@ -57,13 +57,13 @@ class ServiciosApiGpsController extends Controller
                             ->join('actividad_diaria','ruta.idruta','=','actividad_diaria.ruta_idruta')
                             ->join('recolector','actividad_diaria.recolector_idrecolector','=','recolector.idrecolector')
                             ->where('usuario_idusuario','=',$id)
-                            ->select('recolector.id','recolector.numero')
+                            ->select('recolector.id','recolector.numero','recolector.idrecolector')
                             ->get();
         if ($consul!='[]') {
             foreach ($consul as $key => $value) {
-               $prefer[$key]=$this->posts->LastReport($value->id,$value->numero);
+               $prefer[$key]=$this->posts->LastReport($value->id,$value->numero,$value->idrecolector);
                 if($prefer){
-                  $prefer[$key]=$this->posts->LastReport($value->id,$value->numero);
+                  $prefer[$key]=$this->posts->LastReport($value->id,$value->numero,$value->idrecolector);
                 }
             }
             return response()->json($prefer);

@@ -17,7 +17,7 @@ class ActividadDiariaController extends Controller
      */
     public function index()
     {
-       
+
     //consultas de datos
         $listaActividadDiaria = ActividadDiariaModel::with('ruta')->with('recolector')->with('chofer')->get();
         $listaRutas = RutaModel::All();
@@ -28,10 +28,10 @@ class ActividadDiariaController extends Controller
             'listaRutas'=>$listaRutas,
             'listaRecolectores'=>$listaRecolectores,
             'listaChoferes'=>$listaChoferes
-        ]);    
+        ]);
          //return view('apprecoleccion.funcionario.actividadDiaria.actividadDiariaGestion');
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -70,7 +70,7 @@ class ActividadDiariaController extends Controller
         foreach ($request->dia as $d){
             //la variable $s es solo un separador para los dias de la semana que se van almacenando
             $s = ', ';
-            //y entonces pregunto en el if si la cadena de datos esta vacia, si esta vacia guardo una vez el dia sin separador (porque hago esto? porque la primera vez que entre al foreach estará vacio 
+            //y entonces pregunto en el if si la cadena de datos esta vacia, si esta vacia guardo una vez el dia sin separador (porque hago esto? porque la primera vez que entre al foreach estará vacio
             //y ingresa el primer valor que tenga, por lo tanto si  se escoge un solo día, se guarda sin la coma, que es el separador)
             //entonces sucede que la segunda vez que entre al foreach ya no estará vacia la cadena y meto el o los siguientes días con el separador (la coma) y listo.
             if($dias == ''){
@@ -79,26 +79,26 @@ class ActividadDiariaController extends Controller
                 $dias .= $s.$d;
             }
         }
-        $ActDiaria->dia=$dias; 
+        $ActDiaria->dia=$dias;
     }
-    
+
     $ActDiaria->hora_inicio=$request->get('hora_inicio');
     $ActDiaria->hora_fin=$request->get('hora_fin');
-    
+
     if($request->vehiculo==''){
         return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un recolector','estado'=>'danger']);
     }else{
 
         $ActDiaria->recolector_idrecolector=$request->get('vehiculo');
     }
-   
+
     if($request->chofer==''){
         return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un chofer','estado'=>'danger']);
     }else{
     $ActDiaria->persona_idpersona=$request->get('chofer');
     }
-   
-       
+
+
         //información de la verificación de ingreso de datos
         if($ActDiaria->save()){
             return back()->with(['mensajeInfoAcDiaria'=>'Registro exitoso','estado'=>'success']);
@@ -115,7 +115,12 @@ class ActividadDiariaController extends Controller
      */
     public function show($id)
     {
-        
+
+    }
+    public function getHorarioRecolector($id)
+    {
+     return $consulta=ActividadDiariaModel::with('ruta')->where('recolector_idrecolector',$id)->get();
+      return response()->json($consulta);
     }
 
     /**
@@ -162,7 +167,7 @@ class ActividadDiariaController extends Controller
             foreach ($request->dia as $d){
                 //la variable $s es solo un separador para los dias de la semana que se van almacenando
                 $s = ', ';
-                //y entonces pregunto en el if si la cadena de datos esta vacia, si esta vacia guardo una vez el dia sin separador (porque hago esto? porque la primera vez que entre al foreach estará vacio 
+                //y entonces pregunto en el if si la cadena de datos esta vacia, si esta vacia guardo una vez el dia sin separador (porque hago esto? porque la primera vez que entre al foreach estará vacio
                 //y ingresa el primer valor que tenga, por lo tanto si  se escoge un solo día, se guarda sin la coma, que es el separador)
                 //entonces sucede que la segunda vez que entre al foreach ya no estará vacia la cadena y meto el o los siguientes días con el separador (la coma) y listo.
                 if($dias == ''){
@@ -171,26 +176,26 @@ class ActividadDiariaController extends Controller
                     $dias .= $s.$d;
                 }
             }
-        $ActDiaria->dia=$dias; 
+        $ActDiaria->dia=$dias;
         }
 
         $ActDiaria->hora_inicio=$request->get('hora_inicio');
         $ActDiaria->hora_fin=$request->get('hora_fin');
-        
+
         if($request->vehiculo==''){
             return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un recolector','estado'=>'danger']);
         }else{
 
             $ActDiaria->recolector_idrecolector =$request->get('vehiculo');
         }
-       
+
         if($request->chofer==''){
             return back()->with(['mensajeInfoAcDiaria'=>'No ha seleccionado un chofer','estado'=>'danger']);
         }else{
         $ActDiaria->persona_idpersona=$request->get('chofer');
         }
-       
-  
+
+
         //información de la verificación de ingreso de datos
         if($ActDiaria->save()){
             return back()->with(['mensajeInfoAcDiaria'=>'Registro exitoso','estado'=>'success']);
@@ -212,7 +217,7 @@ class ActividadDiariaController extends Controller
         $validar=array(
             'id'=>decrypt($id)
         );
-    
+
         if(tieneCaracterEspecialRequest($validar)){
             return back()->with(['mensajeInfoAcDiaria'=>'No puede ingresar caracteres especiales','estado'=>'danger']);
         };
@@ -224,7 +229,7 @@ class ActividadDiariaController extends Controller
             return back()->with(['mensajeInfoAcDiaria'=>'Registro eliminado con éxito','estado'=>'success']);
         } catch (\Throwable $th) {
             return back()->with(['mensajeInfoAcDiaria'=>'No se pudo eliminar el registro','estado'=>'danger']);
-            
+
         }
     }
 }

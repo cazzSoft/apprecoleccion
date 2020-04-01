@@ -33,8 +33,9 @@ class EvaluacionServiciosController extends Controller
          //   })->where('idusuario',$id)->get();
           $consulta=DB::table('evaluacion_usuario')
                                     ->leftjoin('evaluacion','evaluacion_usuario.idevaluacion','=','evaluacion.idevaluacion')
+                                    ->where('evaluacion_usuario.idusuario','=',$id)
                                     ->where('evaluacion.fecha_inicio','<=',$fecha)
-                                    ->where('evaluacion.fecha_fin','>=',$fecha)
+                                     ->where('evaluacion.fecha_fin','>=',$fecha)
                                     ->where('evaluacion_usuario.idusuario','=',$id)
                                     ->where('evaluacion.estado','=','E')
                                     ->where('evaluacion_usuario.estado','=','E')

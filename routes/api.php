@@ -31,6 +31,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
   Route::get('/carrosUser/{id}', 'ServiciosApiGpsController@rutasDeUsuario');//coordenadas de los vehiculos
 
+
   Route::get('/puntoInteres/{id}', 'PuntoReferenciaController@getPundoInteres');//obtiene los puntos
   Route::get('/puntosRutas', 'PuntoRutaController@obtenerPuntosRutas');//esto era para prueba
   //funcion para obtener ruta
@@ -44,3 +45,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   Route::resource('/postPuntoReferenciaRuta','PuntoReferenciaRutaController');
 //insertar punto de referencia
   Route::resource('postPuntoReferencia','PuntoReferenciaController');
+  //obtenerHorarios
+  Route::get('/obtenrHorario/{id}', 'ActividadDiariaController@getHorarioRecolector');

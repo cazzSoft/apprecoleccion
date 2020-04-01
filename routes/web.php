@@ -12,15 +12,15 @@
 */
 
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->middleware('auth');
 
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/inicio', function () {
-    return view('apprecoleccion.home');
-});
+// Route::get('/inicio', function () {
+//     return view('apprecoleccion.home');
+// });
 
 
 Auth::routes();
@@ -28,45 +28,45 @@ Auth::routes();
 //=============== RUTAS DEL FUNCIONARIO ================
 //Rutas de la Gestion Ruta
 //Route::get('/gestionRutas','GestionRutasController@index');
- Route::resource('/ruta', 'RutaController');
- Route::get('/obtenerRuta', 'RutaController@obtenerRuta');
- Route::get('/obtenerPunto/{id}', 'RutaController@obtenerRutaGrafica');
- Route::resource('/puntoRuta', 'PuntoRutaController');
+ Route::resource('/ruta', 'RutaController')->middleware('auth');
+ Route::get('/obtenerRuta', 'RutaController@obtenerRuta')->middleware('auth');
+ Route::get('/obtenerPunto/{id}', 'RutaController@obtenerRutaGrafica')->middleware('auth');
+ Route::resource('/puntoRuta', 'PuntoRutaController')->middleware('auth');
  //Rutas de la Gestión Vehiculo
- Route::resource('/vehiculo', 'RecolectorController');
+ Route::resource('/vehiculo', 'RecolectorController')->middleware('auth');
 
 //Rutas de puntos de rutas del mapa
 
 
  // Rutas de la Gestión del Chofer
- Route::resource('/chofer', 'ChoferController');
+ Route::resource('/chofer', 'ChoferController')->middleware('auth');
 
  // Rutas del registro de la ACTIVIDAD DIARIA
- Route::resource('/actividad_diaria', 'ActividadDiariaController');
+ Route::resource('/actividad_diaria', 'ActividadDiariaController')->middleware('auth');
 
 
 //===============  RUTAS DEL ADMINISTRADOR ================
 //bandeja de opiniones
- Route::resource('/bandejaOpiniones', 'BandejaOpinionesController');
- Route::get("datos_usuario/{id}","BandejaOpinionesController@datos_usuario");
+ Route::resource('/bandejaOpiniones', 'BandejaOpinionesController')->middleware('auth');
+ Route::get("datos_usuario/{id}","BandejaOpinionesController@datos_usuario")->middleware('auth');
 
 
 //Rutas de la Evaluacion de Servicios
- Route::get('/EvaluacionServicios', 'EvaluacionServiciosController@index');
- Route::resource('/pregunta', 'PreguntaController');
- Route::resource('/evaluacion', 'EvaluacionController');
- Route::resource('/pregunta_evaluacion', 'PreguntaEvaluacionController');
+ Route::get('/EvaluacionServicios', 'EvaluacionServiciosController@index')->middleware('auth');
+ Route::resource('/pregunta', 'PreguntaController')->middleware('auth');
+ Route::resource('/evaluacion', 'EvaluacionController')->middleware('auth');
+ Route::resource('/pregunta_evaluacion', 'PreguntaEvaluacionController')->middleware('auth');
 //===============  REPORTES DE LA EVALUACION DE SERVICIOS ================
-Route::resource('/reportes', 'RespuestaController');
-Route::get("ReporteEvaluacionServiciosGeneral","RespuestaController@imprimirReporteGeneral");
-Route::post("ReporteEvaluacionServiciosIndividual","RespuestaController@imprimirReporteIndividual");
-Route::get("ObtenerDatos/{id}","RespuestaController@ObtenerDatos");
-Route::get("ObtenerRespuestas/{id}","RespuestaController@ObtenerRespuestas");
+Route::resource('/reportes', 'RespuestaController')->middleware('auth');
+Route::get("ReporteEvaluacionServiciosGeneral","RespuestaController@imprimirReporteGeneral")->middleware('auth');
+Route::post("ReporteEvaluacionServiciosIndividual","RespuestaController@imprimirReporteIndividual")->middleware('auth');
+Route::get("ObtenerDatos/{id}","RespuestaController@ObtenerDatos")->middleware('auth');
+Route::get("ObtenerRespuestas/{id}","RespuestaController@ObtenerRespuestas")->middleware('auth');
 
 //rutas de services api gps
- Route::get('/token', 'ServiciosApiGpsController@postToken');
- Route::get('/refreshToken', 'ServiciosApiGpsController@postRefreshToken');
- Route::get('/all', 'ServiciosApiGpsController@getDetalle');
+ Route::get('/token', 'ServiciosApiGpsController@postToken')->middleware('auth');
+ Route::get('/refreshToken', 'ServiciosApiGpsController@postRefreshToken')->middleware('auth');
+ Route::get('/all', 'ServiciosApiGpsController@getDetalle')->middleware('auth');
  //Route::get('/carrosUser/{id}', 'ServiciosApiGpsController@rutasDeUsuario');
 //Route::get('/evaluacion', 'EvaluacionServiciosController@obtenerEvaluacion');
 //Route::get('/puntosRutas', 'PuntoRutaController@obtenerPuntosRutas');

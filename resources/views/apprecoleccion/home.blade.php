@@ -7,13 +7,10 @@
             <div class="card">
                 <div class="card-body text-center">
                     <div class="bs-example" data-example-id="simple-jumbotron">
-
-
                         <div class="content">
-
                             <div class="title m-b-ms" align="center">
-                                <img src="images/header.png" style=" width: 100%;" ><br>
-                                <img src="images/mapa.png" style=" width: 100%;opacity: 0.9"  ><br>
+                                <img src="{{asset('images/header1.png')}}" style=" width: 100%;" ><br>
+                                <img src="{{asset('images/mapa1.png')}}" style=" width: 100%;opacity: 0.8"  ><br>
                             </div>
                         </div>
                     </div>

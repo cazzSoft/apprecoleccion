@@ -12,5 +12,11 @@ class PuntoReferenciaRutaModel extends Model
     public function ruta(){
         return $this->hasMany('App\RutaModel','idruta','ruta_idruta')->with('PuntoRuta');
     }
+    public function ruta2(){
+            return $this->hasMany('App\RutaModel','idruta','ruta_idruta')->with('PuntoRuta');
+        }
+        public function puntoReferencia(){
+            return $this->hasMany('App\PuntoReferenciaModel','idpunto_de_referencia','idpunto_de_referencia');
+        }
 
 }
