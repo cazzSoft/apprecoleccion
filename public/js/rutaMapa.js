@@ -6,7 +6,6 @@ $("#frm_PuntoRuta").on("submit", function(e){
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
         var FrmData = {
             idruta: $('#Seleccionar_ruta').val(),
             puntos:markers,
@@ -29,16 +28,17 @@ $("#frm_PuntoRuta").on("submit", function(e){
                       </button>
                     </div>`
                );
-
+              $("#sectores").html("");$("#sectores1").html("");
+              $('.opcion_sectores').prop('selected',false);
+              $("#Seleccionar_ruta").trigger("chosen:updated");
              }
         });
 
     });
 //funcion para refrescar select ruta
   function apdateSelectRuta() {
-
     $.get("obtenerRuta/", function (data) {
-
+      console.log(data);
       $('.opcion_sectores').prop('selected',false);
       $('.opcion_sectores1').prop('selected',false);
       $("#Seleccionar_ruta").html(` <option value=""></option>`);

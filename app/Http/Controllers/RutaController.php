@@ -78,8 +78,11 @@ class RutaController extends Controller
      */
     public function obtenerRuta($ruta='')
     {
-        //dd($ruta);
         return RutaModel::where('descripcion','ilike','%'.$ruta.'%')->first();
+    }
+    public function obtenerRutamapa()
+    {
+     return   $consulta=RutaModel::all();
     }
 
 
@@ -87,10 +90,11 @@ class RutaController extends Controller
 
     public function obtenerRutaGrafica($id)
     {
-        $consul= PuntoRutaModel::where('ruta_idruta',$id)->select('latitud as lat','longitud as lng')->get();
-
-        //dd($consul);
-        return $consul;
+        try {
+            return   $consul= PuntoRutaModel::where('ruta_idruta',$id)->select('latitud as lat','longitud as lng')->get();
+        } catch (\Throwable $th) {
+            return "false";
+        }
     }
 
     /**

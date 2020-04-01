@@ -29,7 +29,7 @@ Auth::routes();
 //Rutas de la Gestion Ruta
 //Route::get('/gestionRutas','GestionRutasController@index');
  Route::resource('/ruta', 'RutaController')->middleware('auth');
- Route::get('/obtenerRuta', 'RutaController@obtenerRuta')->middleware('auth');
+ Route::get('/obtenerRuta', 'RutaController@obtenerRutamapa')->middleware('auth');
  Route::get('/obtenerPunto/{id}', 'RutaController@obtenerRutaGrafica')->middleware('auth');
  Route::resource('/puntoRuta', 'PuntoRutaController')->middleware('auth');
  //Rutas de la Gestión Vehiculo

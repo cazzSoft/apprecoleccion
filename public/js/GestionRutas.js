@@ -35,7 +35,6 @@ function btn_eliminar(btn){
 
 //************GESTION DIBUJAR RUTA********************
 $("#btn_puntoRutaCancelar").click(function () {
-
     // limpiamos los datos de los seleccionados
     $('.Seleccionar_ruta').attr("selected", false);
     $('#Seleccionar_ruta_chosen').children('a').children('span').html('Seleccione una ruta...');
@@ -114,11 +113,11 @@ function initMap1() {
  }
 
 
- 
+
 
  //eliminar ultimo punto
  function eliminarUltimoPunto() {
-    
-   
+
+
 
 }

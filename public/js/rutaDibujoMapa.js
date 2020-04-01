@@ -16,8 +16,11 @@ $("#frm_Grafica").on("submit", function(e){
 
      		apdateSelectRuta();
      		initMap2();
-              $("#Seleccionar_ruta1").val("");
-              $("#Seleccionar_ruta1").html("");
+              $("#sectores1").html("");$("#sectores").html("");
+              $('.opcion_sectores1').prop('selected',false);
+              $("#Seleccionar_ruta1").trigger("chosen:updated"); // actualizamos el combo
+
+
      	});
      }
  });

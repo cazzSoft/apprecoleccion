@@ -46,7 +46,7 @@
                                                     <blockquote class="message" id="sectores">Ninguna ruta seleccionada</blockquote>
                                                 </div>
                                                 <div class="col-md-6">
-                                                     <button class="btn btn-success btn-block" id="btn_Guardar"  type="submit" > <i class="fa fa-save" > </i>  Guardar</button> 
+                                                     <button class="btn btn-success btn-block" id="btn_Guardar"  type="submit" > <i class="fa fa-save" > </i>  Guardar</button>
                                                     <!-- <input type="button" value="Guardar" id="" onclick="guardar()" class="btn btn-primary btn-sm"> -->
                                                 </div>
                                                 <div class="col-md-6">
@@ -72,34 +72,3 @@
 </div>
 </div>
 <script src="{{asset('/js/rutaMapa.js')}}"></script>
-   {{--  <div class="row">
-        <div class="col-sm-12">
-                <table id="" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="datatable_info">
-                    <thead>
-                    <tr role="row">
-                        <th class="sorting_desc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" aria-sort="descending">Ruta</th>
-                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Latitud</th>
-                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Longitud</th>
-                        <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" >Acciones</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr role="row" class="odd">
-                            <td class="sorting_1"></td>
-                            <td ></td>
-                            <td ></td>
-                            <td   class="paddingTR">
-                                <center>
-                                    <form method="POST" class="frm_eliminar" action=""  enctype="multipart/form-data">
-                                        {{csrf_field() }} <input type="hidden" name="_method" value="DELETE">
-                                        <button type="button" class="btn btn-sm btn-danger marginB0" onclick="btn_eliminar(this)"><i class="fa fa-trash"></i> Eliminar</button>
-                                    </form>
-                                </center>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-        </div>
-    </div>
-
- --}}

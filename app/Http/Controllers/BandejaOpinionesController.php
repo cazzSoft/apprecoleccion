@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\BandejaOpinionesModel;
+use App\BandejaOPinionesModel;
+//use App\BandejaOpinionesModel;
 use App\UsuarioModel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 
 class BandejaOpinionesController extends Controller
@@ -16,11 +17,8 @@ class BandejaOpinionesController extends Controller
      */
     public function index()
     {
-     //consultas de datos
-
-
-     $listaOpiniones = BandejaOpinionesModel::with('usuario')->get();
-
+     //consultas de datos BandejaOPinionesModel
+     $listaOpiniones = BandejaOPinionesModel::with('usuario')->get();
         return view('apprecoleccion.administrador.bandejaOpiniones.GestionBandejaOpiniones')->with([
             'listaOpiniones'=>$listaOpiniones
         ]);
@@ -60,7 +58,7 @@ class BandejaOpinionesController extends Controller
          if(tieneCaracterEspecialRequest($validar)){
             return "error";
         };
-        $opinion = new BandejaOpinionesModel();
+        $opinion = new BandejaOPinionesModel();
         $opinion->detalle=$request->detalle;
         $opinion->fecha=$fecha;
         $opinion->estado='E';
@@ -94,7 +92,7 @@ class BandejaOpinionesController extends Controller
     {
 
         $id=decrypt($id);
-        $opiniones=BandejaOpinionesModel::find($id);
+        $opiniones=BandejaOPinionesModel::find($id);
         return response()->json($opiniones);
     }
 
@@ -120,7 +118,7 @@ class BandejaOpinionesController extends Controller
     {
 
       //eliminación de datos
-      $bandeja= BandejaOpinionesModel::find(decrypt($id));
+      $bandeja= BandejaOPinionesModel::find(decrypt($id));
         //información para la verificación de eliminación de datos
       try {
           $bandeja->delete();
