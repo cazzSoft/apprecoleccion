@@ -94,6 +94,8 @@ class ServiciosApiGpsController extends Controller
                         $inserUser->tipo_usuario_idtipo_usuario='1';
                         $inserUser->estado_configuracion='0';
                         $inserUser->nombre=$response['razonSocial'];
+                        $inserUser->email=$response['emailUser'];
+                        $inserUser->celular=$response['celular'];
                         $inserUser->save();
                          return $request=['email'=>$response['emailUser'],
                                         'id'=>$inserUser->idusuario,
