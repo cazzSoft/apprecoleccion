@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\NotificacionModel;
+use App\PuntoReferenciaModel;
 use App\PuntoReferenciaRutaModel;
+use Illuminate\Http\Request;
 class PuntoReferenciaRutaController extends Controller
 {
     /**
@@ -79,14 +81,22 @@ class PuntoReferenciaRutaController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+       // return  $puntoRuta=PuntoReferenciaModel::find($id);
+        $ruta=PuntoReferenciaRutaModel::where('idpunto_de_referencia',$id)->get();
+        foreach ($ruta as $key => $value) {
+          $noti=NotificacionModel::where('idpunto_de_referencia_ruta',$value->idpunto_de_referencia_ruta)->first();
+          if (isset($noti)) {
+                 $noti->delete();
+          }
+          $info=  PuntoReferenciaRutaModel::find($value->idpunto_de_referencia_ruta);
+          if (isset($info)) {
+                $info->delete();
+          }
+        }
+        $puntoRuta=PuntoReferenciaModel::find($id);
+        $puntoRuta->delete();
+        return 'success';
     }
 }

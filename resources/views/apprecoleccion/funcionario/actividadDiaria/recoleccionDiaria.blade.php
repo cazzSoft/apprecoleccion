@@ -164,7 +164,7 @@
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Horario</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Recolector</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" >Chofer</th>
-                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Acciones</th>
+                    <th class="sorting" tabindex="0" width="250px" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Acciones</th>
                 </tr>
                 </thead>
 

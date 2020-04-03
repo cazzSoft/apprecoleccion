@@ -18,7 +18,7 @@
     @endif
 <!-- bandeja de opiniones -->
 
-    
+
     <div class="ln_solid"></div>
 </form>
 <div class="table-responsive">
@@ -30,20 +30,20 @@
                     <th class="sorting_desc" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" aria-sort="descending">Opinión</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Usuario</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Fecha</th>
-                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" >Acciones</th>
+                    <th class="sorting" tabindex="0" width="250px" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" >Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
 
                 @if(isset($listaOpiniones))
-                    @foreach($listaOpiniones as $item)             
+                    @foreach($listaOpiniones as $item)
                     <tr role="row" class="odd">
                         <td class="sorting_1">{{$item->detalle}}</td>
                         <td >{{$item->usuario->nombre}}</td>
                         <td >{{$item->fecha}}</td>
                         <td   class="paddingTR">
                             <center>
-                                    <button type="button" class="btn btn-sm btn-success marginB0 " onclick="mostrar_Usuario({{$item->usuario->idusuario}})" ><i class="fa fa-user"></i> Información del usuario</button>
+                                    <button type="button" class="btn btn-block btn-success marginB0 " onclick="mostrar_Usuario({{$item->usuario->idusuario}})" ><i class="fa fa-user"></i> Información del usuario</button>
                             </center>
                         </td>
                     </tr>
@@ -52,7 +52,6 @@
                 </tbody>
             </table>
         </div>
-    
-    </div> 
+
+    </div>
 </div>
-       

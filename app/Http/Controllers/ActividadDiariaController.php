@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\ActividadDiariaModel;
-use App\RutaModel;
-use App\RecolectorModel;
 use App\ChoferModel;
+use App\PuntoReferenciaRutaModel;
+use App\RecolectorModel;
+use App\RutaModel;
+use Illuminate\Http\Request;
 
 class ActividadDiariaController extends Controller
 {
@@ -119,8 +120,25 @@ class ActividadDiariaController extends Controller
     }
     public function getHorarioRecolector($id)
     {
-     return $consulta=ActividadDiariaModel::with('ruta')->where('recolector_idrecolector',$id)->get();
-      return response()->json($consulta);
+      try {
+        $rutas=PuntoReferenciaRutaModel::where('idpunto_de_referencia',$id)->get();
+        if (isset($rutas)) {
+         $horarios=[];
+           foreach ($rutas as $key => $value) {
+             $consulta=ActividadDiariaModel::with('ruta')->where('ruta_idruta',$value->ruta_idruta)->first();
+              if (isset($consulta)) {
+                 $horarios[$key]=['ruta'=>$consulta->ruta->descripcion,
+                                   'horario'=>$consulta->dia,
+                                     'hI'=>$consulta->hora_inicio,
+                                       'hF'=>$consulta->hora_fin
+                                 ];
+              }
+           }
+            return response()->json($horarios);
+        }
+      } catch (\Throwable $th) {
+          return 'error';
+      }
     }
 
     /**

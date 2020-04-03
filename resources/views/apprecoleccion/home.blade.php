@@ -10,7 +10,7 @@
                         <div class="content">
                             <div class="title m-b-ms" align="center">
                                 <img src="{{asset('images/header1.png')}}" style=" width: 100%;" ><br>
-                                <img src="{{asset('images/mapa.png')}}" style=" width: 100%;opacity: 0.8"  ><br>
+                                <img src="{{asset('images/mapa.PNG')}}" style=" width: 100%;opacity: 0.8"  ><br>
                             </div>
                         </div>
                     </div>

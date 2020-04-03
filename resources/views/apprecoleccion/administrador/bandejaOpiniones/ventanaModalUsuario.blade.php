@@ -12,47 +12,35 @@
 		        <div class="col-md-12 profile_details text-center">
 		            <div class="well profile_view">
 		                <div class="col-sm-12" style="color:black;">
-			               
-			                <hr>
 			                <div class="left col-xs-12" style="text-align:center">
-			                	<div class="row">
-									<div class="col-md-12"> 
-										<h5 style="text-align: left"><span  class="glyphicon glyphicon-user"></span> <strong>Usuario:</strong></h5>
+                                <div class="row">
+                                	<div class="col-md-12">
+										<h5 style="text-align:left "><span  class="glyphicon glyphicon-user"></span> <strong>Usuario:</strong></h5>
 										<input type="text" style="border:0;" class="form-control" id="nombre">
 			                		</div>
-			                		
-			                	</div>
-                                <div class="row">
-								<div class="col-md-6">
+									<div class="col-md-12">
 									  <h5  style="text-align: left"><span  class="glyphicon glyphicon-credit-card"></span> <strong>DNI:</strong>  </h5>
 									  <input type="text" style="border:0;" class="form-control" id="dni">
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-12">
 									  <h5  style="text-align: left"><span  class="glyphicon glyphicon-phone"></span> <strong>Celular:</strong></h5>
 									  <input type="text" style="border:0;" class="form-control" id="celular">
 									</div>
-
-				                
-								</div>
-			                	<div class="row">
-			                		<div class="col-md-12">
+									<div class="col-md-12">
 									  <h5  style="text-align: left"><span  class="glyphicon glyphicon-map-marker"></span> <strong>Dirección:</strong></h5>
 									  <input type="text" style="border:0;" class="form-control" id="direccion">
 									</div>
-			                	    <div class="col-md-12">
+									 <div class="col-md-12">
 									  <h5  style="text-align: left"><span  class="glyphicon glyphicon-envelope"></span> <strong>Email:</strong></h5>
 									  <input type="text" style="border:0;" class="form-control" id="email">
 									</div>
-			                	</div>
+								</div>
 			                </div>
-		
 		                </div>
-
 		            </div>
 				</div>
 		    </div>
 		</div>
-
   </div>
 </div>
 </div>

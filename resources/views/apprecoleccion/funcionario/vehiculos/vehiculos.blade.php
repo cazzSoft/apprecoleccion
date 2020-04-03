@@ -3,8 +3,8 @@
     {{csrf_field() }}
     <input id="method_vehiculos" type="hidden" name="_method" value="POST">
     <div class="x_title">
-    <h2><b><center>SUB-DIRECCIÓN DE GESTIÓN DE DESECHOS</center></b></h2> 
-     
+    <h2><b><center>SUB-DIRECCIÓN DE GESTIÓN DE DESECHOS</center></b></h2>
+
       <div class="clearfix"></div>
     </div>
 <!-- MENSAJES PARA CONFIRMACIÓN DE REGISTROS Y ERRORES -->
@@ -51,6 +51,13 @@
                 </div>
             </div>
           </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="">Id-Gps: <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="number" id="id" required="required" name="id" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
 
 
 
@@ -68,13 +75,14 @@
     <div class="row">
         <div class="col-sm-12">
             <table id="datatable-checkbox" class="table table-striped table-bordered">
-            
+
                 <thead>
                 <tr role="row">
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Código del vehículo</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Placa</th>
                     <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 117px;">Tipo de vehículo</th>
-                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 117px;">Acciones</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 259px;">Id GPS</th>
+                    <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 350;">Acciones</th>
                 </tr>
                 </thead>
 
@@ -86,6 +94,7 @@
                         <td class="sorting_1">{{$item->numero}}</td>
                         <td >{{$item->placa}}</td>
                         <td >{{$item->tipo_vehiculo}}</td>
+                         <td >{{$item->id}}</td>
                         <td   class="paddingTR">
                             <center>
                             <form method="POST" class="frm_eliminar" action="{{url('vehiculo/'.encrypt($item->idrecolector))}}"  enctype="multipart/form-data">
@@ -97,7 +106,7 @@
                         </td>
                     </tr>
                     @endforeach
-                @endif     
+                @endif
                 </tbody>
             </table>
         </div>

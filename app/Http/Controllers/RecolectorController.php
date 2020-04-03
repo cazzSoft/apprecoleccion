@@ -55,6 +55,7 @@ class RecolectorController extends Controller
         $vehiculo= new RecolectorModel();
         $vehiculo->numero=$request->get('numero');
         $vehiculo->placa=$request->get('placa');
+        $vehiculo->id=$request->get('id');
         $vehiculo->tipo_vehiculo=$request->get('tipo_vehiculo');
         //información de la verificación de ingreso de datos
         if($vehiculo->save()){
@@ -112,6 +113,7 @@ class RecolectorController extends Controller
         $vehiculo= RecolectorModel::find(decrypt($id));
         $vehiculo->numero=$request->get('numero');
         $vehiculo->placa=$request->get('placa');
+        $vehiculo->id=$request->get('id');
         $vehiculo->tipo_vehiculo=$request->get('tipo_vehiculo');
         //información de la verificación de ingreso de datos
         if($vehiculo->save()){
@@ -145,7 +147,7 @@ class RecolectorController extends Controller
           return back()->with(['mensajeInfoVehiculo'=>'Registro eliminado con éxito','estado'=>'success']);
       } catch (\Throwable $th) {
           return back()->with(['mensajeInfoVehiculo'=>'No se pudo realizar eliminar el registro','estado'=>'danger']);
-          
+
       }
     }
 }
