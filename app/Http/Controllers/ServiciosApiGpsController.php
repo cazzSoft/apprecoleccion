@@ -53,17 +53,18 @@ class ServiciosApiGpsController extends Controller
     {
         $consul=DB::table('punto_de_referencia')
                             ->join('punto_de_referencia_ruta','punto_de_referencia.idpunto_de_referencia','=','punto_de_referencia_ruta.idpunto_de_referencia')
+                            ->join('notificacion','punto_de_referencia_ruta.idpunto_de_referencia_ruta','=','notificacion.idpunto_de_referencia_ruta')
                             ->join('ruta','punto_de_referencia_ruta.ruta_idruta','=','ruta.idruta')
                             ->join('actividad_diaria','ruta.idruta','=','actividad_diaria.ruta_idruta')
                             ->join('recolector','actividad_diaria.recolector_idrecolector','=','recolector.idrecolector')
                             ->where('usuario_idusuario','=',$id)
-                            ->select('recolector.id','recolector.numero','recolector.idrecolector')
+                            ->select('recolector.id','recolector.numero','recolector.idrecolector','punto_de_referencia_ruta.idpunto_de_referencia_ruta','notificacion.distancia_metros','notificacion.estado as notiEstado','notificacion.cantidad','punto_de_referencia.longuitud','punto_de_referencia.latitud','punto_de_referencia.estado as estadoPR')
                             ->get();
         if ($consul!='[]') {
             foreach ($consul as $key => $value) {
-               $prefer[$key]=$this->posts->LastReport($value->id,$value->numero,$value->idrecolector);
+               $prefer[$key]=$this->posts->LastReport($value->id,$value->numero,$value->idrecolector,$value->idpunto_de_referencia_ruta,$value->distancia_metros,$value->notiEstado,$value->cantidad,$value->longuitud,$value->latitud,$value->estadoPR);
                 if($prefer){
-                  $prefer[$key]=$this->posts->LastReport($value->id,$value->numero,$value->idrecolector);
+                  $prefer[$key]=$this->posts->LastReport($value->id,$value->numero,$value->idrecolector,$value->idpunto_de_referencia_ruta,$value->distancia_metros,$value->notiEstado,$value->cantidad,$value->longuitud,$value->latitud,$value->estadoPR);
                 }
             }
             return response()->json($prefer);

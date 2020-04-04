@@ -109,7 +109,7 @@ class Posts{
 
 	}
 
-	public function LastReport($id,$ve='',$idr){
+	public function LastReport($id,$ve='',$idr,$idPRR,$distancia_metros,$notiEstado,$cantidad,$longuitud,$latitud,$estadoPR){
 
     	try {
     	    $table=DB::table('service_api')->get();
@@ -121,13 +121,20 @@ class Posts{
 			$response = json_decode((string) $response->getBody(), true);
 			foreach ($response as $key => $value) {
                 $arr[$key]=$value;
-			}
+			}//$distancia_metros,$notiEstado,$cantidad,$longuitud,$latitud,$estadoPR
 			 $arr['latitude'].','.$arr['longitude'];
              $array=[
                 'lat'=>$arr['latitude'],
                 'lng'=>$arr['longitude'],
                 'des'=>$ve,
-                'idr'=>$idr
+                'idr'=>$idr,
+                'idPRR'=>$idPRR,
+                'distancia_metros'=>$distancia_metros,
+                'notiEstado'=>$notiEstado,
+                'cantidad'=>$cantidad,
+                'longuitud'=>$longuitud,
+                'latitud'=>$latitud,
+                'estadoPR'=>$estadoPR
              ];
 			 return $array;
     	} catch (\Throwable $th) {

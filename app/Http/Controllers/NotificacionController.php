@@ -22,10 +22,10 @@ class NotificacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+    // public function NoficicacionRuta($id)
+    // {
+    //     return response()->json($id);
+    // }
 
     public function obtenerNoficicacion($id)
     {

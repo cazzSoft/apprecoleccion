@@ -40,6 +40,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   //configuracion de notificaciones
   Route::resource('/notificacion', 'NotificacionController');
   Route::get('/obtenerNotificacion/{id}', 'NotificacionController@obtenerNoficicacion');
+  // Route::get('/notificar/{id}', 'NotificacionController@NoficicacionRuta');//para notificar
   Route::post('/postNotificacionDistancia', 'NotificacionController@actualizarNotificacion');
   //crear punto referencia ruta
   Route::resource('/postPuntoReferenciaRuta','PuntoReferenciaRutaController');
