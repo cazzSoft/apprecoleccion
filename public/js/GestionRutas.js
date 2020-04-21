@@ -119,5 +119,4 @@ function initMap1() {
  function eliminarUltimoPunto() {
 
 
-
 }

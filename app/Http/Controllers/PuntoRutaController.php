@@ -26,23 +26,19 @@ class PuntoRutaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function obtenerPuntosRutas()
-    {
-        //$ruta=RutaModel::with('PuntoRuta')->where('nombre_ruta','Ruta 1')->get();
-        $ruta= DB::table('punto_ruta')
-                        ->join('ruta','punto_ruta.ruta_idruta','=','ruta.idruta')
-                        ->where('ruta.nombre_ruta','=','Ruta 1')
-                        ->select('ruta.descripcion',
-                                'punto_ruta.latitud',
-                                'punto_ruta.longitud',
-                                'punto_ruta.idpunto_ruta')
-                        ->get();
-        foreach ($ruta as $key => $value) {
-            $arry[$value->descripcion]='lat:'.$value->latitud;
-        }
-        return $ruta;
-    }
-
+    // public function obtenerPuntosRutas()
+    // {
+    //    $punto1 = [-0.6991996665183066, -80.0951412320137];
+    //    $distancia=[];
+    //     $puntos=PuntoRutaModel::all();
+    //    foreach ($puntos as $key => $value) {
+    //         $m=$this->distance($punto1[0], $punto1[1],  $value->latitud, $value->longitud);
+    //        $distancia[$key]=['metro'=> $m,'ruta'=>$value->ruta_idruta,'punto'=>$value->idpunto_ruta];
+    //         // array_push($distancia, $value->latitud, $value->longitud);
+    //    }
+    //     $menor=  min($distancia);
+    //     return $distancia;
+    // }
 
     public function store(Request $request)
     {
@@ -105,9 +101,27 @@ class PuntoRutaController extends Controller
     public function obtenerRuta($ruta='')
     {
       $consulta =RutaModel::with('PuntoRuta')->where('descripcion','like','%'.$ruta.'%')->first();
-       return $request=['ruta'=>$consulta->PuntoRuta,
+        $request=['ruta'=>$consulta->PuntoRuta,
                   'idruta'=>$consulta->idruta];
         return response()->json($request);
+    }
+    public function autoRuta($lat='',$lng='',$idp,$idr)
+    {
+        //[-0.6991996665183066, -80.0951412320137];
+        $punto1 = [$lat,$lng];
+        $distancia=[];
+        $puntos=PuntoRutaModel::where('idpunto_ruta','<>',$idp)->where('ruta_idruta','<>',$idr)->get();
+        foreach ($puntos as $key => $value) {
+             $m=$this->distance($punto1[0], $punto1[1],  $value->latitud, $value->longitud);
+             $distancia[$key]=['metro'=> $m,'ruta'=>$value->ruta_idruta,'punto'=>$value->idpunto_ruta];
+        }
+         $menor=  min($distancia);
+         $consulta =RutaModel::with('PuntoRuta')->where('idruta',$menor['ruta'])->first();
+         $request=[ 'idpunto_ruta'=>$menor['punto'],
+                    'idruta'=>$consulta->idruta,
+                    'ruta'=>$consulta->PuntoRuta
+                    ];
+           return response()->json($request);
     }
      public function obtenerRutaId($id)
     {
@@ -119,8 +133,16 @@ class PuntoRutaController extends Controller
              $rutas[$key]=$value2['PuntoRuta'];
             }
          }
-
-
       return response()->json($rutas);
+    }
+    //calcular distancia entre coordenadas
+    function distance($lat1, $lon1, $lat2, $lon2) {
+      $theta = $lon1 - $lon2;
+      $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+      $dist = acos($dist);
+      $dist = rad2deg($dist);
+      $miles = $dist * 60 * 1.1515;
+      $miles=($miles * 1.609344)*1000;
+     return floor($miles);
     }
 }

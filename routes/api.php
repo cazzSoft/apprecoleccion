@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
   Route::get('/loqinAutenticate/{dni?}/{pass?}', 'ServiciosApiGpsController@autenticateLogin');
   // Route::resource('crear', 'BandejaOpinionesController');
 
-  Route::get('/prue/{lat?}/{lng?}', 'ServiciosApiGpsController@calle');//para prueba
+  // Route::get('/prue/{lat?}/{lng?}', 'ServiciosApiGpsController@calle');//para prueba
 
   Route::resource('postOpinion','BandejaOpinionesController');//insertar opinion
 
@@ -33,7 +33,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
   Route::get('/puntoInteres/{id}', 'PuntoReferenciaController@getPundoInteres');//obtiene los puntos
-  Route::get('/puntosRutas', 'PuntoRutaController@obtenerPuntosRutas');//esto era para prueba
+  Route::get('/rutaCercana/{lat?}/{lng?}/{idp}/{idr}', 'PuntoRutaController@autoRuta');//esto era para prueba
   //funcion para obtener ruta
   Route::get('/obtenerRuta/{ruta?}', 'PuntoRutaController@obtenerRuta');
   Route::get('/obtenerRutId/{id}', 'PuntoRutaController@obtenerRutaId');

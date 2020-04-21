@@ -119,33 +119,18 @@ class ServiciosApiGpsController extends Controller
                  }
                 return $response['status'];
             }
-            // $buscarUser=UsuarioModel::where('cedula',$dni)->first();
-            // return $request=[
-            //                                        'id'=>$buscarUser->idusuario,
-            //                                        'estado_confi'=>$buscarUser->estado_configuracion,
-            //                                        'celular'=>'0994989123',
-            //                                        'nombre'=>$buscarUser->nombre,
-            //                                        'cedula'=>$buscarUser->cedula,
-            //                                        'email'=>'cazz@hotmail.com',
-            //                                    ];
         } catch (\Throwable $th) {
             return '404';
         }
     }
 
-    public function calle($lat='',$lng='')
-    {
-      // dd($lat);
-      return $consulta=PuntoRutaModel::where('longitud','like','%'.$lat.'%')->get();
-       return $consulta=RutaModel::with('PuntoRuta')->whereHas('PuntoRuta',function ($query) use ($lat,$lng) {
-            $query->where('longitud', 'like', '%'.$lat);
-           })->get();
-
-        // $consulta = Contribuyente::where('identificacion', 'like', '%'.$buscar.'%')->orwhere('nombres', 'ilike', '%'.$buscar.'%')->get()->take(10);
-       // $verificarEva=Evaluacion_usuarioModel::with('evaluacion')->whereHas('evaluacion',function ($query) use ($fecha) {
-         //    $query->where('fecha_inicio', '>=', $fecha);
-         //   })->where('idusuario',$id)->get();
-    }
+    // public function calle($lat='',$lng='')
+    // {
+    //    return $consulta=PuntoRutaModel::where('longitud','like','%'.$lat.'%')->get();
+    //    return $consulta=RutaModel::with('PuntoRuta')->whereHas('PuntoRuta',function ($query) use ($lat,$lng) {
+    //         $query->where('longitud', 'like', '%'.$lat);
+    //        })->get();
+    // }
     /**
      * Show the form for creating a new resource.
      *
