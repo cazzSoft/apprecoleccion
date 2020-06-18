@@ -36,27 +36,30 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="/inicio" class="site_title"><i class="fa fa-truck"></i> <span>GADM Chone</span></a>
+              <a href="/home" class="site_title"><i class="fa fa-truck"></i> <span>GADM CHONE</span></a>
             </div>
-
-            <div class="clearfix"></div>
-
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_info" align="center">
-                 <h2>BIENVENIDO </h2>
+             <div class="profile clearfix text-center col-sm-12" align="center">
+              <div class="profile_info " style="margin-left:20px;" >
+                 <p>BIENVENIDO {{ Auth::user()->name }} </p>
+               {{--   @if(Auth::user()->tipo=='A')(administrador)  @else (funcionario) @endif</p> --}}
               </div>
             </div>
-            <!-- /menu profile quick info -->
-
-            <br />
-
+            <div class="clearfix"></div>
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-
                 <ul class="nav side-menu">
-
+                 @if(Auth::user()->tipo=='F')
+                  <li><a><i class="fa fa-truck"></i>Gestión de Desechos <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url('/ruta')}}">Rutas</a></li>
+                      <li><a href="{{url('/vehiculo')}}">Vehículos</a></li>
+                      <li><a href="{{url('/chofer')}}">Choferes</a></li>
+                      <li><a href="{{url('/actividad_diaria')}}">Actividad Diaria</a></li>
+                    </ul>
+                  </li>
+                  @endif
+                   @if(Auth::user()->tipo=='A')
                   <li><a><i class="fa fa-truck"></i>Gestión de Desechos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{url('/ruta')}}">Rutas</a></li>
@@ -70,18 +73,13 @@
                       <li><a href="bandejaOpiniones">Bandeja de opiniones</a></li>
                       <li><a href="EvaluacionServicios">Evaluación de servicios</a></li>
                       <li><a href="reportes">Reportes</a></li>
-
                     </ul>
                   </li>
+                  @endif
                 </ul>
               </div>
-
-
             </div>
             <!-- /sidebar menu -->
-
-
-
           </div>
         </div>
 

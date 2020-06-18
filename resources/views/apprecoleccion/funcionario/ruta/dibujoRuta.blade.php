@@ -32,7 +32,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <div class="message_wrapper" id="txtDetalleRuta">
+                                            <div id="txtDetalleRuta">
                                                 <blockquote class="message" id="sectores1">Ninguna ruta seleccionada</blockquote>
                                             </div>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
@@ -40,7 +40,6 @@
                                                     @csrf
                                                       <button class="btn btn-danger btn-block" type="submit" > <i class="fa fa-close" > </i>  Eliminar gráfica   </button>
                                                  </form>
-
                                             </div>
                                         </div>
 
@@ -49,7 +48,7 @@
                             </div>
                         </section>
                     </div>
-                    <div id="map2" style="height:600px; width:100%" >
+                    <div id="map2" style="height:600px; width:100%" class="col-xs-12 col-md-6 col-md-12" >
 
                     </div>
                 </div>
